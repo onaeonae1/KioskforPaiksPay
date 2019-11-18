@@ -90,7 +90,12 @@ void mainMouse(pair<int, int> mousepos) { //입력받은 마우스의 좌표를 
 
 }
 void init() { //초기화
-
+	//Shop Class를 생성, 초기화 - > 파일입출력을 통해 불러오기
+	//Gifticon Class를 생성, 초기화 -> 파일입출력을 통해 불러오기
+	//Mileage Class를 생성, 초기화 : 아직 불확실한 부분이다.
+	//User Class를 생성, 초기화
+	//Backet Class를 생성, 초기화
+	//Box1, Box2, Box3, Box4, Box5 생성. 초기화면으로 초기화
 }
 void startView() { //맨처음 화면
 	printf("\n");
