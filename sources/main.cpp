@@ -12,8 +12,125 @@
 #define x first
 #define y second
 using namespace std;
-void mainMouse(pair<int, int> mousepos) { //입력받은 마우스의 좌표를 전달받고 클래스 호출하는 함수
+void mainMouse(int *state, pair<int, int> mousepos) { //입력받은 마우스의 좌표를 전달받고 클래스 호출하는 함수
+	int a = mousepos.first;
+	int b = mousepos.second;
 
+	switch (state[0]) {
+	case 0: { //초기화면
+		break;
+	}
+	case 1: {
+		switch (state[1]) {
+		case 0: { //메뉴
+			
+			break;
+		}
+		case 1: { //메뉴-기프티콘입력
+
+			break;
+		}
+		case 2: { //메뉴-옵션
+
+			break;
+		}
+		case 4: { //메뉴-결제선택
+
+			break;
+		}
+		default: {
+
+		}
+		}
+		break;
+	}
+	
+	case 2: {
+		switch (state[1]) {
+		case 0: {
+
+			break;
+		}
+		default: {
+
+		}
+		}
+		break;
+	}
+	case 3: {
+		switch (state[1]) {
+		case 0: {
+
+			break;
+		}
+		case 6: {
+
+			break;
+		}
+		default: {
+
+		}
+		}
+		break;
+	}
+	case 4: {
+		switch (state[1]) {
+		case 0: {
+
+			break;
+		}
+		case 3: {
+
+			break;
+		}
+		case 7: {
+
+			break;
+		}
+		default: {
+
+		}
+		}
+		break;
+	}
+	case 5: {
+		switch (state[1]) {
+		case 0: {
+
+			break;
+		}
+		case 5: {
+
+			break;
+		}
+		default: {
+
+		}
+		}
+		break;
+	}
+	case 6: {
+		switch (state[1]) {
+		case 0: {
+
+			break;
+		}
+		case 5: {
+
+			break;
+		}
+		default: {
+
+		}
+		}
+		break;
+	}
+
+	default: {
+		//error
+	}
+	}
+	
 }
 void initShop(Shop& shop) {
 	ifstream in("shop.txt");
