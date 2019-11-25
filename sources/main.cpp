@@ -184,6 +184,7 @@ int main() {
 	Shop Coffeeshop; //사용할 메뉴
 	User CurrentUser;
 	bool flag = true;
+	int state[5];
 	//startView();
 	//system("cls");
 	init(Coffeeshop); //초기화
