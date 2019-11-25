@@ -47,7 +47,7 @@ void mainMouse(int *state, pair<int, int> mousepos) { //입력받은 마우스�
 	
 	case 2: {
 		switch (state[1]) {
-		case 0: {
+		case 0: { //로그인
 
 			break;
 		}
@@ -59,11 +59,11 @@ void mainMouse(int *state, pair<int, int> mousepos) { //입력받은 마우스�
 	}
 	case 3: {
 		switch (state[1]) {
-		case 0: {
+		case 0: { //마일리지 사용, 적립
 
 			break;
 		}
-		case 6: {
+		case 6: { //마일리지 사용, 적립 - 마일리지 액수 입력
 
 			break;
 		}
@@ -75,15 +75,15 @@ void mainMouse(int *state, pair<int, int> mousepos) { //입력받은 마우스�
 	}
 	case 4: {
 		switch (state[1]) {
-		case 0: {
+		case 0: { //할인
 
 			break;
 		}
-		case 3: {
+		case 3: { //할인 - 쿠폰
 
 			break;
 		}
-		case 7: {
+		case 7: { //할인 - 상품권
 
 			break;
 		}
@@ -95,11 +95,11 @@ void mainMouse(int *state, pair<int, int> mousepos) { //입력받은 마우스�
 	}
 	case 5: {
 		switch (state[1]) {
-		case 0: {
+		case 0: { //카드 입력
 
 			break;
 		}
-		case 5: {
+		case 5: { //카드 입력 - 영수증
 
 			break;
 		}
@@ -111,11 +111,11 @@ void mainMouse(int *state, pair<int, int> mousepos) { //입력받은 마우스�
 	}
 	case 6: {
 		switch (state[1]) {
-		case 0: {
+		case 0: { //현찰 입력
 
 			break;
 		}
-		case 5: {
+		case 5: { //현찰 입력 - 영수증
 
 			break;
 		}
@@ -132,6 +132,7 @@ void mainMouse(int *state, pair<int, int> mousepos) { //입력받은 마우스�
 	}
 	
 }
+
 void initShop(Shop& shop) {
 	ifstream in("shop.txt");
 	int tpcounts; //분류의 갯수
