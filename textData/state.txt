@@ -1,0 +1,21 @@
+state는 화면에 표시되고 있는 상태를 나타냅니다.
+int state[5]와 같은 형태로 나타냅니다
+
+state[0]
+0 : 표시값 없음
+1 : menubuy
+2 : login
+3 : mileageControl
+4 : discountControl
+5 : cardInput;
+6 : cashInput;
+
+state[1]
+0 : 표시값 없음
+1 : gifticonInput
+2 : optionControl
+3 : couponControl
+4 : payMethod
+5 : bill
+6 : mileageUse
+7 : gifticardConrtol
