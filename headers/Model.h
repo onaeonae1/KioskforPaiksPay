@@ -14,12 +14,13 @@ private:
 	bool isSale; // 기프티콘
 	bool isGifti; //세일인지
 public:
-	Menu(string name, int price, int temperature, int size, int shots) {
+	Menu(string name, string price, string temperature, string size, string shots, string creams) {
 		this->name = name;
-		this->price = price;
-		this->temperature = temperature;
-		this->size = size;
-		this->shots = shots;
+		this->price = stoi(price);
+		this->temperature = stoi(temperature);
+		this->size = stoi(size);
+		this->shots = stoi(shots);
+		this->creams = stoi(creams);
 		this->isSale = false;
 		this->isGifti = false;
 	}
@@ -29,7 +30,15 @@ private:
 	string type; //1 : coffee , 2: drinks, 3: desserts 4: frapuchinno
 	vector<Menu> menus;
 public:
-
+	Menulist(string type) {
+		setType(type);
+	}
+	void setType(string type) {
+		this->type = type;
+	}
+	void addMenu(Menu& menu) {
+		menus.push_back(menu);
+	}
 };
 class Shop {
 private:
@@ -48,5 +57,7 @@ public:
 	void setMenuists(vector<Menulist> menulists) {
 		this->menulists = menulists;
 	}
-	
+	void addMenulists(Menulist& menulist) {
+		menulists.push_back(menulist);
+	}
 };
