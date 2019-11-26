@@ -8,7 +8,24 @@
 #define x first
 #define y second
 using namespace std;
-vector<string> split(string str, char delimiter) { //delimeter를 기준으로 문자열을 잘라줌
+void startView() { //맨처음 화면
+	printf("\n");
+	printf("P R E S S   E N T E R   A N Y   K E Y   T O   S T A R T \n");
+	printf("\n");
+	while (true) {
+		char temp = NULL;
+		cin >> temp;
+		if (temp != NULL) {
+			break;
+		}
+		Sleep(500);
+	}
+	printf("W e l c o m e   T o    P a i k ' s   P a y ");
+	printf("\n");
+	Sleep(1000);
+	return;
+}
+vector<string> split(string str, char delimiter) {
 	vector<string> internal;
 	stringstream ss(str);
 	string temp;
@@ -46,8 +63,4 @@ pair<int, int> mouseEvent() { //마우스를 직접 받고, 좌표를 전달하�
 			}
 		}
 	}
-}
-void gotoxy(int x, int y) { //gotoxy
-	COORD posXY = { x,y };
-	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), posXY);
 }
