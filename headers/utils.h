@@ -8,7 +8,7 @@
 #define x first
 #define y second
 using namespace std;
-vector<string> split(string str, char delimiter) {
+vector<string> split(string str, char delimiter) { //delimeter를 기준으로 문자열을 잘라줌
 	vector<string> internal;
 	stringstream ss(str);
 	string temp;
@@ -46,4 +46,8 @@ pair<int, int> mouseEvent() { //마우스를 직접 받고, 좌표를 전달하�
 			}
 		}
 	}
+}
+void gotoxy(int x, int y) { //gotoxy
+	COORD posXY = { x,y };
+	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), posXY);
 }
