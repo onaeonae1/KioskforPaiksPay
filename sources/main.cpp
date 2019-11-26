@@ -23,7 +23,7 @@ void mainMouse(int *state, pair<int, int> mousepos) { //입력받은 마우스�
 	case 1: {
 		switch (state[1]) {
 		case 0: { //메뉴
-			
+
 			break;
 		}
 		case 1: { //메뉴-기프티콘입력
@@ -44,7 +44,7 @@ void mainMouse(int *state, pair<int, int> mousepos) { //입력받은 마우스�
 		}
 		break;
 	}
-	
+
 	case 2: {
 		switch (state[1]) {
 		case 0: { //로그인
@@ -130,10 +130,9 @@ void mainMouse(int *state, pair<int, int> mousepos) { //입력받은 마우스�
 		//error
 	}
 	}
-	
-}
 
-void initShop(Shop& shop) {
+}
+void initShop(Shop& shop) { //Shop -> Menuiist -> Menu 초기화
 	ifstream in("shop.txt");
 	int tpcounts; //분류의 갯수
 	if (in.is_open()) {
@@ -141,21 +140,34 @@ void initShop(Shop& shop) {
 		for (int i = 0; i < tpcounts; i++) {
 			string tpname; //타입이름
 			int elementcounts; //해당 타입의 메뉴 갯수
-			in >> tpname;
-			in >> elementcounts;
+			in >> tpname; //해당 타입의 메뉴 이름
+			in >> elementcounts; //해당 타입에 해당하는 메뉴 갯수
+			//menulist 생성
+			Menulist* tempList = new Menulist(tpname);
+			//Menulist에 구체적인 menu를 추가
 			for (int j = 0; j < elementcounts; j++) {
-				string temp;
-				in >> temp;
-				for (int k = 0; k < temp.size(); k++) {
-					vector<string> elements = split(temp,'/');
-				}
+				string temp; 
+				in >> temp; //파일 한 줄 읽어옴 
+				vector<string> S = split(temp, '/');
+				//메뉴 생성
+				Menu* tempMenu = new Menu(S.at(0), S.at(1), S.at(2), S.at(3), S.at(4), S.at(5));
+				tempList->addMenu(*tempMenu);
+				delete(tempMenu);
 			}
-
+			shop.addMenulists(*tempList);
+			delete(tempList);
 		}
 	}
 }
-void init(Shop& shop) { //초기화
+void initUser(User& user) { //사용자 초기화
+
+}
+void initMileage(){
+	
+}
+void init(Shop& shop, User& user) { //전체 초기화
 	initShop(shop);
+	initUser(user);
 	//Shop Class를 생성, 초기화 - > 파일입출력을 통해 불러오기
 	//Gifticon Class를 생성, 초기화 -> 파일입출력을 통해 불러오기
 	//Mileage Class를 생성, 초기화 : 아직 불확실한 부분이다.
@@ -163,35 +175,19 @@ void init(Shop& shop) { //초기화
 	//Backet Class를 생성, 초기화
 	//Box1, Box2, Box3, Box4, Box5 생성. 초기화면으로 초기화
 }
-void startView() { //맨처음 화면
-	printf("\n");
-	printf("P R E S S   E N T E R   A N Y   K E Y   T O   S T A R T \n");
-	printf("\n");
-	while (true) {
-		char temp = NULL;
-		cin >> temp;
-		if (temp != NULL) {
-			break;
-		}
-		Sleep(500);
-	}
-	printf("W e l c o m e   T o    P a i k ' s   P a y ");
-	printf("\n");
-	Sleep(1000);
-	return;
-}
 int main() {
 	Shop Coffeeshop; //사용할 메뉴
-	User CurrentUser;
+	User CurrentUser; //현재 사용자
 	bool flag = true;
+	startView();
+	system("cls");
+
 	int state[5];
-	//startView();
-	//system("cls");
-	init(Coffeeshop); //초기화
+	init(Coffeeshop, CurrentUser); //초기화
 	while (flag) {
 		pair<int, int> mousepos = mouseEvent();
 		cout << mousepos.first << mousepos.second << endl;
-		mainMouse(mousepos);
+		mainMouse(state, mousepos);
 	}
 	return 0;
 }
