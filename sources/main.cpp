@@ -144,10 +144,12 @@ void initShop(Shop& shop) { //Shop -> Menuiist -> Menu 초기화
 			in >> elementcounts; //해당 타입에 해당하는 메뉴 갯수
 			//menulist 생성
 			Menulist* tempList = new Menulist(tpname);
+			in.ignore(256, '\n');
 			//Menulist에 구체적인 menu를 추가
 			for (int j = 0; j < elementcounts; j++) {
 				string temp; 
-				in >> temp; //파일 한 줄 읽어옴 
+				getline(in, temp);
+				//in >> temp; //파일 한 줄 읽어옴 
 				vector<string> S = split(temp, '/');
 				//메뉴 생성
 				Menu* tempMenu = new Menu(S.at(0), S.at(1), S.at(2), S.at(3), S.at(4), S.at(5));
@@ -157,13 +159,11 @@ void initShop(Shop& shop) { //Shop -> Menuiist -> Menu 초기화
 			shop.addMenulists(*tempList);
 			delete(tempList);
 		}
+		in.close();
 	}
 }
 void initUser(User& user) { //사용자 초기화
 
-}
-void initMileage(){
-	
 }
 void init(Shop& shop, User& user) { //전체 초기화
 	initShop(shop);
@@ -179,8 +179,8 @@ int main() {
 	Shop Coffeeshop; //사용할 메뉴
 	User CurrentUser; //현재 사용자
 	bool flag = true;
-	startView();
-	system("cls");
+ //	startView();
+//	system("cls");
 
 	int state[5];
 	init(Coffeeshop, CurrentUser); //초기화
