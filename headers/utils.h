@@ -64,3 +64,8 @@ pair<int, int> mouseEvent() { //마우스를 직접 받고, 좌표를 전달하�
 		}
 	}
 }
+
+void gotoxy(int x, int y) { //gotoxy
+	COORD posXY = { x,y };
+	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), posXY);
+}
