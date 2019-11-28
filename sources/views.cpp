@@ -125,7 +125,7 @@ class menuBuy : public box1 {
 private:
 	int page; //몇 번째 카테고리를 보고 있는지를 저장
 public:
-	void view(/*전체 클래스 DB*/) {
+	void view(/*전체 클래스 DB, 몇 번째 카테고리를 출력해야 하는 지*/) {
 		clear_box1();
 		gotoxy(22, 3); printf("< P A I K S     C O F F E E>");
 
@@ -179,6 +179,7 @@ public:
 			int starts[5] = { 4, 18, 32, 46, 60 };
 			int qq = 0;
 			//읽어오는 과정
+			//a = (Shop).getMenulists[j].(getName()); (괄호)이런 친구들은 아직 만들어지지 않음
 			llength = a.length;
 
 			gotoxy((14 - llength) / 2 + starts[qq], 7);
