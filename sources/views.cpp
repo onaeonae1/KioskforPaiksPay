@@ -309,10 +309,10 @@ public:
 		x = 13, i = 32;
 		gotoxy(x, i); printf("┌───────┐            ┌───────┐"); i++;
 		gotoxy(x, i); printf("│              │            │              │"); i++;
-		gotoxy(x, i); printf("│  이전으로    │            │   할인수단   │"); i++;
+		gotoxy(x, i); printf("│  이전으로    │            │   결제수단   │"); i++;
 		gotoxy(x, i); printf("│              │            │              │"); i++;
 		gotoxy(x, i); printf("│              │            │              │"); i++;
-		gotoxy(x, i); printf("│  돌아가기    │            │     없음     │"); i++;
+		gotoxy(x, i); printf("│  돌아가기    │            │     선택     │"); i++;
 		gotoxy(x, i); printf("│              │            │              │"); i++;
 		gotoxy(x, i); printf("└───────┘            └───────┘"); i++;
 	}
