@@ -10,13 +10,14 @@
 #include"Model.h"
 #include"User.h"
 #include"Bucket.h"
+#include"Gifticon.h"
 #define x first
 #define y second
 using namespace std;
 void mainMouse(int *state, pair<int, int> mousepos) { //입력받은 마우스의 좌표를 전달받고 클래스 호출하는 함수
 	int a = mousepos.first;
 	int b = mousepos.second;
-	
+
 	//state 문제는 everything이 완성되면 합쳐서 수정하기!
 	switch (state[0]) {
 	case 0: { //초기화면
@@ -146,12 +147,12 @@ void initShop(Shop& shop) { //Shop -> Menuiist -> Menu 초기화
 			in >> elementcounts; //해당 타입에 해당하는 메뉴 갯수
 			//menulist 생성
 			Menulist* tempList = new Menulist(tpname);
-			in.ignore(256, '\n');
+			//in.ignore(256, '\n');
 			//Menulist에 구체적인 menu를 추가
 			for (int j = 0; j < elementcounts; j++) {
-				string temp; 
-				getline(in, temp);
-				//in >> temp; //파일 한 줄 읽어옴 
+				string temp;
+				//getline(in, temp);
+				in >> temp; //파일 한 줄 읽어옴 
 				vector<string> S = split(temp, '/');
 				//메뉴 생성
 				Menu* tempMenu = new Menu(S.at(0), S.at(1), S.at(2), S.at(3), S.at(4), S.at(5));
@@ -175,7 +176,7 @@ void initMileage(vector<Mileage>& mData) { //mileage.txt에 있는 마일리지�
 		int num; //마일리지 데이터 갯수
 		in >> num;
 		while (num--) {
-			string tempString; 
+			string tempString;
 			in >> tempString;//한 줄 읽어오기
 			vector<string> S = split(tempString, '/'); //잘라오기
 			Mileage* tempMileage = new Mileage(S.at(0), S.at(1));
@@ -184,6 +185,52 @@ void initMileage(vector<Mileage>& mData) { //mileage.txt에 있는 마일리지�
 		}
 		in.close();
 	}
+}
+void initGifti(vector<Gifticon>& gData) { //사용가능한 기프티콘 데이터 불러오기
+	ifstream in("gifti.txt");
+	if (in.is_open()) {
+		int num;
+		in >> num;
+		while (num--) {
+			string tempString;
+			in >> tempString; //한 줄 읽어오기
+			vector<string> S = split(tempString, '/'); //잘라오기 
+			//메뉴 생성
+			Menu* tempMenu = new Menu(S.at(1), S.at(2), S.at(3), S.at(4), S.at(5), S.at(6), true);
+			Gifticon* tempGifti = new Gifticon(*tempMenu, S.at(0));
+			gData.push_back(*tempGifti);
+			delete(tempGifti);
+			delete(tempMenu);
+		}
+	}
+	in.close();
+}
+void init(Shop& shop, User& user, vector<Mileage>& mdata, vector<Gifticon>& gdata) { //전체 초기화
+	initShop(shop); //Shop Class를 생성, 초기화 - > 파일입출력을 통해 불러오기
+	initUser(user); //User Class를 생성, 초기화
+	initMileage(mdata); // Mileage Class를 생성, 초기화 : 아직 불확실한 부분이다.
+	initGifti(gdata);//Gifticon Class를 생성, 초기화 -> 파일입출력을 통해 불러오기
+	//Backet Class를 생성, 초기화
+	//Box1, Box2, Box3, Box4, Box5 생성. 초기화면으로 초기화
+}
+void deleteGifti(string key, vector<Gifticon>& gData) { //사용한 기프티콘을 key에 따라 txt 에서 제거
+	/* 미완성 
+	ifstream in("gifti.txt");
+	if (in.is_open()) {
+		int num;
+		in >> num; //gifti 갯수
+	}
+	for (int i = 0; i < gData.size(); i++) {
+		Gifticon& g = gData.at(i);
+		string gkey = g.getKey();
+		if (key == gkey) { //일치 -> 삭제
+
+		}
+	}
+	*/
+}
+void billSetting() { //영수증을 파일에 출력한다.
+	//미완성
 }
 void linkMileage(User& user, vector<Mileage>& mdata) { //사용자의 Mileage를 MileageData에서 찾아서 연결해줌
 	string userkey = user.getKey();
@@ -197,27 +244,17 @@ void linkMileage(User& user, vector<Mileage>& mdata) { //사용자의 Mileage를
 		}
 	}
 }
-void init(Shop& shop, User& user, vector<Mileage>& mdata) { //전체 초기화
-	initShop(shop);
-	initUser(user);
-	initMileage(mdata);
-	//Shop Class를 생성, 초기화 - > 파일입출력을 통해 불러오기
-	//Gifticon Class를 생성, 초기화 -> 파일입출력을 통해 불러오기
-	//Mileage Class를 생성, 초기화 : 아직 불확실한 부분이다.
-	//User Class를 생성, 초기화
-	//Backet Class를 생성, 초기화
-	//Box1, Box2, Box3, Box4, Box5 생성. 초기화면으로 초기화
-}
 int main() {
 	Shop Coffeeshop; //사용할 메뉴
 	User CurrentUser; //현재 사용자
 	vector<Mileage> MileageData; //전체 마일리지 데이터
+	vector<Gifticon> GiftiData; //사용 가능한 기프티콘 데이터
 	bool flag = true;
- //	startView();
-//	system("cls");
+	//	startView();
+   //	system("cls");
 
 	int state[5];
-	init(Coffeeshop, CurrentUser, MileageData); //초기화
+	init(Coffeeshop, CurrentUser, MileageData, GiftiData); //초기화
 	while (flag) {
 		pair<int, int> mousepos = mouseEvent();
 		cout << mousepos.first << mousepos.second << endl;
