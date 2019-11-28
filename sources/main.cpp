@@ -9,13 +9,15 @@
 #include"box.h"
 #include"Model.h"
 #include"User.h"
+#include"Bucket.h"
 #define x first
 #define y second
 using namespace std;
 void mainMouse(int *state, pair<int, int> mousepos) { //입력받은 마우스의 좌표를 전달받고 클래스 호출하는 함수
 	int a = mousepos.first;
 	int b = mousepos.second;
-
+	
+	//state 문제는 everything이 완성되면 합쳐서 수정하기!
 	switch (state[0]) {
 	case 0: { //초기화면
 		break;
@@ -163,11 +165,42 @@ void initShop(Shop& shop) { //Shop -> Menuiist -> Menu 초기화
 	}
 }
 void initUser(User& user) { //사용자 초기화
-
+	//아래에서 생성이 되는데 다시 할 필요가 있는가?
+	//User는 생성자에서 초기화가 됨
+	//가독성을 위해서 일단 선언해둠
 }
-void init(Shop& shop, User& user) { //전체 초기화
+void initMileage(vector<Mileage>& mData) { //mileage.txt에 있는 마일리지들 가져와서 MileageData 완성하기
+	ifstream in("mileage.txt");
+	if (in.is_open()) {
+		int num; //마일리지 데이터 갯수
+		in >> num;
+		while (num--) {
+			string tempString; 
+			in >> tempString;//한 줄 읽어오기
+			vector<string> S = split(tempString, '/'); //잘라오기
+			Mileage* tempMileage = new Mileage(S.at(0), S.at(1));
+			mData.push_back(*tempMileage);
+			delete(tempMileage);
+		}
+		in.close();
+	}
+}
+void linkMileage(User& user, vector<Mileage>& mdata) { //사용자의 Mileage를 MileageData에서 찾아서 연결해줌
+	string userkey = user.getKey();
+	//비교를 해야 하는데 -> 그냥 for문을 돌려버리기
+	for (int i = 0; i < mdata.size(); i++) {
+		Mileage m = mdata.at(i);
+		string mkey = m.getKey();
+		if (userkey == mkey) { //일치
+			user.setMileage(m); //링크 시켜준다.
+			break;
+		}
+	}
+}
+void init(Shop& shop, User& user, vector<Mileage>& mdata) { //전체 초기화
 	initShop(shop);
 	initUser(user);
+	initMileage(mdata);
 	//Shop Class를 생성, 초기화 - > 파일입출력을 통해 불러오기
 	//Gifticon Class를 생성, 초기화 -> 파일입출력을 통해 불러오기
 	//Mileage Class를 생성, 초기화 : 아직 불확실한 부분이다.
@@ -178,12 +211,13 @@ void init(Shop& shop, User& user) { //전체 초기화
 int main() {
 	Shop Coffeeshop; //사용할 메뉴
 	User CurrentUser; //현재 사용자
+	vector<Mileage> MileageData; //전체 마일리지 데이터
 	bool flag = true;
  //	startView();
 //	system("cls");
 
 	int state[5];
-	init(Coffeeshop, CurrentUser); //초기화
+	init(Coffeeshop, CurrentUser, MileageData); //초기화
 	while (flag) {
 		pair<int, int> mousepos = mouseEvent();
 		cout << mousepos.first << mousepos.second << endl;
