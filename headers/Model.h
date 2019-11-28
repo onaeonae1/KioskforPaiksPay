@@ -58,6 +58,9 @@ public:
 	void addMenu(Menu& menu) {
 		menus.push_back(menu);
 	}
+	string getType() {
+		return this->type;
+	}
 };
 class Shop {
 private:
