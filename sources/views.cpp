@@ -125,7 +125,7 @@ class menuBuy : public box1 {
 private:
 	int page; //몇 번째 카테고리를 보고 있는지를 저장
 public:
-	void view(/*전체 클래스 DB, 몇 번째 카테고리를 출력해야 하는 지*/) {
+	void view(/*전체 클래스 DB*/) {
 		clear_box1();
 		gotoxy(22, 3); printf("< P A I K S     C O F F E E>");
 
@@ -190,6 +190,7 @@ public:
 		//메뉴 찍는 과정
 		for (int j = 0; j < 16; j++) {
 			int portion; //split된 덩어리의 수
+			string input;
 			pair<int, int> start;
 			pair<int, int> end;
 			vector<string> ss;
@@ -200,7 +201,7 @@ public:
 			int y2[4] = { 15, 22, 29, 36 };
 
 			//메뉴 읽어오기
-
+			//input = (Shop).getMenulists[page].getMenus().at(j).getName();
 			//길이에 따라 split
 			ss = split("", ' ');
 			//split 여부에 따라
