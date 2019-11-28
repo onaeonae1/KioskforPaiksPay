@@ -19,3 +19,19 @@ state[1]
 5 : bill
 6 : mileageUse
 7 : gifticardConrtol
+
+state[2]
+0 : 없음
+1 : 있음
+
+state[3]
+0 : 없음
+1 : 기프티콘 에러
+2 : 로그인 에러
+3 : 결제 에러
+4 : 쿠폰/상품권 에러
+
+state[4]
+
+0 : 없음
+1 : 비회원/결제/기프티콘 사용 버튼
