@@ -1,10 +1,35 @@
 #pragma once
 #include"Model.h"
+#include"Bucket.h"
+#include"Mileage.h"
+#include<fstream>
 using namespace std;
 class User {
 private:
-	//장바구니 클래스
-	//회원 분류key
-	//마일리지 데이터
+	//장바구니
+	Bucket currentBucket;
+	//회원분류 key
+	string key;
+	//마일리지 데이터->처음에는 의미x.
+	//key와 일치하는 마일리지가 있다면 메인에서 연결됨
+	Mileage userMileage;
 public:
+	User() {
+		key = "X";
+		Mileage* temp = new Mileage();
+		this->setMileage(*temp);
+		delete(temp);
+	}
+	Bucket getBucket() {
+		return this->currentBucket;
+	}
+	string getKey() {
+		return this->key;
+	}
+	void setKey(string key) {
+		this->key = key;
+	}
+	void setMileage(Mileage& linkMileage) {
+		this->userMileage = linkMileage;
+	}
 };
