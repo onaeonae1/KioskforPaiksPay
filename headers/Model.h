@@ -14,6 +14,10 @@ private:
 	bool isSale; // 기프티콘
 	bool isGifti; //세일인지
 public:
+	Menu() {
+		this->isSale = false;
+		this->isGifti = false;
+	}
 	Menu(string name, string price, string temperature, string size, string shots, string creams) {
 		this->name = name;
 		this->price = stoi(price);
@@ -23,6 +27,21 @@ public:
 		this->creams = stoi(creams);
 		this->isSale = false;
 		this->isGifti = false;
+	}
+	string getName() {
+		return this->name;
+	}
+	int getSize() {
+		return this->getSize;
+	}
+	int getShots() {
+		return this->shots;
+	}
+	int getCreams() {
+		return this->getCreams;
+	}
+	int getPrice() {
+		return this->price;
 	}
 };
 class Menulist {
