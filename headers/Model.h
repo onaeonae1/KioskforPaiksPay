@@ -32,13 +32,13 @@ public:
 		return this->name;
 	}
 	int getSize() {
-		return this->getSize;
+		return this->size;
 	}
 	int getShots() {
 		return this->shots;
 	}
 	int getCreams() {
-		return this->getCreams;
+		return this->creams;
 	}
 	int getPrice() {
 		return this->price;
