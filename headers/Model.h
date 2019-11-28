@@ -18,7 +18,7 @@ public:
 		this->isSale = false;
 		this->isGifti = false;
 	}
-	Menu(string name, string price, string temperature, string size, string shots, string creams) {
+	Menu(string name, string price, string temperature, string size, string shots, string creams, bool isGifti = false) {
 		this->name = name;
 		this->price = stoi(price);
 		this->temperature = stoi(temperature);
@@ -26,7 +26,7 @@ public:
 		this->shots = stoi(shots);
 		this->creams = stoi(creams);
 		this->isSale = false;
-		this->isGifti = false;
+		this->isGifti = isGifti;
 	}
 	string getName() {
 		return this->name;
