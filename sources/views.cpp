@@ -203,7 +203,7 @@ public:
 			//메뉴 읽어오기
 			//input = (Shop).getMenulists[page].getMenus().at(j).getName();
 			//길이에 따라 split
-			ss = split("", ' ');
+			ss = split("", '_');
 			//split 여부에 따라
 			portion = ss.size();
 			//좌표 pair 만들기
