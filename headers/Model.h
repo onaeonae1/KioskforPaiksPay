@@ -61,6 +61,9 @@ public:
 	string getType() {
 		return this->type;
 	}
+	vector<Menu> getMenus() {
+		return this->menus;
+	}
 };
 class Shop {
 private:
