@@ -2,13 +2,11 @@
 #include<string>
 #include<Windows.h>
 #include<conio.h>
+#include"util.h"
+#include"model.h"
 
 using namespace std;
 
-void gotoxy(int x, int y) {
-	COORD posXY = { x,y };
-	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), posXY);
-}
 void clear_box1() {
 	int x = 2, i = 1;
 	for (i = 1; i < 43; i++) {
@@ -95,9 +93,39 @@ class box4 : public box { //에러
 class box5 : public box { //버튼 모아놓은 것 ex) 결제
 
 };
+
+void menuview_1portion(pair<int, int> start, pair<int, int> end, string content) {
+	int y = start.second + 3; // 맨 위에서 4번째 칸
+	int temp = end.first - start.first;
+	int t = content.length;
+	gotoxy((temp - t) / 2, y);
+	printf("%s", content);
+
+	return;
+}
+
+void menuview_2portion(pair<int, int> start, pair<int, int> end, string content1, string content2) {
+	int y = start.second + 1;
+	int temp = end.first - start.first;
+	int t = content1.length;
+	gotoxy((temp - t) / 2, y);
+	printf("%s", content1);
+
+	y = start.second + 4;
+	t = content2.length;
+	gotoxy((temp - t) / 2, y);
+	printf("%s", content2);
+
+	return;
+}
+
+
+
 class menuBuy : public box1 {
+private:
+	int page; //몇 번째 카테고리를 보고 있는지를 저장
 public:
-	void view() {
+	void view(/*전체 클래스 DB*/) {
 		clear_box1();
 		gotoxy(22, 3); printf("< P A I K S     C O F F E E>");
 
@@ -143,7 +171,59 @@ public:
 		gotoxy(x, i); printf("│               │                │                │               │"); i++;
 		gotoxy(x, i); printf("│               │                │                │               │"); i++;
 		gotoxy(x, i); printf("└──────────────────────────────────┘"); i++;
-	
+		
+		//메뉴리스트 찍는 과정
+		for (int j = 0; j < 5; j++) {
+			string a;
+			int llength = 0;
+			int starts[5] = { 4, 18, 32, 46, 60 };
+			int qq = 0;
+			//읽어오는 과정
+			llength = a.length;
+
+			gotoxy((14 - llength) / 2 + starts[qq], 7);
+			printf("%s", a);
+			qq++;
+		}
+
+		//메뉴 찍는 과정
+		for (int j = 0; j < 16; j++) {
+			int portion; //split된 덩어리의 수
+			pair<int, int> start;
+			pair<int, int> end;
+			vector<string> ss;
+			int k = 0, l = 0;
+			int x1[4] = { 4, 21, 38, 55 };
+			int x2[4] = { 18, 35, 52, 69 };
+			int y1[4] = { 10, 17, 24, 31 };
+			int y2[4] = { 15, 22, 29, 36 };
+
+			//메뉴 읽어오기
+
+			//길이에 따라 split
+			ss = split("", ' ');
+			//split 여부에 따라
+			portion = ss.size();
+			//좌표 pair 만들기
+			start = make_pair(x1[k], y1[(int)(l / 4)]);
+			end = make_pair(x2[k], y2[(int)(l / 4)]);
+			k++; if (k == 4) k = 0;
+			l++;
+			switch (portion) {
+			case 1:
+				menuview_1portion(start, end, ss.front());
+				break;
+			case 2:
+				menuview_2portion(start, end, ss.front(), ss.back());
+				break;
+			case 3:
+
+				break;
+			default:
+				//????
+				break;
+			}
+		}
 	
 	}
 };
@@ -225,14 +305,14 @@ public:
 		gotoxy(x, i);printf("└───────┘            └───────┘"); i++;
 
 		x = 13, i = 32;
-		gotoxy(x, i); printf("┌──────────────────────┐"); i++;
-		gotoxy(x, i); printf("│                                            │"); i++;
-		gotoxy(x, i); printf("│                                            │"); i++;
-		gotoxy(x, i); printf("│             이전으로 돌아가기              │"); i++;
-		gotoxy(x, i); printf("│                                            │"); i++;
-		gotoxy(x, i); printf("│                                            │"); i++;
-		gotoxy(x, i); printf("│                                            │"); i++;
-		gotoxy(x, i); printf("└──────────────────────┘"); i++;
+		gotoxy(x, i); printf("┌───────┐            ┌───────┐"); i++;
+		gotoxy(x, i); printf("│              │            │              │"); i++;
+		gotoxy(x, i); printf("│  이전으로    │            │   할인수단   │"); i++;
+		gotoxy(x, i); printf("│              │            │              │"); i++;
+		gotoxy(x, i); printf("│              │            │              │"); i++;
+		gotoxy(x, i); printf("│  돌아가기    │            │     없음     │"); i++;
+		gotoxy(x, i); printf("│              │            │              │"); i++;
+		gotoxy(x, i); printf("└───────┘            └───────┘"); i++;
 	}
 };
 class cardInput : public box1 {
