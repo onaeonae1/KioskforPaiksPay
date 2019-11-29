@@ -11,6 +11,9 @@
 #define y second
 
 using namespace std;
+void action_start() {
+
+}
 
 void action_menuBuy(int* state, pair<int, int> input) {
 	int x = input.first;
@@ -54,7 +57,7 @@ void action_menuBuy(int* state, pair<int, int> input) {
 		else {
 			//아무 일도 안 일어남
 		}
-	}
+	}c
 	else if (17 <= y && y <= 22) {
 		if (4 <= x && x <= 18) {
 			//메뉴 5
@@ -113,6 +116,22 @@ void action_menuBuy(int* state, pair<int, int> input) {
 
 
 }
+void action_gifticon() {
+
+}
+void action_giftierr() {
+
+}
+void action_option() {
+
+}
+
+void action_login() {
+
+}
+void action_logerr() {
+
+}
 
 void action_mileageControl(int* state, pair<int, int> input) {
 	int x = input.first;
@@ -131,79 +150,6 @@ void action_mileageControl(int* state, pair<int, int> input) {
 	}
 
 }
-
-void action_discountControl(int* state, pair <int, int> p1) {
-
-	int x = p1.first;
-	int y = p1.second;
-
-	if ((y >= 22) && (y <= 29)) {
-		if ((x >= 13) && (x <= 60)) {
-			//couponcontrol로 넘어가는 버튼
-		}
-		else if ((x >= 43) && (x <= 60)) {
-			//giftCardControl로 넘어가는 버튼
-		}
-		else {
-		//아무 일 없음		
-		}
-	}
-		else if ((y >= 32) && (y <= 49)) { //이전
-			
-			if ((x >= 13) && (x <= 60)) {
-				//manuBuy로 돌아가는 버튼
-			}
-			else {
-				//아무 일 없음
-			}
-		}
-		else {
-		//아무 일 없음
-	}
-}
-
-void action_payMethod(int* state, pair <int, int> p1) {
-
-	int x = p1.first;
-	int y = p1.second;
-
-
-	if ((y >= 11) && (y <= 15)) {
-		if ((x >= 86) && (x <= 97)) {
-			//cardInput으로 넘어가는 버튼
-		}
-		else if ((x >= 102) && (x <= 113)) {
-			//cashInput으로 넘어가는 버튼
-		}
-		else {
-			//아무 일 없음
-		}
-	}
-	else {
-		//아무 일 없음
-	}
-
-}
-void action_bill(int* state, pair<int, int> input) {
-	int x = input.first;
-	int y = input.second;
-
-	if (11 <= y && y <= 15) {
-		if (86 <= x && x <= 97) {
-			//영수증 출력
-		}
-		else if (102 <= x && x <= 113) {
-			//영수증 미출력
-		}
-		else {
-			//아무 일도 안 일어남
-		}
-	}
-	else {
-		//아무 일도 안 일어남
-	}
-}
-
 void action_mileageUse(int* state, pair<int, int> input) {
 	int x = input.first;
 	int y = input.second;
@@ -236,4 +182,101 @@ void action_mileageUse(int* state, pair<int, int> input) {
 			//아무 일도 안 일어남
 		}
 	}
+}
+
+void action_discountControl(int* state, pair <int, int> p1) {
+
+	int x = p1.first;
+	int y = p1.second;
+
+	if ((y >= 22) && (y <= 29)) {
+		if ((x >= 13) && (x <= 60)) {
+			//couponcontrol로 넘어가는 버튼
+		}
+		else if ((x >= 43) && (x <= 60)) {
+			//giftCardControl로 넘어가는 버튼
+		}
+		else {
+			//아무 일 없음		
+		}
+	}
+	else if ((y >= 32) && (y <= 49)) { //이전
+
+		if ((x >= 13) && (x <= 60)) {
+			//manuBuy로 돌아가는 버튼
+		}
+		else {
+			//아무 일 없음
+		}
+	}
+	else {
+		//아무 일 없음
+	}
+}
+void action_coupon() {
+
+}
+void action_couponerr() {
+
+}
+void action_payMethod(int* state, pair <int, int> p1) {
+
+	int x = p1.first;
+	int y = p1.second;
+
+
+	if ((y >= 11) && (y <= 15)) {
+		if ((x >= 86) && (x <= 97)) {
+			//cardInput으로 넘어가는 버튼
+		}
+		else if ((x >= 102) && (x <= 113)) {
+			//cashInput으로 넘어가는 버튼
+		}
+		else {
+			//아무 일 없음
+		}
+	}
+	else {
+		//아무 일 없음
+	}
+
+}
+void action_gifiticard() {
+
+}
+void action_gifitierr() {
+
+}
+
+void action_cardinput() {
+
+}
+void action_carderr() {
+
+}
+void action_bill(int* state, pair<int, int> input) {
+	int x = input.first;
+	int y = input.second;
+
+	if (11 <= y && y <= 15) {
+		if (86 <= x && x <= 97) {
+			//영수증 출력
+		}
+		else if (102 <= x && x <= 113) {
+			//영수증 미출력
+		}
+		else {
+			//아무 일도 안 일어남
+		}
+	}
+	else {
+		//아무 일도 안 일어남
+	}
+}
+
+void action_cashinput() {
+
+}
+void action_casherr() {
+
 }
