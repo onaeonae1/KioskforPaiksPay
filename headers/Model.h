@@ -7,9 +7,8 @@ class Menu {
 private:
 	string name; //이름
 	int price; //가격 정수형
-	vector<int> optionSet = { 4, 0 }; 
+	vector<int> optionSet = { 0,0,0,0 };
 	//temperature , size, shots, creams 
-	//0이면 사용 안함 1이면 사용함
 	bool isSale; // 기프티콘
 	bool isGifti; //세일인지
 public:
