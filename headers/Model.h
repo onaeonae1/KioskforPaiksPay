@@ -7,10 +7,9 @@ class Menu {
 private:
 	string name; //이름
 	int price; //가격 정수형
-	int temperature; //온도 0 1 2
-	int size; //사이즈 0 1 2
-	int shots; //샷추가 여부 0 1 2 3
-	int creams; //크림 여부 0 1 2
+	vector<int> optionSet = { 4, 0 }; 
+	//temperature , size, shots, creams 
+	//0이면 사용 안함 1이면 사용함
 	bool isSale; // 기프티콘
 	bool isGifti; //세일인지
 public:
@@ -21,24 +20,20 @@ public:
 	Menu(string name, string price, string temperature, string size, string shots, string creams, bool isGifti = false) {
 		this->name = name;
 		this->price = stoi(price);
-		this->temperature = stoi(temperature);
-		this->size = stoi(size);
-		this->shots = stoi(shots);
-		this->creams = stoi(creams);
+		
+		this->optionSet[0] = stoi(temperature);
+		this->optionSet[1] = stoi(size);
+		this->optionSet[2] = stoi(shots);
+		this->optionSet[3] = stoi(creams);
+		
 		this->isSale = false;
 		this->isGifti = isGifti;
 	}
 	string getName() {
 		return this->name;
 	}
-	int getSize() {
-		return this->size;
-	}
-	int getShots() {
-		return this->shots;
-	}
-	int getCreams() {
-		return this->creams;
+	vector<int> getoptionSet() {
+		return this->optionSet;
 	}
 	int getPrice() {
 		return this->price;
