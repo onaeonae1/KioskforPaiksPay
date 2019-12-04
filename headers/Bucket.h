@@ -8,16 +8,25 @@ private:
 	Menu menu;//메뉴
 	int cnt;//수량
 	int exp;//옵션에 따른 추가금액
-
+	vector<int> optionManage{ 4,0 }; //영수증에 출력될 옵션 정보
+	//0 : temperature, 1 : size, 2: shots, 3: creams
 public:
 	Cmenu(Menu menu) {
 		this->menu = menu;
 		this->cnt = 1;
-		if (this->menu.getShots() == 3) { //샷추가함
-			this->exp += 500;
+		this->exp = 0;
+	}
+	void optionChange(int index, int value) { //수정할 옵션, 수정될 값
+		if (index >= 0 && index <= 3) {
+			optionManage.at(index) = value;
 		}
-		else {
-			this->exp = 0;
+	}
+	void setExp() { //옵션에 따른 추가금액 계산해줌
+		if (this->optionManage.at(1) == 1) { //사이즈업
+			this->exp += 1000;
+		}
+		if (this->optionManage.at(2) == 1) { //샷추가
+			this->exp += 500;
 		}
 	}
 	Menu getMenu() {
