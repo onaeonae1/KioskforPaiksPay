@@ -8,13 +8,13 @@ private:
 	Menu menu;//메뉴
 	int cnt;//수량
 	int exp;//옵션에 따른 추가금액
-	vector<int> optionManage{ 4,0 }; //영수증에 출력될 옵션 정보
+	vector<int> optionManage{ 0,0,0,0 }; //영수증에 출력될 옵션 정보
 public:
 	Cmenu(Menu menu) {
 		this->menu = menu;
 		this->cnt = 1;
 		this->exp = 0;
-		if ((menu.getoptionSet).at(2) == 1) { //샷을 건드릴 수 있는 메뉴라면
+		if ((menu.getoptionSet()).at(2) == 1) { //샷을 건드릴 수 있는 메뉴라면
 			optionManage.at(2) = 2; //2샷을 기본으로 하도록
 		}
 	}
@@ -31,7 +31,7 @@ public:
 			this->exp += 500;
 		}
 	}
-	vector<int> getoptionManage(){
+	vector<int> getoptionManage() {
 		return this->optionManage;
 	}
 	Menu getMenu() {
