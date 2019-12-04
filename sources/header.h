@@ -125,7 +125,20 @@ void menuview_2portion(pair<int, int> start, pair<int, int> end, string content1
 class menuBuy : public box1 {
 private:
 	int page; //몇 번째 카테고리를 보고 있는지를 저장
+	int current_menu;
 public:
+	void setpage(int p) {
+		this->page = p;
+	}
+	int getpage() {
+		return this->page;
+	}
+	void setcurrent_menu(int m) {
+		this->current_menu = m;
+	}
+	int getcurrent_menu() {
+		return this->current_menu;
+	}
 	void view(/*전체 클래스 DB*/) {
 		clear_box1();
 		gotoxy(22, 3); printf("< P A I K S     C O F F E E>");
