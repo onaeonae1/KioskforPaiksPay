@@ -9,7 +9,7 @@ private:
 	int price; //가격 정수형
 	int temperature; //온도 0 1 2
 	int size; //사이즈 0 1 2
-	int shots; //샷추가 여부 0 1 2
+	int shots; //샷추가 여부 0 1 2 3
 	int creams; //크림 여부 0 1 2
 	bool isSale; // 기프티콘
 	bool isGifti; //세일인지
