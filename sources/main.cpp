@@ -25,11 +25,11 @@ int *setState(int *state, int num1, int num2, int num3, int num4, int num5) {
 class Everything {
 public:
 	Shop shop;
-	Gifticon gifticon;
-	Mileage mileage;
+	//Gifticon gifticon;
+	//Mileage mileage;
 	User user;
-	Bucket bucket;
-
+	//Bucket bucket;
+	/*
 	cardInput ci;
 	cashInput ci2;
 	discountControl dc;
@@ -44,10 +44,10 @@ public:
 	payMethod pm;
 	bill bl;
 	mileageUse mu;
+	*/
 	int state[5];
 };
-void mainMouse(Everything E, pair<int, int> mousepos) { //입력받은 마우스의 좌표를 전달받고 클래스 호출하는 함수
-
+void mainMouse(Everything& E, pair<int, int> mousepos) { //입력받은 마우스의 좌표를 전달받고 클래스 호출하는 함수
 	switch (E.state[0]) {
 	case 100: { //초기화면
 		//action_start();
@@ -444,13 +444,13 @@ void initGifti(vector<Gifticon>& gData) { //사용가능한 기프티콘 데이�
 }
 void init(Shop& shop, User& user, vector<Mileage>& mdata, vector<Gifticon>& gdata) { //전체 초기화
 	initShop(shop); //Shop Class를 생성, 초기화 - > 파일입출력을 통해 불러오기
-	initUser(user); //User Class를 생성, 초기화
+	initUser(user); //User Class를 생성, 초기화 -> Backet class 또한 초기화된다.
 	initMileage(mdata); // Mileage Class를 생성, 초기화 : 아직 불확실한 부분이다.
 	initGifti(gdata);//Gifticon Class를 생성, 초기화 -> 파일입출력을 통해 불러오기
-	//Backet Class를 생성, 초기화
 	//Box1, Box2, Box3, Box4, Box5 생성. 초기화면으로 초기화
 }
 void deleteGifti(string key, vector<Gifticon>& gData) { //사용한 기프티콘을 key에 따라 txt 에서 제거
+
 	/* 미완성 
 	ifstream in("gifti.txt");
 	if (in.is_open()) {
@@ -466,8 +466,22 @@ void deleteGifti(string key, vector<Gifticon>& gData) { //사용한 기프티콘
 	}
 	*/
 }
-void billSetting() { //영수증을 파일에 출력한다.
-
+void billSetting(Bucket& b) { //영수증을 파일에 출력한다.
+	//bucket 정보를 바탕으로 출력한다.
+	ofstream ou("bill.txt");
+	if (ou.is_open()) {
+		ou << "<<<영수증은 다음과 같습니다.>>>" << endl;
+		ou << "-------------------------------------" << endl;
+		vector<Cmenu> mlist = b.getMenulist();
+		ou << "번호 | 이름 | 개당 가격 | 갯수 | 총액" << endl;
+		ou << "-------------------------------------" << endl;
+		for (int i = 0; i < mlist.size(); i++) {
+			Menu m = mlist.at(i).getMenu();
+			int price = mlist.at(i).getTotal();
+			int count = mlist.at(i).getCnt();
+			ou << i + 1 << " : " << m.getName() << " " << price << " 원" << " 개" << price*count<<" 원" << endl;
+		}
+	}
 }
 void linkMileage(User& user, vector<Mileage>& mdata) { //사용자의 Mileage를 MileageData에서 찾아서 연결해줌
 	string userkey = user.getKey();
@@ -475,27 +489,35 @@ void linkMileage(User& user, vector<Mileage>& mdata) { //사용자의 Mileage를
 	for (int i = 0; i < mdata.size(); i++) {
 		Mileage m = mdata.at(i);
 		string mkey = m.getKey();
-		if (userkey == mkey) { //일치
+		if (userkey == mkey) { //현재 유저의 키와 db의 key가 일치할 때
 			user.setMileage(m); //링크 시켜준다.
 			break;
 		}
 	}
 }
 int main() {
-	Shop Coffeeshop; //사용할 메뉴
-	User CurrentUser; //현재 사용자
+
+	Everything E;
 	vector<Mileage> MileageData; //전체 마일리지 데이터
 	vector<Gifticon> GiftiData; //사용 가능한 기프티콘 데이터
+	
 	bool flag = true;
-	//	startView();
-   //	system("cls");
 
-	int state[5];
-	init(Coffeeshop, CurrentUser, MileageData, GiftiData); //초기화
+	
+	init(E.shop, E.user, MileageData, GiftiData); //초기화
+	//영수증 기능 테스트를 위해 추가함
+	Bucket b = E.user.getBucket();
+	Menu* m = new Menu("메뉴1", "1", "1", "1", "1", "1");
+	Cmenu *mc = new Cmenu(*m);
+	b.add(*mc);
+	billSetting(b);
+	//
+	/*
 	while (flag) {
 		pair<int, int> mousepos = mouseEvent();
 		cout << mousepos.first << mousepos.second << endl;
-		mainMouse(state, mousepos);
+		mainMouse(E, mousepos);
 	}
+	*/
 	return 0;
 }
