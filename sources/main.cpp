@@ -14,6 +14,31 @@
 #define x first
 #define y second
 using namespace std;
+class Everything {
+public :
+	Shop shop;
+	Gifticon gifticon;
+	Mileage mileage;
+	User user;
+	Bucket bucket;
+	
+	cardInput ci;
+	cashInput ci2;
+	discountControl dc;
+	mileageControl mc;
+	menuBuy mb;
+	login lg;
+
+	gifticonInput gi;
+	optionControl oc;
+	couponControl cc;
+	giftcardControl gcc;
+	payMethod pm;
+	bill bl;
+	mileageUse mu;
+	int state[5];
+};
+
 void mainMouse(int *state, pair<int, int> mousepos) { //입력받은 마우스의 좌표를 전달받고 클래스 호출하는 함수
 	int a = mousepos.first;
 	int b = mousepos.second;
