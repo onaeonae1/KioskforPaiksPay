@@ -1,16 +1,81 @@
 #pragma once
 #include <iostream>
 #include <string>
-#include<Windows.h>
-#include<stdlib.h>
-#include<fstream>
-#include<sstream>
-#include<vector>
+#include <Windows.h>
+#include <stdlib.h>
+#include <fstream>
+#include <sstream>
+#include <vector>
+#include <conio.h>
+#include "utils.h"
+#include "Error.h"
+#include "User.h"
 
 #define x first
 #define y second
 
 using namespace std;
+
+class Everything {
+public:
+	Shop shop;
+	User user;
+
+	cardInput ci;
+	cashInput ci2;
+	discountControl dc;
+	mileageControl mc;
+	menuBuy mb;
+	login lg;
+
+	gifticonInput gi;
+	optionControl oc;
+	couponControl cc;
+	giftcardControl gcc;
+	payMethod pm;
+	bill bl;
+	mileageUse mu;
+	int state[5];
+
+	int *setState(int num1, int num2, int num3, int num4, int num5) {
+		state[0] = num1;
+		state[1] = num2;
+		state[2] = num3;
+		state[3] = num4;
+		state[4] = num5;
+		return state;
+	}
+};
+
+string getInput() {
+	string result = "";
+	char temp = '0';
+	int i = 0, j = 0;
+
+
+	temp = getch();
+	for (i = 0; !((char)temp == '\n' || (char)temp == '\r'); i++) {
+		if (i < 0) i = 0;
+		if (temp == 8) { // backspace일 때
+			if (!result.empty())
+				result.pop_back();
+			if (i != 0)
+				gotoxy(3 + i * 2 - 2, 3); printf(" ");
+			i -= 2;
+		}
+		else {
+			result.push_back((char)temp);
+			gotoxy(3 + i * 2, 3); printf("●");
+			gotoxy(5, 10); printf("%c", temp);
+		}
+
+		temp = getch();
+	}
+
+	return result;
+}
+
+
 void action_start() {
 
 }
@@ -57,7 +122,7 @@ void action_menuBuy(int* state, pair<int, int> input) {
 		else {
 			//아무 일도 안 일어남
 		}
-	}c
+	}
 	else if (17 <= y && y <= 22) {
 		if (4 <= x && x <= 18) {
 			//메뉴 5
@@ -116,21 +181,31 @@ void action_menuBuy(int* state, pair<int, int> input) {
 
 
 }
-void action_gifticon() {
-
+void action_gifticon(Everything E) {
+	string temp = getInput();
+	
+	if () //입력 성공 시
+		E.setState(1, 0, 1, 0, 1);
+	else //입력 실패 시
+		E.setState(1, 1, 1, 1, 1);
 }
-void action_giftierr() {
-
+void action_giftierr(Everything E) {
+	E.setState(1, 1, 1, 0, 1);
 }
 void action_option() {
 
 }
 
-void action_login() {
-
+void action_login(Everything E) {
+	string temp = getInput();
+	
+	if () //입력 성공 시
+		E.setState(3, 0, 0, 0, 0);
+	else //입력 실패 시
+		E.setState(2, 0, 0, 2, 0);
 }
-void action_logerr() {
-
+void action_logerr(Everything E) {
+	E.setState(2, 0, 0, 0, 0);
 }
 
 void action_mileageControl(int* state, pair<int, int> input) {
@@ -184,16 +259,18 @@ void action_mileageUse(int* state, pair<int, int> input) {
 	}
 }
 
-void action_discountControl(int* state, pair <int, int> p1) {
+void action_discountControl(Everything E, pair <int, int> p1) {
 
 	int x = p1.first;
 	int y = p1.second;
 
 	if ((y >= 22) && (y <= 29)) {
 		if ((x >= 13) && (x <= 60)) {
+			E.setState(4, 3, 0, 0, 0);
 			//couponcontrol로 넘어가는 버튼
 		}
 		else if ((x >= 43) && (x <= 60)) {
+			E.setState(4, 7, 0, 0, 0);
 			//giftCardControl로 넘어가는 버튼
 		}
 		else {
@@ -202,24 +279,41 @@ void action_discountControl(int* state, pair <int, int> p1) {
 	}
 	else if ((y >= 32) && (y <= 49)) { //이전
 
-		if ((x >= 13) && (x <= 60)) {
-			//manuBuy로 돌아가는 버튼
+		if ((x >= 13) && (x <= 30)) {
+			if (E.user.getKey() == "X")
+				E.setState(1, 0, 1, 0, 1);
+			//manuBuy로 돌아가는 버튼(비회원)
+			else {
+				E.setState(3, 0, 0, 0, 0);
+				//마일리지 사용/적립으로 돌아가는 버튼(회원)
+			}
 		}
-		else {
-			//아무 일 없음
+		else if((x >=43) && (x <= 60)) {
+			E.setState(4, 4, 0, 0, 0);
+			//결제 수단 선택 버튼
 		}
 	}
 	else {
 		//아무 일 없음
 	}
 }
-void action_coupon() {
+void action_coupon(Everything E) {
+
+	string temp = getInput();
+
+	if () //입력 성공 시
+		E.setState(4, 0, 0, 0, 0);
+	else //입력 실패 시
+		E.setState(4, 3, 0, 4, 0);
+	
 
 }
-void action_couponerr() {
+void action_couponerr(Everything E) {
+	
+	E.setState(4, 3, 0, 0, 0);
 
 }
-void action_payMethod(int* state, pair <int, int> p1) {
+void action_payMethod(Everything E, pair <int, int> p1) {
 
 	int x = p1.first;
 	int y = p1.second;
@@ -227,9 +321,11 @@ void action_payMethod(int* state, pair <int, int> p1) {
 
 	if ((y >= 11) && (y <= 15)) {
 		if ((x >= 86) && (x <= 97)) {
+			E.setState(5, 0, 0, 0, 0);
 			//cardInput으로 넘어가는 버튼
 		}
 		else if ((x >= 102) && (x <= 113)) {
+			E.setState(6, 0, 0, 0, 0);
 			//cashInput으로 넘어가는 버튼
 		}
 		else {
@@ -241,20 +337,38 @@ void action_payMethod(int* state, pair <int, int> p1) {
 	}
 
 }
-void action_gifiticard() {
+void action_gifiticard(Everything E) {
+	
+	string temp = getInput();
+
+	if () //입력 성공 시
+		E.setState(4, 0, 0, 0, 0);
+	else //입력 실패 시
+		E.setState(4, 7, 0, 4, 0);
 
 }
-void action_gifitierr() {
+void action_gifitierr(Everything E) {
+	
+	E.setState(4, 7, 0, 0, 0);
+}
+
+void action_cardinput(Everything E) {
+	
+	//cout << "카드를 입력하시겠습니까?(y/n 으로만 표시)" << endl;
+	string temp = getInput();
+
+	if(temp == "y")//입력 성공 시)
+		E.setState(5, 5, 0, 0, 0);
+	else if(temp == "n")//입력 실패 시)
+		E.setState(5, 0, 0, 3, 0);
 
 }
 
-void action_cardinput() {
+void action_carderr(Everything E) {
 
+	E.setState(5, 0, 0, 0, 0);
 }
-void action_carderr() {
-
-}
-void action_bill(int* state, pair<int, int> input) {
+void action_bill(Everything E, pair<int, int> input) {
 	int x = input.first;
 	int y = input.second;
 
@@ -274,9 +388,16 @@ void action_bill(int* state, pair<int, int> input) {
 	}
 }
 
-void action_cashinput() {
+void action_cashinput(Everything E) {
 
+	//현금 입력
+
+	if () //입력 성공 시
+		E.setState(6, 5, 0, 0, 0);
+	else //입력 실패 시
+		E.setState(6, 0, 0, 3, 0);
 }
-void action_casherr() {
 
+void action_casherr(Everything E) {
+	E.setState(6, 0, 0, 0, 0);
 }
