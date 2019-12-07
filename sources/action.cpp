@@ -112,89 +112,116 @@ void action_menuBuy(Everything E, pair<int, int> input) {
 	else if (10 <= y && y <= 15) {
 		if (4 <= x && x <= 18) {
 			//메뉴 1
-			E.mb.setcurrent_menu(0);
+			E.mb.setcurrent_menu(E.shop.getMenulists().at(E.mb.getpage()).getMenus().at(0));
 		}
 		else if (21 <= x && x <= 35) {
 			//메뉴 2
-			E.mb.setcurrent_menu(1);
+			E.mb.setcurrent_menu(E.shop.getMenulists().at(E.mb.getpage()).getMenus().at(1));
 		}
 		else if (38 <= x && x <= 52) {
 			//메뉴 3
-			E.mb.setcurrent_menu(2);
+			E.mb.setcurrent_menu(E.shop.getMenulists().at(E.mb.getpage()).getMenus().at(2));
 		}
 		else if (55 <= x && x <= 69) {
 			//메뉴 4
-			E.mb.setcurrent_menu(3);
+			E.mb.setcurrent_menu(E.shop.getMenulists().at(E.mb.getpage()).getMenus().at(3));
 		}
 			E.setState(1, 2, 1, 0, 1);
 	}
 	else if (17 <= y && y <= 22) {
 		if (4 <= x && x <= 18) {
 			//메뉴 5
-			E.mb.setcurrent_menu(4);
+			E.mb.setcurrent_menu(E.shop.getMenulists().at(E.mb.getpage()).getMenus().at(4));
 		}
 		else if (21 <= x && x <= 35) {
 			//메뉴 6
-			E.mb.setcurrent_menu(5);
+			E.mb.setcurrent_menu(E.shop.getMenulists().at(E.mb.getpage()).getMenus().at(5));
 		}
 		else if (38 <= x && x <= 52) {
 			//메뉴 7
-			E.mb.setcurrent_menu(6);
+			E.mb.setcurrent_menu(E.shop.getMenulists().at(E.mb.getpage()).getMenus().at(6));
 		}
 		else if (55 <= x && x <= 69) {
 			//메뉴 8
-			E.mb.setcurrent_menu(7);
+			E.mb.setcurrent_menu(E.shop.getMenulists().at(E.mb.getpage()).getMenus().at(7));
 		}
 		E.setState(1, 2, 1, 0, 1);
 	}
 	else if (24 <= y && y <= 29) {
 		if (4 <= x && x <= 18) {
 			//메뉴 9
-			E.mb.setcurrent_menu(8);
+			E.mb.setcurrent_menu(E.shop.getMenulists().at(E.mb.getpage()).getMenus().at(8));
 		}
 		else if (21 <= x && x <= 35) {
 			//메뉴 10
-			E.mb.setcurrent_menu(9);
+			E.mb.setcurrent_menu(E.shop.getMenulists().at(E.mb.getpage()).getMenus().at(9));
 		}
 		else if (38 <= x && x <= 52) {
 			//메뉴 11
-			E.mb.setcurrent_menu(10);
+			E.mb.setcurrent_menu(E.shop.getMenulists().at(E.mb.getpage()).getMenus().at(10));
 		}
 		else if (55 <= x && x <= 69) {
 			//메뉴 12
-			E.mb.setcurrent_menu(11);
+			E.mb.setcurrent_menu(E.shop.getMenulists().at(E.mb.getpage()).getMenus().at(11));
 		}
 		E.setState(1, 2, 1, 0, 1);
 	}
 	else if (31 <= y && y <= 36) {
 		if (4 <= x && x <= 18) {
 			//메뉴 13
-			E.mb.setcurrent_menu(12);
+			E.mb.setcurrent_menu(E.shop.getMenulists().at(E.mb.getpage()).getMenus().at(12));
 		}
 		else if (21 <= x && x <= 35) {
 			//메뉴 14
-			E.mb.setcurrent_menu(13);
+			E.mb.setcurrent_menu(E.shop.getMenulists().at(E.mb.getpage()).getMenus().at(13));
 		}
 		else if (38 <= x && x <= 52) {
 			//메뉴 15
-			E.mb.setcurrent_menu(14);
+			E.mb.setcurrent_menu(E.shop.getMenulists().at(E.mb.getpage()).getMenus().at(14));
 		}
 		else if (55 <= x && x <= 69) {
 			//메뉴 16
-			E.mb.setcurrent_menu(15);
+			E.mb.setcurrent_menu(E.shop.getMenulists().at(E.mb.getpage()).getMenus().at(15));
 		}
 		E.setState(1, 2, 1, 0, 1);
 	}
 }
 void action_gifticon(Everything E) {
-	string temp = getInput();
+	gotoxy(89, 13);
 	
-	if () //입력 성공 시
-		E.setState(1, 0, 1, 0, 1);
-	else //입력 실패 시
-		E.setState(1, 1, 1, 1, 1);
+	string id = getInput();
+	//키보드 입력
+	for (int i = 0; i < E.GiftiData.size(); i++) {
+		if (id == E.GiftiData.at(i).getKey()) {//같은 경우
+			for (int j = 0; j < E.UsedGifti.size(); j++) {
+				if (id == E.UsedGifti.at(j).getKey()) {
+					//존재, 사용함
+					E.setState(1, 1, 1, 1, 1);
+					exit(0);
+					//에러 상태로 돌리고 종료
+				}
+				else {//존재하고 사용하지 않은경우, 사용하고 사용 깊티 벡터에 추가후 옵션창 띄움
+					E.UsedGifti.push_back(E.GiftiData.at(i));
+					
+					Menu m=(E.GiftiData.at(i).getMenu()); //새 메뉴 생성
+					m.setIsGifti(true); 
+
+					E.mb.setcurrent_menu(m); //메뉴 설정
+					E.setState(1, 0, 1, 0, 1);
+
+					exit(0);
+				}
+			}
+			
+		}
+		else {//존재도 안함
+			E.setState(1, 1, 1, 1, 1);
+			exit(0);
+		}
+	}
 }
 void action_giftierr(Everything E) {
+	E.e.Errorview(1);
 	E.setState(1, 1, 1, 0, 1);
 }
 void action_option(Everything E, pair<int, int> input) {
@@ -478,51 +505,80 @@ void action_option(Everything E, pair<int, int> input) {
 		}
 	}
 }
-
 void action_login(Everything E) {
-	string temp = getInput();
+	gotoxy(20, 26);
+	string id = getInput();
+	for (int i = 0; i < E.MileageData.size(); i++) {
+		if (E.MileageData.at(i).getKey() == id) {//존재
+			E.setState(3, 0, 0, 0, 0);//상태설정
+			E.user.setKey(id);//아이디 설정
+			E.user.setMileage(E.MileageData.at(i));//마일리지설정
+			break;
+		}
+		else {//존재하지않음
+			E.setState(2, 0, 0, 2, 0);
+			break;
+		}
+	}
+	//키보드 입력
+	//키보드 입력 제대로 되면 E.setState(3,0,0,0,0);
+	//로그인 실패하면 E.setState(2,0,0,2,0);
 	
-	if () //입력 성공 시
-		E.setState(3, 0, 0, 0, 0);
-	else //입력 실패 시
-		E.setState(2, 0, 0, 2, 0);
 }
 void action_logerr(Everything E) {
+	E.e.Errorview(2);
 	E.setState(2, 0, 0, 0, 0);
 }
 
-void action_mileageControl(int* state, pair<int, int> input) {
+void action_mileageControl(Everything E, pair<int, int> input) {
 	int x = input.first;
 	int y = input.second;
 
+	E.user.getBucket().settotal(E.user.getBucket().gettotal());
 
 	if (13 <= x && x <= 30) {
 		if (22 <= y && y <= 29) {
-			//마일리지 사용 버튼 처리
-			E.setState(3,6,0,0,0);
+			E.setState(3, 6, 0, 0, 0);
 		}
 	}
 	else if (44 <= x && x <= 61) {
 		if (22 <= y && y <= 29) {
-			//마일리지 적립 버튼 처리
-			E.setState(4,0,0,0,0);
+			for (int i = 0; i < E.MileageData.size(); i++) {
+				if (E.MileageData.at(i).getKey() == E.user.getKey()) {//존재
+					E.MileageData.at(i).setValue(E.MileageData.at(i).getValue+E.user.getBucket().gettotal() / 10);
+					E.setState(4, 0, 0, 0, 0);// 마일리지 데이터 벡터에 10퍼센트 적립 후 상태변경
+					break;
+				}
+			}
 		}
 	}
-
 }
-void action_mileageUse(int* state, pair<int, int> input) {
+void action_mileageUse(Everything E, pair<int, int> input) {
 	int x = input.first;
 	int y = input.second;
+	
 
 	if (13 <= y && y <= 15) {
 		if (83 <= x && x <= 92) {
 			//마일리지 1000원 추가 사용
+			if (E.user.getBucket().gettotal() >= 1000) {
+				E.user.getBucket().settotal(-1000);
+				E.user.setUsedmileage(1000);
+			}
 		}
 		else if (95 <= x && x <= 104) {
 			//마일리지 3000원 추가 사용
+			if (E.user.getBucket().gettotal() >= 3000) {
+				E.user.getBucket().settotal(-3000);
+				E.user.setUsedmileage(3000);
+			}
 		}
 		else if (107 <= x && x <= 116) {
 			//마일리지 5000원 추가 사용
+			if (E.user.getBucket().gettotal() >= 5000) {
+				E.user.getBucket().settotal(-5000);
+				E.user.setUsedmileage(5000);
+			}
 		}
 		else {
 			//아무 일도 안 일어남
@@ -531,55 +587,32 @@ void action_mileageUse(int* state, pair<int, int> input) {
 	else if (17 <= y && y <= 19) {
 		if (83 <= x && x <= 92) {
 			//마일리지 10000원 추가 사용
+		
+			if (E.user.getBucket().gettotal() >= 10000) {
+				E.user.getBucket().settotal(-10000);
+				E.user.setUsedmileage(10000);
+			}
 		}
 		else if (95 <= x && x <= 104) {
 			//모든 마일리지 사용
+			if (E.user.getBucket().gettotal() >= E.user.getMileage().getValue()) {
+				E.user.getBucket().settotal(-E.user.getMileage().getValue());
+				E.user.setUsedmileage(E.user.getMileage().getValue());
+			}
 		}
 		else if (107 <= x && x <= 116) {
 			//마일리지 입력칸을 모두 비우고, 사용하기로 한 마일리지를 0으로 만듬
+			E.user.getBucket().settotal(E.user.getUsedmileage());
+			E.user.setUsedmileage(0);
 		}
 		else {
 			//아무 일도 안 일어남
 		}
 	}
-}
-
-void action_discountControl(Everything E, pair <int, int> p1) {
-
-	int x = p1.first;
-	int y = p1.second;
-
-	if ((y >= 22) && (y <= 29)) {
-		if ((x >= 13) && (x <= 60)) {
-			E.setState(4, 3, 0, 0, 0);
-			//couponcontrol로 넘어가는 버튼
+	else if (86<=x && y<=113) {
+		if (y == 7) {//결제
+			E.setState(4, 0, 0, 0, 0);
 		}
-		else if ((x >= 43) && (x <= 60)) {
-			E.setState(4, 7, 0, 0, 0);
-			//giftCardControl로 넘어가는 버튼
-		}
-		else {
-			//아무 일 없음		
-		}
-	}
-	else if ((y >= 32) && (y <= 49)) { //이전
-
-		if ((x >= 13) && (x <= 30)) {
-			if (E.user.getKey() == "X")
-				E.setState(1, 0, 1, 0, 1);
-			//manuBuy로 돌아가는 버튼(비회원)
-			else {
-				E.setState(3, 0, 0, 0, 0);
-				//마일리지 사용/적립으로 돌아가는 버튼(회원)
-			}
-		}
-		else if((x >=43) && (x <= 60)) {
-			E.setState(4, 4, 0, 0, 0);
-			//결제 수단 선택 버튼
-		}
-	}
-	else {
-		//아무 일 없음
 	}
 }
 void action_coupon(Everything E) {
