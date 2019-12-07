@@ -9,6 +9,7 @@ private:
 	int cnt;//수량
 	int exp;//옵션에 따른 추가금액
 	vector<int> optionManage{ 0,0,0,0 }; //영수증에 출력될 옵션 정보
+
 public:
 	Cmenu(Menu menu) {
 		this->menu = menu;
@@ -49,10 +50,12 @@ public:
 	int getTotal() {
 		return (this->exp + this->menu.getPrice());
 	}
+
 };
 class Bucket {
 private:
 	vector<Cmenu> Menulist;
+	int total=0;//총액
 
 public:
 	bool compareTo(Cmenu cm1, Cmenu cm2) { // 기존 메뉴리스트 중 하나인 menu1과 새로 받은 menu2와의 비교
@@ -130,11 +133,14 @@ public:
 	vector<Cmenu> getMenulist() {
 		return this->Menulist;
 	}
-	int total() {//총 금액
+	int gettotal() {//총 금액
 		int sum = 0;
 		for (int i = 0; i < Menulist.size(); i++) {
 			sum += Menulist[i].getTotal();
 		}
 		return sum;
+	}
+	void settotal(int num) {
+		this->total = num;
 	}
 };
