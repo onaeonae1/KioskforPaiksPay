@@ -76,110 +76,115 @@ string getInput() {
 }
 
 
-void action_start() {
-
+void action_start(Everything E) {
+	char c = NULL;
+	if (cin>>c) { //입력 됐을 때 시작 상태
+		E.setState(1, 0, 1, 0, 1);	
+	}
 }
 
-void action_menuBuy(int* state, pair<int, int> input) {
+void action_menuBuy(Everything E, pair<int, int> input) {
 	int x = input.first;
 	int y = input.second;
-
-
 
 	if (6 <= y && y <= 8) {
 		if (4 <= x && x <= 15) {
 			//메뉴리스트 1
+			E.mb.setpage(0);
 		}
 		else if (18 <= x && x <= 29) {
 			//메뉴리스트 2
+			E.mb.setpage(1);
 		}
 		else if (32 <= x && x <= 43) {
 			//메뉴리스트 3
+			E.mb.setpage(2);
 		}
 		else if (46 <= x && x <= 57) {
 			//메뉴리스트 4
+			E.mb.setpage(3);
 		}
 		else if (60 <= x && x <= 71) {
 			//메뉴리스트 5
-		}
-		else {
-			//아무 일도 안 일어남
+			E.mb.setpage(4);
 		}
 	}
 	else if (10 <= y && y <= 15) {
 		if (4 <= x && x <= 18) {
 			//메뉴 1
+			E.mb.setcurrent_menu(0);
 		}
 		else if (21 <= x && x <= 35) {
 			//메뉴 2
+			E.mb.setcurrent_menu(1);
 		}
 		else if (38 <= x && x <= 52) {
 			//메뉴 3
+			E.mb.setcurrent_menu(2);
 		}
 		else if (55 <= x && x <= 69) {
 			//메뉴 4
+			E.mb.setcurrent_menu(3);
 		}
-		else {
-			//아무 일도 안 일어남
-		}
+			E.setState(1, 2, 1, 0, 1);
 	}
 	else if (17 <= y && y <= 22) {
 		if (4 <= x && x <= 18) {
 			//메뉴 5
+			E.mb.setcurrent_menu(4);
 		}
 		else if (21 <= x && x <= 35) {
 			//메뉴 6
+			E.mb.setcurrent_menu(5);
 		}
 		else if (38 <= x && x <= 52) {
 			//메뉴 7
+			E.mb.setcurrent_menu(6);
 		}
 		else if (55 <= x && x <= 69) {
 			//메뉴 8
+			E.mb.setcurrent_menu(7);
 		}
-		else {
-			//아무 일도 안 일어남
-		}
+		E.setState(1, 2, 1, 0, 1);
 	}
 	else if (24 <= y && y <= 29) {
 		if (4 <= x && x <= 18) {
 			//메뉴 9
+			E.mb.setcurrent_menu(8);
 		}
 		else if (21 <= x && x <= 35) {
 			//메뉴 10
+			E.mb.setcurrent_menu(9);
 		}
 		else if (38 <= x && x <= 52) {
 			//메뉴 11
+			E.mb.setcurrent_menu(10);
 		}
 		else if (55 <= x && x <= 69) {
 			//메뉴 12
+			E.mb.setcurrent_menu(11);
 		}
-		else {
-			//아무 일도 안 일어남
-		}
+		E.setState(1, 2, 1, 0, 1);
 	}
 	else if (31 <= y && y <= 36) {
 		if (4 <= x && x <= 18) {
 			//메뉴 13
+			E.mb.setcurrent_menu(12);
 		}
 		else if (21 <= x && x <= 35) {
 			//메뉴 14
+			E.mb.setcurrent_menu(13);
 		}
 		else if (38 <= x && x <= 52) {
 			//메뉴 15
+			E.mb.setcurrent_menu(14);
 		}
 		else if (55 <= x && x <= 69) {
 			//메뉴 16
+			E.mb.setcurrent_menu(15);
 		}
-		else {
-			//아무 일도 안 일어남
-		}
+		E.setState(1, 2, 1, 0, 1);
 	}
-	else {
-		//아무 일도 안 일어남
-	}
-
-
-
 }
 void action_gifticon(Everything E) {
 	string temp = getInput();
@@ -192,8 +197,286 @@ void action_gifticon(Everything E) {
 void action_giftierr(Everything E) {
 	E.setState(1, 1, 1, 0, 1);
 }
-void action_option() {
+void action_option(Everything E, pair<int, int> input) {
+	int x = input.first;
+	int y = input.second;
+	Menu wanted_menu = E.shop.getMenulists().at(E.mb.getpage()).getMenus().at(E.mb.getcurrent_menu()); //원하는 메뉴
+	Cmenu wanted_Cmenu(wanted_menu); //원하는 메뉴를 장바구니에 넣기 위해 생성
 
+	vector<int> true_options; // 해당 메뉴의 옵션 중 T인 옵션들의 인덱스들의 벡터
+
+
+
+	//option 중 true인 옵션들의 인덱스들만 모아서 넣음
+	for (int i = 0; i < 4; i++) {
+		if (wanted_menu.getoptionSet().at(i) == true) {
+			true_options.push_back(i);
+		}
+	}
+	while (1) {
+		if (5 <= y && y <= 7) {
+			if (90 <= x && x <= 103) {
+				//옵션 1-1
+				if (true_options.size() >= 1) { //옵션 존재
+					switch (true_options.at(0)) {
+					case 0: {//temperature
+						wanted_Cmenu.optionChange(0, 1);
+						break;
+					}
+					case 1: {//size
+						wanted_Cmenu.optionChange(1.1);
+						break;
+					}
+					case 2: {//shot
+						if (wanted_Cmenu.getoptionManage().at(2) == 1) {
+							wanted_Cmenu.optionChange(2, 0);
+						}
+						else {
+							wanted_Cmenu.optionChange(2, 1);
+						}
+						break;
+					}
+					case 3: {//cream
+						wanted_Cmenu.optionChange(3, 1);
+						break;
+					}
+					}
+				}
+			}
+			else if (110 <= x && x <= 123) {
+				//옵션 1-2
+				if (true_options.size() >= 1) { //옵션 존재
+					switch (true_options.at(0)) {
+					case 0: {//temperature
+						wanted_Cmenu.optionChange(0, 2);
+						break;
+					}
+					case 1: {//size
+						wanted_Cmenu.optionChange(1, 2);
+						break;
+					}
+					case 2: {//shot
+						if (wanted_Cmenu.getoptionManage().at(2) == 2) {
+							wanted_Cmenu.optionChange(2, 0);
+						}
+						else {
+							wanted_Cmenu.optionChange(2, 2);
+						}
+						break;
+					}
+					case 3: {//cream
+						wanted_Cmenu.optionChange(3, 2);
+						break;
+					}
+					}
+				}
+			}
+		}
+		else if (9 <= y && y <= 11) {
+			if (90 <= x && x <= 103) {
+				//옵션 2-1
+				if (true_options.size() >= 2) { //옵션 존재
+					switch (true_options.at(1)) {
+					case 0: {//temperature
+						wanted_Cmenu.optionChange(0, 1);
+						break;
+					}
+					case 1: {//size
+						wanted_Cmenu.optionChange(1, 1);
+						break;
+					}
+					case 2: {//shot
+						if (wanted_Cmenu.getoptionManage().at(2) == 1) {
+							wanted_Cmenu.optionChange(2, 0);
+						}
+						else {
+							wanted_Cmenu.optionChange(2, 1);
+						}
+						break;
+					}
+					case 3: {//cream
+						wanted_Cmenu.optionChange(3, 1);
+						break;
+					}
+					}
+				}
+			}
+			else if (110 <= x && x <= 123) {
+				//옵션 2-2
+				if (true_options.size() >= 2) { //옵션 존재
+					switch (true_options.at(1)) {
+					case 0: {//temperature
+						wanted_Cmenu.optionChange(0, 2);
+						break;
+					}
+					case 1: {//size
+						wanted_Cmenu.optionChange(1, 2);
+						break;
+					}
+					case 2: {//shot
+						if (wanted_Cmenu.getoptionManage().at(2) == 2) {
+							wanted_Cmenu.optionChange(2, 0);
+						}
+						else {
+							wanted_Cmenu.optionChange(2, 2);
+						}
+						break;
+					}
+					case 3: {//cream
+						wanted_Cmenu.optionChange(3, 2);
+						break;
+					}
+					}
+				}
+			}
+		}
+		else if (13 <= y && y <= 15) {
+			if (90 <= x && x <= 103) {
+				//옵션 3-1
+				if (true_options.size() >= 3) { //옵션 존재
+					switch (true_options.at(2)) {
+					case 0: {//temperature
+						wanted_Cmenu.optionChange(0, 1);
+						break;
+					}
+					case 1: {//size
+						wanted_Cmenu.optionChange(1, 1);
+						break;
+					}
+					case 2: {//shot
+						if (wanted_Cmenu.getoptionManage().at(2) == 1) {
+							wanted_Cmenu.optionChange(2, 0);
+						}
+						else {
+							wanted_Cmenu.optionChange(2, 1);
+						}
+						break;
+					}
+					case 3: {//cream
+						wanted_Cmenu.optionChange(3, 1);
+						break;
+					}
+					}
+				}
+			}
+			else if (110 <= x && x <= 123) {
+				//옵션 3-2
+				if (true_options.size() >= 3) { //옵션 존재
+					switch (true_options.at(2)) {
+					case 0: {//temperature
+						wanted_Cmenu.optionChange(0, 2);
+						break;
+					}
+					case 1: {//size
+						wanted_Cmenu.optionChange(1, 2);
+						break;
+					}
+					case 2: {//shot
+						if (wanted_Cmenu.getoptionManage().at(2) == 2) {
+							wanted_Cmenu.optionChange(2, 0);
+						}
+						else {
+							wanted_Cmenu.optionChange(2, 2);
+						}
+						break;
+					}
+					case 3: {//cream
+						wanted_Cmenu.optionChange(3, 2);
+						break;
+					}
+					}
+				}
+			}
+		}
+		else if (17 <= y && y <= 19) {
+			if (90 <= x && x <= 103) {
+				//옵션 4-1
+				if (true_options.size() >= 4) { //옵션 존재
+					switch (true_options.at(3)) {
+					case 0: {//temperature
+						wanted_Cmenu.optionChange(0, 1);
+						break;
+					}
+					case 1: {//size
+						wanted_Cmenu.optionChange(1, 1);
+						break;
+					}
+					case 2: {//shot
+						if (wanted_Cmenu.getoptionManage().at(2) == 1) {
+							wanted_Cmenu.optionChange(2, 0);
+						}
+						else {
+							wanted_Cmenu.optionChange(2, 1);
+						}
+						break;
+					}
+					case 3: {//cream
+						wanted_Cmenu.optionChange(3, 1);
+						break;
+					}
+					}
+				}
+			}
+			else if (110 <= x && x <= 123) {
+				//옵션 4-2
+				if (true_options.size() >= 4) { //옵션 존재
+					switch (true_options.at(3)) {
+					case 0: {//temperature
+						wanted_Cmenu.optionChange(0, 2);
+						break;
+					}
+					case 1: {//size
+						wanted_Cmenu.optionChange(1, 2);
+						break;
+					}
+					case 2: {//shot
+						if (wanted_Cmenu.getoptionManage().at(2) == 2) {
+							wanted_Cmenu.optionChange(2, 0);
+						}
+						else {
+							wanted_Cmenu.optionChange(2, 2);
+						}
+						break;
+					}
+					case 3: {//cream
+						wanted_Cmenu.optionChange(3, 2);
+						break;
+					}
+					}
+				}
+			}
+		}
+
+
+		//옵션이 제대로 클릭 되었으면 다음
+		//제대로 안됐으면 옵션을 다 누를때 까지 기다림
+		int count = 0;
+		if (wanted_Cmenu.getMenu().getoptionSet().at(3) == false) {//샷추가 활성화 안되어 있을 때
+			for (int i = 0; i < true_options.size(); i++) {
+				if (wanted_Cmenu.getoptionManage().at(true_options.at(i)) != 0) {
+					count++;
+				}
+			}
+		}
+		else {//활성화 되어 있을 때
+			for (int i = 0; i < true_options.size(); i++) {
+				if (wanted_Cmenu.getoptionManage().at(true_options.at(i)) != 0) {//만약 모든 옵션이 0 이 아닐경우. 입력이 되어있을 경우
+					count++;
+				}
+				else if (true_options.at(i) == 2) {//활성화 되어 있는데 i 값이 2라면 i++해서 그냥 다음 옵션 비교함
+					i++;
+					count++;
+				}
+			}
+		}
+		
+		//모든 옵션이 선택 되었을 경우, 메뉴 추가 후, state 바꾸고, break해서 나감
+		if (count == true_options.size()) {
+			E.user.getBucket().add(wanted_Cmenu);
+			E.setState(1, 0, 1, 0, 1);
+			break;
+		}
+	}
 }
 
 void action_login(Everything E) {
@@ -216,11 +499,13 @@ void action_mileageControl(int* state, pair<int, int> input) {
 	if (13 <= x && x <= 30) {
 		if (22 <= y && y <= 29) {
 			//마일리지 사용 버튼 처리
+			E.setState(3,6,0,0,0);
 		}
 	}
 	else if (44 <= x && x <= 61) {
 		if (22 <= y && y <= 29) {
 			//마일리지 적립 버튼 처리
+			E.setState(4,0,0,0,0);
 		}
 	}
 
