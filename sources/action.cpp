@@ -615,19 +615,80 @@ void action_mileageUse(Everything E, pair<int, int> input) {
 		}
 	}
 }
+void action_discountControl(Everything E, pair <int, int> p1) {
+
+	int x = p1.first;
+	int y = p1.second;
+
+	if ((y >= 22) && (y <= 29)) {
+		if ((x >= 13) && (x <= 60)) {
+			E.setState(4, 3, 0, 0, 0);
+			//couponcontrol로 넘어가는 버튼
+		}
+		else if ((x >= 43) && (x <= 60)) {
+			E.setState(4, 7, 0, 0, 0);
+			//giftCardControl로 넘어가는 버튼
+		}
+		else {
+			//아무 일 없음		
+		}
+	}
+	else if ((y >= 32) && (y <= 49)) { //이전
+
+		if ((x >= 13) && (x <= 30)) {
+			if (E.user.getKey() == "X") {
+				//E.mb.getpage();
+				//E.mb.getcurrent_menu();
+				E.setState(1, 0, 1, 0, 1);
+				//manuBuy로 돌아가는 버튼(비회원)
+			}
+			else {
+				E.setState(3, 0, 0, 0, 0);
+				//마일리지 사용/적립으로 돌아가는 버튼(회원)
+			}
+		}
+		else if ((x >= 43) && (x <= 60)) {
+			E.setState(4, 4, 0, 0, 0);
+			//payMethod로 넘어가는 버튼
+		}
+	}
+	else {
+		//아무 일 없음
+	}
+}
+
 void action_coupon(Everything E) {
-
+	gotoxy(89, 13);
 	string temp = getInput();
+	//한주 꺼 Gifticon 복붙
+	for (int i = 0; i < E.CouponData.size(); i++) { //Gifticon이랑 같다고 가정한 CouponData,UsedCoupon
+		if (temp == E.CouponData.at(i).getKey()) { //같은 경우
+			for (int j = 0; j < E.UsedCoupon.size(); j++) {
+				if (temp == E.UsedCoupon.at(j).getKey()) {
+					//존재, 사용함
+					E.setState(4, 3, 0, 4, 0);
+					exit(0);
+					//에러 상태로 돌리고 종료
+				}
+				else {//존재하고 사용하지 않은경우, 사용하고 사용 쿠폰 벡터에 추가
+					E.UsedCoupon.push_back(E.CouponData.at(i));
+					E.user.getBucket().settotal((E.user.getBucket().gettotal()) - 3000); //쿠폰은 일괄적으로 3000원만 있다고 가정
+					
+					E.setState(4, 0, 0, 0, 0);
 
-	if () //입력 성공 시
-		E.setState(4, 0, 0, 0, 0);
-	else //입력 실패 시
-		E.setState(4, 3, 0, 4, 0);
-	
+					exit(0);
+				}
+			}
 
+		}
+		else {//존재도 안함
+			E.setState(4, 3, 0, 4, 0);
+			exit(0);
+		}
+	}
 }
 void action_couponerr(Everything E) {
-	
+	E.e.Errorview(4);
 	E.setState(4, 3, 0, 0, 0);
 
 }
@@ -657,33 +718,54 @@ void action_payMethod(Everything E, pair <int, int> p1) {
 }
 void action_gifiticard(Everything E) {
 	
+	gotoxy(89, 13);
 	string temp = getInput();
+	//한주 꺼 Gifticon 복붙
+	for (int i = 0; i < E.gifiticardData.size(); i++) { //Gifticon이랑 같다고 가정한 gifiticardData,Usedgifiticard
+		if (temp == E.gifiticardData.at(i).getKey()) { //같은 경우
+			for (int j = 0; j < E.Usedgifiticard.size(); j++) {
+				if (temp == E.Usedgifiticard.at(j).getKey()) {
+					//존재, 사용함
+					E.setState(4, 7, 0, 4, 0);
+					exit(0);
+					//에러 상태로 돌리고 종료
+				}
+				else {//존재하고 사용하지 않은경우, 사용하고 사용 상품권 벡터에 추가
+					E.Usedgifiticard.push_back(E.gifiticardData.at(i));
+					E.user.getBucket().settotal((E.user.getBucket().gettotal()) - 3000); //상품권도 일괄적으로 3000원만 있다고 가정
 
-	if () //입력 성공 시
-		E.setState(4, 0, 0, 0, 0);
-	else //입력 실패 시
-		E.setState(4, 7, 0, 4, 0);
+					E.setState(4, 0, 0, 0, 0);
 
+					exit(0);
+				}
+			}
+
+		}
+		else {//존재도 안함
+			E.setState(4, 7, 0, 4, 0);
+			exit(0);
+		}
+	}
 }
 void action_gifitierr(Everything E) {
-	
+	E.e.Errorview(4);
 	E.setState(4, 7, 0, 0, 0);
 }
 
 void action_cardinput(Everything E) {
-	
+
 	//cout << "카드를 입력하시겠습니까?(y/n 으로만 표시)" << endl;
 	string temp = getInput();
 
-	if(temp == "y")//입력 성공 시)
+	if (temp == "y")//입력 성공 시)
 		E.setState(5, 5, 0, 0, 0);
-	else if(temp == "n")//입력 실패 시)
+	else if (temp == "n")//입력 실패 시)
 		E.setState(5, 0, 0, 3, 0);
 
 }
 
 void action_carderr(Everything E) {
-
+	E.e.Errorview(3);
 	E.setState(5, 0, 0, 0, 0);
 }
 void action_bill(Everything E, pair<int, int> input) {
@@ -693,6 +775,7 @@ void action_bill(Everything E, pair<int, int> input) {
 	if (11 <= y && y <= 15) {
 		if (86 <= x && x <= 97) {
 			//영수증 출력
+			//main.cpp에 billSetting 함수 사용
 		}
 		else if (102 <= x && x <= 113) {
 			//영수증 미출력
@@ -717,5 +800,6 @@ void action_cashinput(Everything E) {
 }
 
 void action_casherr(Everything E) {
+	E.e.Errorview(3);
 	E.setState(6, 0, 0, 0, 0);
 }
