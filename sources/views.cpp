@@ -104,6 +104,37 @@ void menuview_1portion(pair<int, int> start, pair<int, int> end, string content)
 	return;
 }
 
+void print_option(int y, int q) {
+	string a;
+	string b;
+	string c;
+	switch (q) {
+	case 0:
+		a = "Hot / Ice";
+		b = "Hot";
+		c = "Ice";
+		break;
+	case 1:
+		a = "사이즈";
+		b = "레귤러(R)";
+		c = "라지(L)";
+		break;
+	case 2:
+		a = "샷추가";
+		b = "연하게";
+		c = "1샷 추가";
+		break;
+	case 3:
+		a = "휘핑크림";
+		b = "휘핑크림O";
+		c = "휘핑크림X";
+	}
+
+	gotoxy(80, y); printf("%s", a);
+	gotoxy(92, y); printf("%s", b);
+	gotoxy(106, y); printf("%s", c);
+}
+
 void menuview_2portion(pair<int, int> start, pair<int, int> end, string content1, string content2) {
 	int y = start.second + 1;
 	int temp = end.first - start.first;
@@ -124,8 +155,17 @@ void menuview_2portion(pair<int, int> start, pair<int, int> end, string content1
 class menuBuy : public box1 {
 private:
 	int page; //몇 번째 카테고리를 보고 있는지를 저장
+	int current_menu;
 public:
-	void view(/*전체 클래스 DB*/) {
+	void setCurrent_menu(int i) {
+		this->current_menu = i;
+	}
+
+	int getCurrent_menu() {
+		return this->current_menu;
+	}
+
+	void view(Everything E) {
 		clear_box1();
 		gotoxy(22, 3); printf("< P A I K S     C O F F E E>");
 
@@ -162,7 +202,7 @@ public:
 		gotoxy(x, i); printf("│               │                │                │               │"); i++;
 		gotoxy(x, i); printf("│               │                │                │               │"); i++;
 		gotoxy(x, i); printf("├───────-┼────────┼────────┼───────-┤"); i++;
-		
+
 		x = 2;
 		gotoxy(x, i); printf("│               │                │                │               │"); i++;
 		gotoxy(x, i); printf("│               │                │                │               │"); i++;
@@ -171,7 +211,7 @@ public:
 		gotoxy(x, i); printf("│               │                │                │               │"); i++;
 		gotoxy(x, i); printf("│               │                │                │               │"); i++;
 		gotoxy(x, i); printf("└──────────────────────────────────┘"); i++;
-		
+
 		//메뉴리스트 찍는 과정
 		for (int j = 0; j < 5; j++) {
 			string a;
@@ -179,7 +219,7 @@ public:
 			int starts[5] = { 4, 18, 32, 46, 60 };
 			int qq = 0;
 			//읽어오는 과정
-			//a = (Shop).getMenulists[j].(getName()); (괄호)이런 친구들은 아직 만들어지지 않음
+			a = E.Shop.getMenulists()[j].getName();
 			llength = a.length;
 
 			gotoxy((14 - llength) / 2 + starts[qq], 7);
@@ -201,9 +241,9 @@ public:
 			int y2[4] = { 15, 22, 29, 36 };
 
 			//메뉴 읽어오기
-			//input = (Shop).getMenulists[page].getMenus().at(j).getName();
+			input = E.Shop.getMenulists()[page].getMenus()[j].getName();
 			//길이에 따라 split
-			ss = split("", '_');
+			ss = split(input, '_');
 			//split 여부에 따라
 			portion = ss.size();
 			//좌표 pair 만들기
@@ -226,7 +266,7 @@ public:
 				break;
 			}
 		}
-	
+
 	}
 };
 class login : public box1 {
@@ -243,7 +283,7 @@ public:
 		gotoxy(x, i); printf("####    ##  ##    ##       ######     ###"); i++;
 		gotoxy(x + 17, i); printf("####");
 
-		x = 29,  i = 14;
+		x = 29, i = 14;
 		gotoxy(x, i); printf("####    #####   "); i++;
 		gotoxy(x, i); printf(" ##      ## ##  "); i++;
 		gotoxy(x, i); printf(" ##      ##  ## "); i++;
@@ -271,7 +311,7 @@ public:
 		gotoxy(x, i); printf("##   ##    ##      ##    ##       #   ##    #####   ##    "); i++;
 		gotoxy(x, i); printf("##   ##   ####    ####    #####    ### #       ##    #####"); i++;
 		gotoxy(x + 44, i); printf("#####"); i++;
-	
+
 		x = 13, i = 22;
 		gotoxy(x, i); printf("┌───────┐             ┌───────┐"); i++;
 		gotoxy(x, i); printf("│              │             │              │"); i++;
@@ -295,16 +335,16 @@ public:
 		gotoxy(x, i); printf(" ##  ##    ##     #####   ##       ##  ##   ##  ##   ##  ##    ##    "); i++;
 		gotoxy(x, i); printf(" ## ##     ##         ##  ##  ##   ##  ##   ##  ##   ##  ##    ## ## "); i++;
 		gotoxy(x, i); printf("#####     ####   ######    ####     ####     ######  ##  ##     ###  "); i++;
-		
+
 		x = 13, i = 22;
 		gotoxy(x, i); printf("┌───────┐            ┌───────┐"); i++;
-		gotoxy(x, i);printf("│              │            │              │"); i++;
-		gotoxy(x, i);printf("│              │            │              │"); i++;
-		gotoxy(x, i);printf("│     쿠폰     │            │    상품권    │"); i++;
-		gotoxy(x, i);printf("│              │            │              │"); i++;
-		gotoxy(x, i);printf("│              │            │              │"); i++;
-		gotoxy(x, i);printf("│              │            │              │"); i++;
-		gotoxy(x, i);printf("└───────┘            └───────┘"); i++;
+		gotoxy(x, i); printf("│              │            │              │"); i++;
+		gotoxy(x, i); printf("│              │            │              │"); i++;
+		gotoxy(x, i); printf("│     쿠폰     │            │    상품권    │"); i++;
+		gotoxy(x, i); printf("│              │            │              │"); i++;
+		gotoxy(x, i); printf("│              │            │              │"); i++;
+		gotoxy(x, i); printf("│              │            │              │"); i++;
+		gotoxy(x, i); printf("└───────┘            └───────┘"); i++;
 
 		x = 13, i = 32;
 		gotoxy(x, i); printf("┌───────┐            ┌───────┐"); i++;
@@ -352,7 +392,7 @@ public:
 		gotoxy(x, i); printf(" ##     ##  ##    #####   ######    ##        ##    "); i++;
 		gotoxy(x, i); printf(" ##     ##  ##        ##  ##        ##        ## ## "); i++;
 		gotoxy(x, i); printf("####    ##  ##   ######    #####   ####        ###  "); i++;
-		
+
 		x = 20, i = 13;
 		gotoxy(x, i); printf("   ####                     ###     "); i++;
 		gotoxy(x, i); printf("  ##  ##                     ##     "); i++;
@@ -371,7 +411,7 @@ public:
 		int x = 93, i = 4;
 		gotoxy(x, i); printf("기 프 티 콘 을"); i += 2;
 		gotoxy(x, i); printf("입 력 하 세 요"); i++;
-		
+
 		x = 86, i = 12;
 		gotoxy(x, i); printf("┌────────────┐"); i++;
 		gotoxy(x, i); printf("│                        │"); i++;
@@ -381,16 +421,43 @@ public:
 };
 class optionControl : public box2 {
 public:
-	void view() { // x시작 76
+	void view(Everything E) { // x시작 76
 		clear_box2();
 		int x = 95, i = 2;
+		int box_amount = 0;
+		int temparr[4];
+		char** sstt;
+		
+		//tftf로 대체됨 코드 삭제 필요
+		//temparr[0] = /*어떤 인자*/.tempaerature;
+		//temparr[1] = /**/.size;
+		//temparr[2] = /**/.shots;
+		//temparr[3] = /**/.creams;
+		
+
 		gotoxy(x, i); printf("<  옵  션  >"); i += 3;
 
-		x = 90;
-		gotoxy(x, i); printf("┌───┐  ┌───┐  ┌───┐"); i++;
-		gotoxy(x, i); printf("│      │  │      │  │      │"); i++;
-		gotoxy(x, i); printf("└───┘  └───┘  └───┘"); i += 2;
+		//everything 내부의 int 값인 current_menu(0부터 시작)
+		//을 읽어서, 그 내부의 {T, T, F, T}를 확인한 뒤
+		//내용에 맞춰서 버튼에 출력
 
+		//E.shop.getMenulists().at(E.mb.getcurrent_menu())
+
+		x = 90;
+		for (int q = 0; q < box_amount; q++) {
+			if (!(E.shop.getMenulists().at(E.mb.getpage()).getMenus().at(E.mb.getcurrent_menu()).getoptionSet().at(q))) {
+				pair<int, int> start;
+				pair<int, int> end;
+				gotoxy(x, i); printf("┌─────┐      ┌─────┐"); i++;
+				gotoxy(x, i); printf("│          │      │          │"); i++;
+				gotoxy(x, i); printf("└─────┘      └─────┘"); i += 2;
+				
+
+				print_option(i - 3, q);
+			}
+		}
+
+		/*
 		gotoxy(x, i); printf("┌───┐  ┌───┐  ┌───┐"); i++;
 		gotoxy(x, i); printf("│      │  │      │  │      │"); i++;
 		gotoxy(x, i); printf("└───┘  └───┘  └───┘"); i += 2;
@@ -402,6 +469,8 @@ public:
 		gotoxy(x, i); printf("┌───┐  ┌───┐  ┌───┐"); i++;
 		gotoxy(x, i); printf("│      │  │      │  │      │"); i++;
 		gotoxy(x, i); printf("└───┘  └───┘  └───┘");
+	
+		*/
 	}
 };
 class couponControl : public box2 { // 쿠폰을 입력하시오
@@ -491,12 +560,7 @@ public:
 		gotoxy(x, i); printf("└───┘  └───┘  └───┘");
 	}
 };
-void mainMouse(int x, int y, string a) {
-	//마우스 들어온 x y 알고
-	//이때 호출해야 할 박스 클래스를 알아서
-	//그걸 호출하는거
 
-}
 void init() {
 
 
@@ -544,7 +608,7 @@ int main() {
 	mileageUse mu;
 
 	view();
-	while (1){
+	while (1) {
 		char temp = (char)_getch();
 		switch (temp) {
 		case 'a':
