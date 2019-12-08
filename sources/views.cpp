@@ -446,8 +446,6 @@ public:
 		x = 90;
 		for (int q = 0; q < box_amount; q++) {
 			if (!(E.shop.getMenulists().at(E.mb.getpage()).getMenus().at(E.mb.getcurrent_menu()).getoptionSet().at(q))) {
-				pair<int, int> start;
-				pair<int, int> end;
 				gotoxy(x, i); printf("┌─────┐      ┌─────┐"); i++;
 				gotoxy(x, i); printf("│          │      │          │"); i++;
 				gotoxy(x, i); printf("└─────┘      └─────┘"); i += 2;
