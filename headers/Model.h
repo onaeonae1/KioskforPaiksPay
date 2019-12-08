@@ -2,7 +2,41 @@
 #include<vector>
 #include<string>
 using namespace std;
-//Shop, Menu와 관련된 헤더파일
+//Shop, Menu, Everything과 관련된 헤더파일
+class Everything {
+public:
+	vector<Mileage> MileageData; //전체 마일리지 데이터
+	vector<Gifticon> GiftiData; //사용 가능한 기프티콘 데이터
+	vector<Gifticon> UsedGifti;
+	Shop shop;
+	User user;
+	Error e;
+
+	cardInput ci;
+	cashInput ci2;
+	discountControl dc;
+	mileageControl mc;
+	menuBuy mb;
+	login lg;
+
+	gifticonInput gi;
+	optionControl oc;
+	couponControl cc;
+	giftcardControl gcc;
+	payMethod pm;
+	bill bl;
+	mileageUse mu;
+	int state[5];
+
+	int *setState(int num1, int num2, int num3, int num4, int num5) {
+		state[0] = num1;
+		state[1] = num2;
+		state[2] = num3;
+		state[3] = num4;
+		state[4] = num5;
+		return state;
+	}
+};
 class Menu {
 private:
 	string name; //이름
