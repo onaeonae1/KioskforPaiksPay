@@ -37,13 +37,12 @@ public:
 	mileageUse mu;
 	int state[5];
 
-	int *setState(int num1, int num2, int num3, int num4, int num5) {
+	void setState(int num1, int num2, int num3, int num4, int num5) {
 		state[0] = num1;
 		state[1] = num2;
 		state[2] = num3;
 		state[3] = num4;
 		state[4] = num5;
-		return state;
 	}
 };
 
