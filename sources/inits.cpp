@@ -85,6 +85,8 @@ void initUsedGifti(vector<string>& usedGifti) { //사용가능한 기프티콘 �
 	in.close();
 }
 void setUsedGifti(Everything E) {
+	remove("UseGifti.txt");
+	
 	ofstream out("UsedGifti.txt");
 	Gifticon temp;
 
