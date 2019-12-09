@@ -2,7 +2,38 @@
 #include <string>
 #include "Error.h"
 #include "Model.h"
-//#include "header.h"
+#include "viewUtil.h"
+
+class box {
+private:
+	pair<int, int> pos;
+	int wideth;
+	int height;
+	string name;
+public:
+	void setPos(pair<int, int>pos);
+	void setWideth(int wideth);
+	void setHeight(int height);
+	void setName(string name);
+	void view();
+	void mouseEvent();
+	void eraseView(); //필드 기반으로 필요한 영역에 공백을 찍는다.
+};
+class box1 : public box { //메인
+
+};
+class box2 : public box { //팝업
+
+};
+class box3 : public box {  //장바구니
+
+};
+class box4 : public box { //에러
+
+};
+class box5 : public box { //버튼 모아놓은 것 ex) 결제
+
+};
 
 class cardInput {
 public:
@@ -27,7 +58,7 @@ private:
 public:
 	void setpage(int p);
 	int getpage();
-	void setcurrent_menu(Menu m);
+	void setcurrent_menu(int m);
 	int getcurrent_menu();
 	void view(/*전체 클래스 DB*/);
 };
@@ -86,7 +117,7 @@ public:
 	bill* bl;
 	mileageUse* mu;
 	int state[5];
-
+	
 	vector<Gifticon> GiftiData;
 	vector<Mileage> MileageData;
 	vector<Coupon> CouponData;
