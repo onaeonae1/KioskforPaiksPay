@@ -195,6 +195,20 @@ void action_menuBuy(Everything E, pair<int, int> input) {
 		}
 		E.setState(1, 2, 1, 0, 1);
 	}
+	else if(38 <= y && y <= 40) {
+		if (83 <= x && x <= 92) {
+			//회원결제
+			E.setState(2, 0, 0, 0, 0);
+		}
+		else if (95 <= x && x <= 104) {
+			//비회원결제
+			E.setState(4, 0, 0, 0, 0);
+		}
+		else if (107 <= x && x <= 116) {
+			//기프티콘
+			E.setState(1, 1, 1, 0, 1);
+		}
+	}
 }
 void action_gifticon(Everything E) {
 	gotoxy(89, 13);
