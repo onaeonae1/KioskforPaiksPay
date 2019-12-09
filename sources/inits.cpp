@@ -68,6 +68,33 @@ void initGifti(vector<Gifticon>& gData) { //사용가능한 기프티콘 데이�
 	}
 	in.close();
 }
+void initUsedGifti(vector<string>& usedGifti) { //사용가능한 기프티콘 데이터 불러오기
+	ifstream in("UsedGifti.txt");
+	if (in.is_open()) {
+		int num;
+		in >> num;
+		while (num--) {
+			string tempString;
+			in >> tempString; //한 줄 읽어오기
+			
+			usedGifti.push_back(*tempGifti);
+			delete(tempGifti);
+			delete(tempMenu);
+		}
+	}
+	in.close();
+}
+void setUsedGifti(Everything E) {
+	ofstream out("UsedGifti.txt");
+	Gifticon temp;
+
+	for (int i = 0; i < E.usedGifti.size(); i++) {
+		temp = E.usedGifti.at(i);
+		out << temp.getKey()
+			<<endl;
+	}
+	out.close();
+}
 void initCoupon(vector<Coupon>& cData) { //사용가능한 쿠폰 불러오기
 	ifstream in("coupon.txt");
 	if (in.is_open()) {
