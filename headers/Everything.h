@@ -95,6 +95,14 @@ class mileageUse {
 public:
 	void view();
 };
+class bucketControl {
+public:
+	void view();
+};
+class purchaseBox {
+public:
+	void view();
+};
 
 
 class Everything {
