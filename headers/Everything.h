@@ -2,7 +2,7 @@
 #include <string>
 #include "Error.h"
 #include "Model.h"
-#include "header.h"
+//#include "header.h"
 
 class cardInput;
 class cashInput;
@@ -18,6 +18,7 @@ class giftcardControl;
 class payMethod;
 class bill;
 class mileageUse;
+
 
 
 class Everything {
@@ -40,11 +41,11 @@ public:
 	bill* bl;
 	mileageUse* mu;
 	int state[5];
-	
-	vector<Gifticon> GiftiData;
-	vector<Mileage> MileageData;
-	vector<Coupon> CouponData;
-	vector<giftiCard> GifticardData;
+
+	vector<string> GiftiData;
+	vector<string> MileageData;
+	vector<string> CouponData;
+	vector<string> GifticardData;
 
 	vector<string> UsedGifti;
 	vector<string> UsedCoupon;
