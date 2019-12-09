@@ -68,22 +68,7 @@ void initGifti(vector<Gifticon>& gData) { //사용가능한 기프티콘 데이�
 	}
 	in.close();
 }
-void initUsedGifti(vector<string>& usedGifti) { //사용가능한 기프티콘 데이터 불러오기
-	ifstream in("UsedGifti.txt");
-	if (in.is_open()) {
-		int num;
-		in >> num;
-		while (num--) {
-			string tempString;
-			in >> tempString; //한 줄 읽어오기
-			
-			usedGifti.push_back(*tempGifti);
-			delete(tempGifti);
-			delete(tempMenu);
-		}
-	}
-	in.close();
-}
+
 void setUsedGifti(Everything E) {
 	remove("UseGifti.txt");
 	
@@ -126,4 +111,59 @@ void initgiftiCard(vector<giftiCard>& gcData) {
 			delete(gcard);
 		}
 	}
+}
+void initUsedGiftiCard(vector<string>& usedGiftiCard) { //사용가능한 기프티콘 데이터 불러오기
+	ifstream in("UsedGiftiCard.txt");
+	if (in.is_open()) {
+		int num;
+		in >> num;
+		while (num--) {
+			string tempString;
+			in >> tempString; //한 줄 읽어오기
+
+			usedGiftiCard.push_back(tempString);
+
+		}
+	}
+	in.close();
+}
+void setUsedGiftiCard(Everything E) {
+	remove("UseGiftiCard.txt");
+	ofstream out("UsedGiftiCard.tx	t");
+	Gifticon temp;
+
+	for (int i = 0; i < E.UsedGifticard.size(); i++) {
+		temp = E.UsedGifticard.at(i);
+		out << temp.getKey()
+			<< endl;
+	}
+	out.close();
+}
+
+void initUsedCoupon(vector<string>& usedCoupon) { //사용가능한 기프티콘 데이터 불러오기
+	ifstream in("UsedCoupon.txt");
+	if (in.is_open()) {
+		int num;
+		in >> num;
+		while (num--) {
+			string tempString;
+			in >> tempString; //한 줄 읽어오기
+
+			usedCoupon.push_back(tempString);
+
+		}
+	}
+	in.close();
+}
+void setUsedCoupon(Everything E) {
+	remove("UsedCoupon.txt");
+	ofstream out("UsedCoupon.txt");
+	Gifticon temp;
+
+	for (int i = 0; i < E.UsedCoupon.size(); i++) {
+		temp = E.UsedCoupon.at(i);
+		out << temp.getKey()
+			<< endl;
+	}
+	out.close();
 }
