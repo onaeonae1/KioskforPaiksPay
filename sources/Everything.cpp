@@ -1,10 +1,9 @@
 #pragma once
 #include <string>
-#include "Error.h"
 //#include "utils.h"
 #include "Everything.h"
 
-extern Everything E;
+//extern Everything E;
 
 void box::setPos(pair<int, int>pos) {
 	this->pos = pos;
