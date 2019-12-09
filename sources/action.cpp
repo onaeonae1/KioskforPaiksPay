@@ -90,98 +90,98 @@ void action_menuBuy(Everything E, pair<int, int> input) {
 	if (6 <= y && y <= 8) {
 		if (4 <= x && x <= 15) {
 			//메뉴리스트 1
-			E.mb.setpage(0);
+			E->mb.setpage(0);
 		}
 		else if (18 <= x && x <= 29) {
 			//메뉴리스트 2
-			E.mb.setpage(1);
+			E->mb.setpage(1);
 		}
 		else if (32 <= x && x <= 43) {
 			//메뉴리스트 3
-			E.mb.setpage(2);
+			E->mb.setpage(2);
 		}
 		else if (46 <= x && x <= 57) {
 			//메뉴리스트 4
-			E.mb.setpage(3);
+			E->mb.setpage(3);
 		}
 		else if (60 <= x && x <= 71) {
 			//메뉴리스트 5
-			E.mb.setpage(4);
+			E->mb.setpage(4);
 		}
 	}
 	else if (10 <= y && y <= 15) {
 		if (4 <= x && x <= 18) {
 			//메뉴 1
-			E.mb.setcurrent_menu(E.shop.getMenulists().at(E.mb.getpage()).getMenus().at(0));
+			E->mb.setcurrent_menu(E.shop.getMenulists().at(E->mb.getpage()).getMenus().at(0));
 		}
 		else if (21 <= x && x <= 35) {
 			//메뉴 2
-			E.mb.setcurrent_menu(E.shop.getMenulists().at(E.mb.getpage()).getMenus().at(1));
+			E->mb.setcurrent_menu(E.shop.getMenulists().at(E->mb.getpage()).getMenus().at(1));
 		}
 		else if (38 <= x && x <= 52) {
 			//메뉴 3
-			E.mb.setcurrent_menu(E.shop.getMenulists().at(E.mb.getpage()).getMenus().at(2));
+			E->mb.setcurrent_menu(E.shop.getMenulists().at(E->mb.getpage()).getMenus().at(2));
 		}
 		else if (55 <= x && x <= 69) {
 			//메뉴 4
-			E.mb.setcurrent_menu(E.shop.getMenulists().at(E.mb.getpage()).getMenus().at(3));
+			E->mb.setcurrent_menu(E.shop.getMenulists().at(E->mb.getpage()).getMenus().at(3));
 		}
 			E.setState(1, 2, 1, 0, 1);
 	}
 	else if (17 <= y && y <= 22) {
 		if (4 <= x && x <= 18) {
 			//메뉴 5
-			E.mb.setcurrent_menu(E.shop.getMenulists().at(E.mb.getpage()).getMenus().at(4));
+			E->mb.setcurrent_menu(E.shop.getMenulists().at(E->mb.getpage()).getMenus().at(4));
 		}
 		else if (21 <= x && x <= 35) {
 			//메뉴 6
-			E.mb.setcurrent_menu(E.shop.getMenulists().at(E.mb.getpage()).getMenus().at(5));
+			E->mb.setcurrent_menu(E.shop.getMenulists().at(E->mb.getpage()).getMenus().at(5));
 		}
 		else if (38 <= x && x <= 52) {
 			//메뉴 7
-			E.mb.setcurrent_menu(E.shop.getMenulists().at(E.mb.getpage()).getMenus().at(6));
+			E->mb.setcurrent_menu(E.shop.getMenulists().at(E->mb.getpage()).getMenus().at(6));
 		}
 		else if (55 <= x && x <= 69) {
 			//메뉴 8
-			E.mb.setcurrent_menu(E.shop.getMenulists().at(E.mb.getpage()).getMenus().at(7));
+			E->mb.setcurrent_menu(E.shop.getMenulists().at(E->mb.getpage()).getMenus().at(7));
 		}
 		E.setState(1, 2, 1, 0, 1);
 	}
 	else if (24 <= y && y <= 29) {
 		if (4 <= x && x <= 18) {
 			//메뉴 9
-			E.mb.setcurrent_menu(E.shop.getMenulists().at(E.mb.getpage()).getMenus().at(8));
+			E->mb.setcurrent_menu(E.shop.getMenulists().at(E->mb.getpage()).getMenus().at(8));
 		}
 		else if (21 <= x && x <= 35) {
 			//메뉴 10
-			E.mb.setcurrent_menu(E.shop.getMenulists().at(E.mb.getpage()).getMenus().at(9));
+			E->mb.setcurrent_menu(E.shop.getMenulists().at(E->mb.getpage()).getMenus().at(9));
 		}
 		else if (38 <= x && x <= 52) {
 			//메뉴 11
-			E.mb.setcurrent_menu(E.shop.getMenulists().at(E.mb.getpage()).getMenus().at(10));
+			E->mb.setcurrent_menu(E.shop.getMenulists().at(E->mb.getpage()).getMenus().at(10));
 		}
 		else if (55 <= x && x <= 69) {
 			//메뉴 12
-			E.mb.setcurrent_menu(E.shop.getMenulists().at(E.mb.getpage()).getMenus().at(11));
+			E->mb.setcurrent_menu(E.shop.getMenulists().at(E->mb.getpage()).getMenus().at(11));
 		}
 		E.setState(1, 2, 1, 0, 1);
 	}
 	else if (31 <= y && y <= 36) {
 		if (4 <= x && x <= 18) {
 			//메뉴 13
-			E.mb.setcurrent_menu(E.shop.getMenulists().at(E.mb.getpage()).getMenus().at(12));
+			E->mb.setcurrent_menu(E.shop.getMenulists().at(E->mb.getpage()).getMenus().at(12));
 		}
 		else if (21 <= x && x <= 35) {
 			//메뉴 14
-			E.mb.setcurrent_menu(E.shop.getMenulists().at(E.mb.getpage()).getMenus().at(13));
+			E->mb.setcurrent_menu(E.shop.getMenulists().at(E->mb.getpage()).getMenus().at(13));
 		}
 		else if (38 <= x && x <= 52) {
 			//메뉴 15
-			E.mb.setcurrent_menu(E.shop.getMenulists().at(E.mb.getpage()).getMenus().at(14));
+			E->mb.setcurrent_menu(E.shop.getMenulists().at(E->mb.getpage()).getMenus().at(14));
 		}
 		else if (55 <= x && x <= 69) {
 			//메뉴 16
-			E.mb.setcurrent_menu(E.shop.getMenulists().at(E.mb.getpage()).getMenus().at(15));
+			E->mb.setcurrent_menu(E.shop.getMenulists().at(E->mb.getpage()).getMenus().at(15));
 		}
 		E.setState(1, 2, 1, 0, 1);
 	}
@@ -206,7 +206,7 @@ void action_gifticon(Everything E) {
 					Menu m=(E.GiftiData.at(i).getMenu()); //새 메뉴 생성
 					m.setIsGifti(true); 
 
-					E.mb.setcurrent_menu(m); //메뉴 설정
+					E->mb.setcurrent_menu(m); //메뉴 설정
 					E.setState(1, 0, 1, 0, 1);
 
 					exit(0);
@@ -227,7 +227,7 @@ void action_giftierr(Everything E) {
 void action_option(Everything E, pair<int, int> input) {
 	int x = input.first;
 	int y = input.second;
-	Menu wanted_menu = E.shop.getMenulists().at(E.mb.getpage()).getMenus().at(E.mb.getcurrent_menu()); //원하는 메뉴
+	Menu wanted_menu = E.shop.getMenulists().at(E->mb.getpage()).getMenus().at(E->mb.getcurrent_menu()); //원하는 메뉴
 	Cmenu wanted_Cmenu(wanted_menu); //원하는 메뉴를 장바구니에 넣기 위해 생성
 
 	vector<int> true_options; // 해당 메뉴의 옵션 중 T인 옵션들의 인덱스들의 벡터
