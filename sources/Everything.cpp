@@ -366,3 +366,25 @@ void mileageUse::view() { // 시작 좌표 76
 	gotoxy(x, i); printf("│ 10000│  │   ALL│  │ Clear│  "); i++;
 	gotoxy(x, i); printf("└───┘  └───┘  └───┘");
 }
+void bucketControl::view() {//x : 76 ~ 123, y : 22 ~ 31
+	int i = 0, y = 22;
+	vector<Cmenu> temp = E.user.bucket.getMenulist();
+
+	for (i = 0; i < temp.size(); i++) {
+		int cnt = temp.at(i).getCnt();
+		int price = tmep.at(i).getTotal();
+		gotoxy(76, y);
+		cout.width(30);
+		cout << left << temp.at(i).getmenu().getName() << endl;
+		gotoxy(106, y);
+		printf("++ %2d -- %5d xx", cnt, cnt * price);
+	}
+}
+void purchaseBox::view() {//x : 76 ~ 123, y : 36 ~ 42
+	gotoxy(81, 37); printf("┌─────┬─────┬─────┐");
+	gotoxy(81, 38); printf("│  회  원  │ 비 회 원 │  기  프  │");
+	gotoxy(81, 39); printf("│          │          │          │");
+	gotoxy(81, 40); printf("│  결  제  │  결  제  │  티  콘  │");
+	gotoxy(81, 41); printf("└─────┴─────┴─────┘");
+}
+
