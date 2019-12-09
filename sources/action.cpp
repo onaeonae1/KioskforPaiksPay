@@ -11,9 +11,6 @@
 #include "Error.h"
 #include "User.h"
 
-#define x first
-#define y second
-
 using namespace std;
 
 class Everything {
@@ -85,6 +82,23 @@ string getInput(int print) {//동그라미를 출력해야 하면 시작 x, 아�
 	return result;
 }
 
+void billSetting(Bucket& b) { //영수증을 파일에 출력한다.
+	//bucket 정보를 바탕으로 출력한다.
+	ofstream ou("bill.txt");
+	if (ou.is_open()) {
+		ou << "<<<영수증은 다음과 같습니다.>>>" << endl;
+		ou << "-------------------------------------" << endl;
+		vector<Cmenu> mlist = b.getMenulist();
+		ou << "번호 | 이름 | 개당 가격 | 갯수 | 총액" << endl;
+		ou << "-------------------------------------" << endl;
+		for (int i = 0; i < mlist.size(); i++) {
+			Menu m = mlist.at(i).getMenu();
+			int price = mlist.at(i).getTotal();
+			int count = mlist.at(i).getCnt();
+			ou << i + 1 << " : " << m.getName() << " " << price << " 원" << " 개" << price * count << " 원" << endl;
+		}
+	}
+}
 
 void action_start(Everything E) {
 	char c = NULL;
@@ -795,11 +809,13 @@ void action_carderr(Everything E) {
 void action_bill(Everything E, pair<int, int> input) {
 	int x = input.first;
 	int y = input.second;
+	
+	Bucket temp = E.user.getBucket();
 
 	if (11 <= y && y <= 15) {
 		if (86 <= x && x <= 97) {
 			//영수증 출력
-			//main.cpp에 billSetting 함수 사용
+			billSetting(temp);
 		}
 		else if (102 <= x && x <= 113) {
 			//영수증 미출력
