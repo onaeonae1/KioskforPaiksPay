@@ -318,38 +318,47 @@ public:
 		return this->usedMileage;
 	}
 };
-
-class Everything {
+class Coupon {
+private:
+	string key; //식별 key
+	int value; //할인률
 public:
-	vector<Mileage> MileageData; //전체 마일리지 데이터
-	vector<Gifticon> GiftiData; //사용 가능한 기프티콘 데이터
-	vector<Gifticon> UsedGifti;
-	Shop shop;
-	User user;
-	Error e;
-
-	cardInput ci;
-	cashInput ci2;
-	discountControl dc;
-	mileageControl mc;
-	menuBuy mb;
-	login lg;
-
-	gifticonInput gi;
-	optionControl oc;
-	couponControl cc;
-	giftcardControl gcc;
-	payMethod pm;
-	bill bl;
-	mileageUse mu;
-	int state[5];
-
-	int *setState(int num1, int num2, int num3, int num4, int num5) {
-		state[0] = num1;
-		state[1] = num2;
-		state[2] = num3;
-		state[3] = num4;
-		state[4] = num5;
-		return state;
+	Coupon(string key, int value) {
+		this->key = key;
+		this->value = value;
+	}
+	string getKey() {
+		return this->key;
+	}
+	void setKey(string key) {
+		this->key = key;
+	}
+	int getValue() {
+		return this->value;
+	}
+	void setValue(int value) {
+		this->value = value;
+	}
+};
+class giftiCard {
+private:
+	string key; //식별 key
+	int value; //대응 가격
+public:
+	giftiCard(string key, int value) {
+		this->key = key;
+		this->value = value;
+	}
+	string getKey() {
+		return this->key;
+	}
+	void setKey(string key) {
+		this->key = key;
+	}
+	int getValue() {
+		return this->value;
+	}
+	void setValue(int value) {
+		this->value = value;
 	}
 };
