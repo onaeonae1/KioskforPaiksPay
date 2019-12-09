@@ -5,92 +5,50 @@
 #include<fstream>
 #include<sstream>
 #include<vector>
+#include<conio.h>
 #include"utils.h"
-#include"Model.h"
-#include"User.h"
-#include"Bucket.h"
-#include"Gifticon.h"
-#include"header.h";
-#include"Error.h";
-
-#define tx first
-#define ty second
+#include"Everything.h"
 using namespace std;
 Everything E;
-int *setState(int *state, int num1, int num2, int num3, int num4, int num5) {
-	state[0] = num1;
-	state[1] = num2;
-	state[2] = num3;
-	state[3] = num4;
-	state[4] = num5;
-	return state;
-}
-
-string getInput() {
+string getInput(int print) {//동그라미를 출력해야 하면 시작 x, 아니면 0
 	string result = "";
 	char temp = '0';
 	int i = 0, j = 0;
+	int y = 0, end = 0;
+	if (print == 19) {
+		y = 26, end = 56;
+	}
+	else if (print == 88) {
+		y = 13, end = 115;
+	}
 
 
 	temp = getch();
 	for (i = 0; !((char)temp == '\n' || (char)temp == '\r'); i++) {
-		if (i < 0) i = 0;
-		if (temp == 8) { // backspace일 때
-			if (!result.empty())
-				result.pop_back();
-			if (i != 0)
-				gotoxy(3 + i * 2 - 2, 3); printf(" ");
-			i -= 2;
+		if (print) {
+			if (i < 0) i = 0;
+			if (temp == 8) { // backspace일 때
+				if (!result.empty())
+					result.pop_back();
+				if (i != 0)
+					gotoxy(print + i * 2 - 2, y);
+				if (print + i * 2 <= end - 1)
+					printf(" ");
+				i -= 2;
+			}
+			else {
+				result.push_back((char)temp);
+				gotoxy(print + i * 2, y);
+				if (print + i * 2 <= end - 1) printf("●");
+			}
 		}
-		else {
-			result.push_back((char)temp);
-			gotoxy(3 + i * 2, 3); printf("●");
-			gotoxy(5, 10); printf("%c", temp);
-		}
-
 		temp = getch();
 	}
 
 	return result;
 }
-void action_discountControl(Everything E, pair <int, int> p1) {
 
-	int x = p1.first;
-	int y = p1.second;
 
-	if ((y >= 22) && (y <= 29)) {
-		if ((x >= 13) && (x <= 60)) {
-			E.setState(4, 3, 0, 0, 0);
-			//couponcontrol로 넘어가는 버튼
-		}
-		else if ((x >= 43) && (x <= 60)) {
-			E.setState(4, 7, 0, 0, 0);
-			//giftCardControl로 넘어가는 버튼
-		}
-		else {
-			//아무 일 없음      
-		}
-	}
-	else if ((y >= 32) && (y <= 49)) { //이전
-
-		if ((x >= 13) && (x <= 30)) {
-			if (E.user.getKey() == "X")
-				E.setState(1, 0, 1, 0, 1);
-			//manuBuy로 돌아가는 버튼(비회원)
-			else {
-				E.setState(3, 0, 0, 0, 0);
-				//마일리지 사용/적립으로 돌아가는 버튼(회원)
-			}
-		}
-		else if ((x >= 43) && (x <= 60)) {
-			E.setState(4, 4, 0, 0, 0);
-			//결제 수단 선택 버튼
-		}
-	}
-	else {
-		//아무 일 없음
-	}
-}
 void action_start(Everything E) {
 	char c = NULL;
 	if (cin >> c) { //입력 됐을 때 시작 상태
@@ -105,98 +63,98 @@ void action_menuBuy(Everything E, pair<int, int> input) {
 	if (6 <= y && y <= 8) {
 		if (4 <= x && x <= 15) {
 			//메뉴리스트 1
-			E.mb.setpage(0);
+			E.mb->setpage(0);
 		}
 		else if (18 <= x && x <= 29) {
 			//메뉴리스트 2
-			E.mb.setpage(1);
+			E.mb->setpage(1);
 		}
 		else if (32 <= x && x <= 43) {
 			//메뉴리스트 3
-			E.mb.setpage(2);
+			E.mb->setpage(2);
 		}
 		else if (46 <= x && x <= 57) {
 			//메뉴리스트 4
-			E.mb.setpage(3);
+			E.mb->setpage(3);
 		}
 		else if (60 <= x && x <= 71) {
 			//메뉴리스트 5
-			E.mb.setpage(4);
+			E.mb->setpage(4);
 		}
 	}
 	else if (10 <= y && y <= 15) {
 		if (4 <= x && x <= 18) {
 			//메뉴 1
-			E.mb.setcurrent_menu(E.shop.getMenulists().at(E.mb.getpage()).getMenus().at(0));
+			E.mb->setcurrent_menu(E.shop.getMenulists().at(E.mb->getpage()).getMenus().at(0));
 		}
 		else if (21 <= x && x <= 35) {
 			//메뉴 2
-			E.mb.setcurrent_menu(E.shop.getMenulists().at(E.mb.getpage()).getMenus().at(1));
+			E.mb->setcurrent_menu(E.shop.getMenulists().at(E.mb->getpage()).getMenus().at(1));
 		}
 		else if (38 <= x && x <= 52) {
 			//메뉴 3
-			E.mb.setcurrent_menu(E.shop.getMenulists().at(E.mb.getpage()).getMenus().at(2));
+			E.mb->setcurrent_menu(E.shop.getMenulists().at(E.mb->getpage()).getMenus().at(2));
 		}
 		else if (55 <= x && x <= 69) {
 			//메뉴 4
-			E.mb.setcurrent_menu(E.shop.getMenulists().at(E.mb.getpage()).getMenus().at(3));
+			E.mb->setcurrent_menu(E.shop.getMenulists().at(E.mb->getpage()).getMenus().at(3));
 		}
 		E.setState(1, 2, 1, 0, 1);
 	}
 	else if (17 <= y && y <= 22) {
 		if (4 <= x && x <= 18) {
 			//메뉴 5
-			E.mb.setcurrent_menu(E.shop.getMenulists().at(E.mb.getpage()).getMenus().at(4));
+			E.mb->setcurrent_menu(E.shop.getMenulists().at(E.mb->getpage()).getMenus().at(4));
 		}
 		else if (21 <= x && x <= 35) {
 			//메뉴 6
-			E.mb.setcurrent_menu(E.shop.getMenulists().at(E.mb.getpage()).getMenus().at(5));
+			E.mb->setcurrent_menu(E.shop.getMenulists().at(E.mb->getpage()).getMenus().at(5));
 		}
 		else if (38 <= x && x <= 52) {
 			//메뉴 7
-			E.mb.setcurrent_menu(E.shop.getMenulists().at(E.mb.getpage()).getMenus().at(6));
+			E.mb->setcurrent_menu(E.shop.getMenulists().at(E.mb->getpage()).getMenus().at(6));
 		}
 		else if (55 <= x && x <= 69) {
 			//메뉴 8
-			E.mb.setcurrent_menu(E.shop.getMenulists().at(E.mb.getpage()).getMenus().at(7));
+			E.mb->setcurrent_menu(E.shop.getMenulists().at(E.mb->getpage()).getMenus().at(7));
 		}
 		E.setState(1, 2, 1, 0, 1);
 	}
 	else if (24 <= y && y <= 29) {
 		if (4 <= x && x <= 18) {
 			//메뉴 9
-			E.mb.setcurrent_menu(E.shop.getMenulists().at(E.mb.getpage()).getMenus().at(8));
+			E.mb->setcurrent_menu(E.shop.getMenulists().at(E.mb->getpage()).getMenus().at(8));
 		}
 		else if (21 <= x && x <= 35) {
 			//메뉴 10
-			E.mb.setcurrent_menu(E.shop.getMenulists().at(E.mb.getpage()).getMenus().at(9));
+			E.mb->setcurrent_menu(E.shop.getMenulists().at(E.mb->getpage()).getMenus().at(9));
 		}
 		else if (38 <= x && x <= 52) {
 			//메뉴 11
-			E.mb.setcurrent_menu(E.shop.getMenulists().at(E.mb.getpage()).getMenus().at(10));
+			E.mb->setcurrent_menu(E.shop.getMenulists().at(E.mb->getpage()).getMenus().at(10));
 		}
 		else if (55 <= x && x <= 69) {
 			//메뉴 12
-			E.mb.setcurrent_menu(E.shop.getMenulists().at(E.mb.getpage()).getMenus().at(11));
+			E.mb->setcurrent_menu(E.shop.getMenulists().at(E.mb->getpage()).getMenus().at(11));
 		}
 		E.setState(1, 2, 1, 0, 1);
 	}
 	else if (31 <= y && y <= 36) {
 		if (4 <= x && x <= 18) {
 			//메뉴 13
-			E.mb.setcurrent_menu(E.shop.getMenulists().at(E.mb.getpage()).getMenus().at(12));
+			E.mb->setcurrent_menu(E.shop.getMenulists().at(E.mb->getpage()).getMenus().at(12));
 		}
 		else if (21 <= x && x <= 35) {
 			//메뉴 14
-			E.mb.setcurrent_menu(E.shop.getMenulists().at(E.mb.getpage()).getMenus().at(13));
+			E.mb->setcurrent_menu(E.shop.getMenulists().at(E.mb->getpage()).getMenus().at(13));
 		}
 		else if (38 <= x && x <= 52) {
 			//메뉴 15
-			E.mb.setcurrent_menu(E.shop.getMenulists().at(E.mb.getpage()).getMenus().at(14));
+			E.mb->setcurrent_menu(E.shop.getMenulists().at(E.mb->getpage()).getMenus().at(14));
 		}
 		else if (55 <= x && x <= 69) {
 			//메뉴 16
-			E.mb.setcurrent_menu(E.shop.getMenulists().at(E.mb.getpage()).getMenus().at(15));
+			E.mb->setcurrent_menu(E.shop.getMenulists().at(E.mb->getpage()).getMenus().at(15));
 		}
 		E.setState(1, 2, 1, 0, 1);
 	}
@@ -204,24 +162,23 @@ void action_menuBuy(Everything E, pair<int, int> input) {
 void action_gifticon(Everything E) {
 	gotoxy(89, 13);
 
-	string id = getInput();
+	string id = getInput(88);
 	//키보드 입력
 	for (int i = 0; i < E.GiftiData.size(); i++) {
 		if (id == E.GiftiData.at(i).getKey()) {//같은 경우
 			for (int j = 0; j < E.UsedGifti.size(); j++) {
-				if (id == E.UsedGifti.at(j).getKey()) {
+				if (id == E.UsedGifti.at(j)) {
 					//존재, 사용함
 					E.setState(1, 1, 1, 1, 1);
 					exit(0);
 					//에러 상태로 돌리고 종료
 				}
 				else {//존재하고 사용하지 않은경우, 사용하고 사용 깊티 벡터에 추가후 옵션창 띄움
-					E.UsedGifti.push_back(E.GiftiData.at(i));
-
+					E.UsedGifti.push_back(E.GiftiData.at(i).getKey());
 					Menu m = (E.GiftiData.at(i).getMenu()); //새 메뉴 생성
 					m.setIsGifti(true);
 
-					E.mb.setcurrent_menu(m); //메뉴 설정
+					E.mb->setcurrent_menu(m); //메뉴 설정
 					E.setState(1, 0, 1, 0, 1);
 
 					exit(0);
@@ -242,7 +199,8 @@ void action_giftierr(Everything E) {
 void action_option(Everything E, pair<int, int> input) {
 	int x = input.first;
 	int y = input.second;
-	Menu wanted_menu = E.shop.getMenulists().at(E.mb.getpage()).getMenus().at(E.mb.getcurrent_menu()); //원하는 메뉴
+	Menu wanted_menu = E.mb->getcurrent_menu();
+	//Menu wanted_menu = E.shop.getMenulists().at(E.mb->getpage()).getMenus().at(E.mb->getcurrent_menu()); //원하는 메뉴
 	Cmenu wanted_Cmenu(wanted_menu); //원하는 메뉴를 장바구니에 넣기 위해 생성
 
 	vector<int> true_options; // 해당 메뉴의 옵션 중 T인 옵션들의 인덱스들의 벡터
@@ -522,7 +480,7 @@ void action_option(Everything E, pair<int, int> input) {
 }
 void action_login(Everything E) {
 	gotoxy(20, 26);
-	string id = getInput();
+	string id = getInput(19);
 	for (int i = 0; i < E.MileageData.size(); i++) {
 		if (E.MileageData.at(i).getKey() == id) {//존재
 			E.setState(3, 0, 0, 0, 0);//상태설정
@@ -560,7 +518,7 @@ void action_mileageControl(Everything E, pair<int, int> input) {
 		if (22 <= y && y <= 29) {
 			for (int i = 0; i < E.MileageData.size(); i++) {
 				if (E.MileageData.at(i).getKey() == E.user.getKey()) {//존재
-					E.MileageData.at(i).setValue(E.MileageData.at(i).getValue + E.user.getBucket().gettotal() / 10);
+					E.MileageData.at(i).setValue(E.MileageData.at(i).getValue() + E.user.getBucket().gettotal() / 10);
 					E.setState(4, 0, 0, 0, 0);// 마일리지 데이터 벡터에 10퍼센트 적립 후 상태변경
 					break;
 				}
@@ -630,19 +588,80 @@ void action_mileageUse(Everything E, pair<int, int> input) {
 		}
 	}
 }
+void action_discountControl(Everything E, pair <int, int> p1) {
+
+	int x = p1.first;
+	int y = p1.second;
+
+	if ((y >= 22) && (y <= 29)) {
+		if ((x >= 13) && (x <= 60)) {
+			E.setState(4, 3, 0, 0, 0);
+			//couponcontrol로 넘어가는 버튼
+		}
+		else if ((x >= 43) && (x <= 60)) {
+			E.setState(4, 7, 0, 0, 0);
+			//giftCardControl로 넘어가는 버튼
+		}
+		else {
+			//아무 일 없음		
+		}
+	}
+	else if ((y >= 32) && (y <= 49)) { //이전
+
+		if ((x >= 13) && (x <= 30)) {
+			if (E.user.getKey() == "X") {
+				//E.mb.getpage();
+				//E.mb.getcurrent_menu();
+				E.setState(1, 0, 1, 0, 1);
+				//manuBuy로 돌아가는 버튼(비회원)
+			}
+			else {
+				E.setState(3, 0, 0, 0, 0);
+				//마일리지 사용/적립으로 돌아가는 버튼(회원)
+			}
+		}
+		else if ((x >= 43) && (x <= 60)) {
+			E.setState(4, 4, 0, 0, 0);
+			//payMethod로 넘어가는 버튼
+		}
+	}
+	else {
+		//아무 일 없음
+	}
+}
+
 void action_coupon(Everything E) {
+	gotoxy(89, 13);
+	string temp = getInput(88);
+	//한주 꺼 Gifticon 복붙
+	for (int i = 0; i < E.CouponData.size(); i++) { //Gifticon이랑 같다고 가정한 CouponData,UsedCoupon
+		if (temp == E.CouponData.at(i).getKey()) { //같은 경우
+			for (int j = 0; j < E.UsedCoupon.size(); j++) {
+				if (temp == E.UsedCoupon.at(j)) {
+					//존재, 사용함
+					E.setState(4, 3, 0, 4, 0);
+					exit(0);
+					//에러 상태로 돌리고 종료
+				}
+				else {//존재하고 사용하지 않은경우, 사용하고 사용 쿠폰 벡터에 추가
+					E.UsedCoupon.push_back(E.CouponData.at(i).getKey());
+					E.user.getBucket().settotal((E.user.getBucket().gettotal()) - 3000); //쿠폰은 일괄적으로 3000원만 있다고 가정
 
-	string temp = getInput();
+					E.setState(4, 0, 0, 0, 0);
 
-	if () //입력 성공 시
-		E.setState(4, 0, 0, 0, 0);
-	else //입력 실패 시
-		E.setState(4, 3, 0, 4, 0);
+					exit(0);
+				}
+			}
 
-
+		}
+		else {//존재도 안함
+			E.setState(4, 3, 0, 4, 0);
+			exit(0);
+		}
+	}
 }
 void action_couponerr(Everything E) {
-
+	E.e.Errorview(4);
 	E.setState(4, 3, 0, 0, 0);
 
 }
@@ -672,23 +691,44 @@ void action_payMethod(Everything E, pair <int, int> p1) {
 }
 void action_gifiticard(Everything E) {
 
-	string temp = getInput();
+	gotoxy(89, 13);
+	string temp = getInput(88);
+	//한주 꺼 Gifticon 복붙
+	for (int i = 0; i < E.GifticardData.size(); i++) { //Gifticon이랑 같다고 가정한 gifiticardData,Usedgifiticard
+		if (temp == E.GifticardData.at(i).getKey()) { //같은 경우
+			for (int j = 0; j < E.UsedGifticard.size(); j++) {
+				if (temp == E.UsedGifticard.at(j)) {
+					//존재, 사용함
+					E.setState(4, 7, 0, 4, 0);
+					exit(0);
+					//에러 상태로 돌리고 종료
+				}
+				else {//존재하고 사용하지 않은경우, 사용하고 사용 상품권 벡터에 추가
+					E.UsedGifticard.push_back(E.GifticardData.at(i).getKey());
+					E.user.getBucket().settotal((E.user.getBucket().gettotal()) - 3000); //상품권도 일괄적으로 3000원만 있다고 가정
 
-	if () //입력 성공 시
-		E.setState(4, 0, 0, 0, 0);
-	else //입력 실패 시
-		E.setState(4, 7, 0, 4, 0);
+					E.setState(4, 0, 0, 0, 0);
 
+					exit(0);
+				}
+			}
+
+		}
+		else {//존재도 안함
+			E.setState(4, 7, 0, 4, 0);
+			exit(0);
+		}
+	}
 }
 void action_gifitierr(Everything E) {
-
+	E.e.Errorview(4);
 	E.setState(4, 7, 0, 0, 0);
 }
 
 void action_cardinput(Everything E) {
 
 	//cout << "카드를 입력하시겠습니까?(y/n 으로만 표시)" << endl;
-	string temp = getInput();
+	string temp = getInput(0);
 
 	if (temp == "y")//입력 성공 시)
 		E.setState(5, 5, 0, 0, 0);
@@ -698,7 +738,7 @@ void action_cardinput(Everything E) {
 }
 
 void action_carderr(Everything E) {
-
+	E.e.Errorview(3);
 	E.setState(5, 0, 0, 0, 0);
 }
 void action_bill(Everything E, pair<int, int> input) {
@@ -708,6 +748,7 @@ void action_bill(Everything E, pair<int, int> input) {
 	if (11 <= y && y <= 15) {
 		if (86 <= x && x <= 97) {
 			//영수증 출력
+			//main.cpp에 billSetting 함수 사용
 		}
 		else if (102 <= x && x <= 113) {
 			//영수증 미출력
@@ -732,8 +773,10 @@ void action_cashinput(Everything E) {
 }
 
 void action_casherr(Everything E) {
+	E.e.Errorview(3);
 	E.setState(6, 0, 0, 0, 0);
 }
+
 void mainMouse(Everything& E, pair<int, int> mousepos) { //입력받은 마우스의 좌표를 전달받고 클래스 호출하는 함수
 	switch (E.state[0]) {
 	case 100: { //초기화면
@@ -1129,29 +1172,127 @@ void initGifti(vector<Gifticon>& gData) { //사용가능한 기프티콘 데이�
 	}
 	in.close();
 }
+
+void setUsedGifti(vector<string>& usedGifti) { //소진된 기프티콘 key들을 업데이트함
+	remove("UsedGifti.txt");
+	ofstream out("UsedGifti.txt");
+	string temp;
+
+	for (int i = 0; i < usedGifti.size(); i++) {
+		temp = usedGifti.at(i);
+		out << temp
+			<< endl;
+	}
+	out.close();
+}
+void initUsedGifti(vector<string>& usedGifti) { //소진된 기프티콘 key들을 불러옴
+	ifstream in("UsedGifti.txt");
+	if (in.is_open()) {
+		int num;
+		in >> num;
+		while (num--) {
+			string tempString;
+			in >> tempString; //한 줄 읽어오기
+
+			usedGifti.push_back(tempString);
+		}
+	}
+	in.close();
+}
+void initgiftiCard(vector<giftiCard>& gcData){  //사용가능한 상품권 데이터 불러오기
+	ifstream in("gifticard.txt");
+	if (in.is_open()) {
+		int num;
+		in >> num;
+		while (num--) {
+			string tempString;
+			in >> tempString; //한 줄 읽어오기
+			vector<string> S = split(tempString, '/'); //잘라오기
+			//상품권 생성
+			giftiCard* gcard = new giftiCard(S.at(0), stoi(S.at(1)));
+			gcData.push_back(*gcard);
+			delete(gcard);
+		}
+	}
+}
+void initUsedGiftiCard(vector<string>& usedGiftiCard) { //소진된 상품권 key들을 불러옴
+	ifstream in("UsedGiftiCard.txt");
+	if (in.is_open()) {
+		int num;
+		in >> num;
+		while (num--) {
+			string tempString;
+			in >> tempString; //한 줄 읽어오기
+
+			usedGiftiCard.push_back(tempString);
+
+		}
+	}
+	in.close();
+}
+void setUsedGiftiCard(vector<string>& UsedGiftiCard) { //소진된 상품권 key들을 업데이트함
+	remove("UsedGiftiCard.txt");
+	ofstream out("UsedGiftiCard.txt");
+	string temp;
+
+	for (int i = 0; i < E.UsedGifticard.size(); i++) {
+		temp = E.UsedGifticard.at(i);
+		out << temp
+			<< endl;
+	}
+	out.close();
+}
+void initCoupon(vector<Coupon>& cData) { //사용가능한 쿠폰 데이터 불러오기
+	ifstream in("coupon.txt");
+	if (in.is_open()) {
+		int num;
+		in >> num;
+		while (num--) {
+			string tempString;
+			in >> tempString; //한 줄 읽어오기
+			vector<string> S = split(tempString, '/'); //잘라오기
+			//쿠폰 생성
+			Coupon* coup = new Coupon(S.at(0), stoi(S.at(1))); //key, value
+			cData.push_back(*coup);
+			delete(coup);
+		}
+	}
+}
+void initUsedCoupon(vector<string>& usedCoupon) { //소진된 쿠폰 key들을 불러옴
+	ifstream in("UsedCoupon.txt");
+	if (in.is_open()) {
+		int num;
+		in >> num;
+		while (num--) {
+			string tempString;
+			in >> tempString; //한 줄 읽어오기
+
+			usedCoupon.push_back(tempString);
+
+		}
+	}
+	in.close();
+}
+void setUsedCoupon(vector<string>& usedCoupon) { //소진된 쿠폰 key들을 업데이트함
+	remove("UsedCoupon.txt");
+	ofstream out("UsedCoupon.txt");
+	string temp;
+
+	for (int i = 0; i < E.UsedCoupon.size(); i++) {
+		temp = E.UsedCoupon.at(i);
+		out << temp
+			<< endl;
+	}
+	out.close();
+}
+
 void init(Shop& shop, User& user, vector<Mileage>& mdata, vector<Gifticon>& gdata) { //전체 초기화
 	initShop(shop); //Shop Class를 생성, 초기화 - > 파일입출력을 통해 불러오기
 	initUser(user); //User Class를 생성, 초기화 -> Backet class 또한 초기화된다.
 	initMileage(mdata); // Mileage Class를 생성, 초기화 : 아직 불확실한 부분이다.
 	initGifti(gdata);//Gifticon Class를 생성, 초기화 -> 파일입출력을 통해 불러오기
+
 	//Box1, Box2, Box3, Box4, Box5 생성. 초기화면으로 초기화
-}
-void deleteGifti(string key, vector<Gifticon>& gData) { //사용한 기프티콘을 key에 따라 txt 에서 제거
-
-   /* 미완성
-   ifstream in("gifti.txt");
-   if (in.is_open()) {
-	 int num;
-	 in >> num; //gifti 갯수
-   }
-   for (int i = 0; i < gData.size(); i++) {
-	 Gifticon& g = gData.at(i);
-	 string gkey = g.getKey();
-	 if (key == gkey) { //일치 -> 삭제
-
-	 }
-   }
-   */
 }
 void billSetting(Bucket& b) { //영수증을 파일에 출력한다.
    //bucket 정보를 바탕으로 출력한다.
@@ -1184,7 +1325,7 @@ void linkMileage(User& user, vector<Mileage>& mdata) { //사용자의 Mileage를
 }
 int main() {
 
-	Everything E;
+	//Everything E;
 
 	bool flag = true;
 
@@ -1194,6 +1335,10 @@ int main() {
 	Menu* m = new Menu("메뉴1", "1", "1", "1", "1", "1");
 	Cmenu *mc = new Cmenu(*m);
 	b.add(*mc);
+	Bucket alpha = E.user.getBucket();
+	billSetting(alpha);
+
+	//billSetting(E.user.getBucket());
 	billSetting(b);
 	//vector<int> v(5);
 	/*
@@ -1201,6 +1346,7 @@ int main() {
 	   pair<int, int> mousepos = mouseEvent();
 	   cout << mousepos.first << mousepos.second << endl;
 	   mainMouse(E, mousepos);
+
 	}
 	*/
 	return 0;
