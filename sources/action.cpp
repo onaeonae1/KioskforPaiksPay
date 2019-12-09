@@ -223,6 +223,27 @@ void action_menuBuy(Everything E, pair<int, int> input) {
 			E.setState(1, 1, 1, 0, 1);
 		}
 	}
+	else if (106 <= x && x <= 107) {//증가버튼
+	int size = E.user.getBucket().getMenulist().size();
+	int indexY = y - 22; //몇번째 메뉴 버튼인지 만약 0이면 22를 누른것, 첫번쨰 메뉴를 누른것, at(0)하면됨
+	
+	E.user.getBucket().add(E.user.getBucket().getMenulist().at(indexY)); //해당 메뉴 개수 +1
+
+	}
+	else if (112 <= x && x <= 113) {//감소버튼
+	int size = E.user.getBucket().getMenulist().size();
+	int indexY = y - 22; //몇번째 메뉴 버튼인지 만약 0이면 22를 누른것, 첫번쨰 메뉴를 누른것, at(0)하면됨
+
+	E.user.getBucket().minus(E.user.getBucket().getMenulist().at(indexY)); //해당 메뉴 개수 +1
+	
+
+	}
+	else if (121 <= x && x <= 122) {//삭제 버튼
+	int size = E.user.getBucket().getMenulist().size();
+	int indexY = y - 22; //몇번째 메뉴 버튼인지 만약 0이면 22를 누른것, 첫번쨰 메뉴를 누른것, at(0)하면됨
+
+	E.user.getBucket().remove(E.user.getBucket().getMenulist().at(indexY)); //해당 메뉴 삭제
+	}
 }
 void action_gifticon(Everything E) {
 	gotoxy(89, 13);
