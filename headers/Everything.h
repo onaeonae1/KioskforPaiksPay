@@ -2,7 +2,7 @@
 #include <string>
 #include "Error.h"
 #include "Model.h"
-#include "header.h"
+//#include "header.h"
 
 class cardInput {
 public:
@@ -27,7 +27,7 @@ private:
 public:
 	void setpage(int p);
 	int getpage();
-	void setcurrent_menu(int m);
+	void setcurrent_menu(Menu m);
 	int getcurrent_menu();
 	void view(/*전체 클래스 DB*/);
 };
@@ -86,7 +86,7 @@ public:
 	bill* bl;
 	mileageUse* mu;
 	int state[5];
-	
+
 	vector<Gifticon> GiftiData;
 	vector<Mileage> MileageData;
 	vector<Coupon> CouponData;
