@@ -54,12 +54,12 @@ public:
 class menuBuy {
 private:
 	int page; //몇 번째 카테고리를 보고 있는지를 저장
-	int current_menu;
+	Menu current_menu;
 public:
 	void setpage(int p);
 	int getpage();
-	void setcurrent_menu(int m);
-	int getcurrent_menu();
+	void setcurrent_menu(Menu m);
+	Menu getcurrent_menu();
 	void view(/*전체 클래스 DB*/);
 };
 class login {
@@ -117,7 +117,7 @@ public:
 	bill* bl;
 	mileageUse* mu;
 	int state[5];
-	
+
 	vector<Gifticon> GiftiData;
 	vector<Mileage> MileageData;
 	vector<Coupon> CouponData;
