@@ -47,10 +47,17 @@ public:
 	}
 };
 
-string getInput(int print) {//동그라미를 출력해야 하면 1, 아니면 0
+string getInput(int print) {//동그라미를 출력해야 하면 시작 x, 아니면 0
 	string result = "";
 	char temp = '0';
 	int i = 0, j = 0;
+	int y = 0, end = 0;
+	if(print == 19){
+		y = 26, end = 56;
+	}
+	else if(print == 88) {
+		y = 13, end = 115;
+	}
 
 
 	temp = getch();
@@ -61,13 +68,15 @@ string getInput(int print) {//동그라미를 출력해야 하면 1, 아니면 0
 				if (!result.empty())
 					result.pop_back();
 				if (i != 0)
-					gotoxy(3 + i * 2 - 2, 3); printf(" ");
+					gotoxy(pirnt + i * 2 - 2, y);
+					if(print + i * 2 <= end - 1)
+						printf(" ");
 				i -= 2;
 			}
 			else {
 				result.push_back((char)temp);
-				gotoxy(3 + i * 2, 3); printf("●");
-				gotoxy(5, 10); printf("%c", temp);
+				gotoxy(print + i * 2, y);
+				if(print + i * 2 <= end - 1) printf("●");
 			}
 		}
 		temp = getch();
@@ -190,7 +199,7 @@ void action_menuBuy(Everything E, pair<int, int> input) {
 void action_gifticon(Everything E) {
 	gotoxy(89, 13);
 	
-	string id = getInput(1);
+	string id = getInput(88);
 	//키보드 입력
 	for (int i = 0; i < E.GiftiData.size(); i++) {
 		if (id == E.GiftiData.at(i).getKey()) {//같은 경우
@@ -508,7 +517,7 @@ void action_option(Everything E, pair<int, int> input) {
 }
 void action_login(Everything E) {
 	gotoxy(20, 26);
-	string id = getInput(1);
+	string id = getInput(19);
 	for (int i = 0; i < E.MileageData.size(); i++) {
 		if (E.MileageData.at(i).getKey() == id) {//존재
 			E.setState(3, 0, 0, 0, 0);//상태설정
@@ -660,7 +669,7 @@ void action_discountControl(Everything E, pair <int, int> p1) {
 
 void action_coupon(Everything E) {
 	gotoxy(89, 13);
-	string temp = getInput(1);
+	string temp = getInput(88);
 	//한주 꺼 Gifticon 복붙
 	for (int i = 0; i < E.CouponData.size(); i++) { //Gifticon이랑 같다고 가정한 CouponData,UsedCoupon
 		if (temp == E.CouponData.at(i).getKey()) { //같은 경우
@@ -720,7 +729,7 @@ void action_payMethod(Everything E, pair <int, int> p1) {
 void action_gifiticard(Everything E) {
 	
 	gotoxy(89, 13);
-	string temp = getInput(1);
+	string temp = getInput(88);
 	//한주 꺼 Gifticon 복붙
 	for (int i = 0; i < E.gifiticardData.size(); i++) { //Gifticon이랑 같다고 가정한 gifiticardData,Usedgifiticard
 		if (temp == E.gifiticardData.at(i).getKey()) { //같은 경우
