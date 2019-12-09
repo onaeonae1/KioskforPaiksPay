@@ -412,11 +412,11 @@ public:
 	vector<string> GiftiData;
 	vector<string> MileageData;
 	vector<string> CouponData;
-	vector<string> gifiticardData;
+	vector<string> GifticardData;
 
 	vector<string> UsedGifti;
 	vector<string> UsedCoupon;
-	vector<string> Usedgifiticard;
+	vector<string> UsedGifticard;
 
 	Error e;
 	void setState(int num1, int num2, int num3, int num4, int num5) {
