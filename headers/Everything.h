@@ -2,23 +2,68 @@
 #include <string>
 #include "Error.h"
 #include "Model.h"
-//#include "header.h"
+#include "header.h"
 
-class cardInput;
-class cashInput;
-class discountControl;
-class mileageControl;
-class menuBuy;
-class login;
+class cardInput {
+public:
+	void view();
+};
+class cashInput {
+public:
+	void view();
+};
+class discountControl {
+public:
+	void view();
+};
+class mileageControl {
+public:
+	void view();
+};
+class menuBuy {
+private:
+	int page; //몇 번째 카테고리를 보고 있는지를 저장
+	int current_menu;
+public:
+	void setpage(int p);
+	int getpage();
+	void setcurrent_menu(int m);
+	int getcurrent_menu();
+	void view(/*전체 클래스 DB*/);
+};
+class login {
+public:
+	void view();
+};
 
-class gifticonInput;
-class optionControl;
-class couponControl;
-class giftcardControl;
-class payMethod;
-class bill;
-class mileageUse;
-
+class gifticonInput {
+public:
+	void view();
+};
+class optionControl {
+public:
+	void view();
+};
+class couponControl {
+public:
+	void view();
+};
+class giftcardControl {
+public:
+	void view();
+};
+class payMethod {
+public:
+	void view();
+};
+class bill {
+public:
+	void view();
+};
+class mileageUse {
+public:
+	void view();
+};
 
 
 class Everything {
@@ -41,11 +86,11 @@ public:
 	bill* bl;
 	mileageUse* mu;
 	int state[5];
-
-	vector<string> GiftiData;
-	vector<string> MileageData;
-	vector<string> CouponData;
-	vector<string> GifticardData;
+	
+	vector<Gifticon> GiftiData;
+	vector<Mileage> MileageData;
+	vector<Coupon> CouponData;
+	vector<giftiCard> GifticardData;
 
 	vector<string> UsedGifti;
 	vector<string> UsedCoupon;
