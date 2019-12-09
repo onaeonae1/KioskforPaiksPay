@@ -451,7 +451,7 @@ public:
 
 		x = 90;
 		for (int q = 0; q < 4; q++) {
-			if (E->mb.current_menu.getoptionSet.at(q)) {
+			if (E.mb->current_menu.getoptionSet.at(q)) {
 				gotoxy(x, i); printf("┌─────┐      ┌─────┐"); i++;
 				gotoxy(x, i); printf("│          │      │          │"); i++;
 				gotoxy(x, i); printf("└─────┘      └─────┘"); i += 2;
