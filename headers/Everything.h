@@ -1,4 +1,5 @@
 #pragma once
+#include <string>
 #include "Error.h"
 #include "Model.h"
 #include "header.h"
@@ -39,6 +40,15 @@ public:
 	bill* bl;
 	mileageUse* mu;
 	int state[5];
+	
+	vector<string> GiftiData;
+	vector<string> MileageData;
+	vector<string> CouponData;
+	vector<string> gifiticardData;
+
+	vector<string> UsedGifti;
+	vector<string> UsedCoupon;
+	vector<string> Usedgifiticard;
 
 	Error e;
 	void setState(int num1, int num2, int num3, int num4, int num5) {
