@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
 #include "Error.h"
-#include "viewUtil.h"
+//#include "utils.h"
 #include "Everything.h"
 
 extern Everything E;
@@ -368,14 +368,13 @@ void mileageUse::view() { // 시작 좌표 76
 }
 void bucketControl::view() {//x : 76 ~ 123, y : 22 ~ 31
 	int i = 0, y = 22;
-	vector<Cmenu> temp = E.user.bucket.getMenulist();
-
+	vector<Cmenu> temp = E.user.getBucket().getMenulist();
 	for (i = 0; i < temp.size(); i++) {
 		int cnt = temp.at(i).getCnt();
-		int price = tmep.at(i).getTotal();
+		int price = temp.at(i).getTotal();
 		gotoxy(76, y);
 		cout.width(30);
-		cout << left << temp.at(i).getmenu().getName() << endl;
+		cout << left << temp.at(i).getMenu().getName() << endl;
 		gotoxy(106, y);
 		printf("++ %2d -- %5d xx", cnt, cnt * price);
 	}
