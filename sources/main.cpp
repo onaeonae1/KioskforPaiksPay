@@ -789,7 +789,7 @@ void mainMouse(Everything& E, pair<int, int> mousepos) { //입력받은 마우�
 	switch (E.state[0]) {
 	case 100: { //초기화면
 		action_start(E);
-		setState(E.state, 1, 0, 1, 0, 1);
+		E.setState(1, 0, 1, 0, 1);
 		break;
 	}
 	case 0: { //X
@@ -802,7 +802,7 @@ void mainMouse(Everything& E, pair<int, int> mousepos) { //입력받은 마우�
 		   //대분류: 바뀌는 것 없음
 		   //메뉴: 1,2,1,0,1
 		   //기프티콘 버튼: 1,1,1,0,1
-		   //회원 결제:3,0,0,0,0
+		   //회원 결제:2,0,0,0,0
 		   //비회원 결제: 4,0,0,0,0
 
 			action_menuBuy(E, mousepos);
