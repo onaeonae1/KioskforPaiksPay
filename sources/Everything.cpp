@@ -409,10 +409,10 @@ public:
 	mileageUse* mu;
 	int state[5];
 
-	vector<string> GiftiData;
-	vector<string> MileageData;
-	vector<string> CouponData;
-	vector<string> GifticardData;
+	vector<Gifticon> GiftiData;
+	vector<Mileage> MileageData;
+	vector<Coupon> CouponData;
+	vector<giftiCard> GifticardData;
 
 	vector<string> UsedGifti;
 	vector<string> UsedCoupon;
