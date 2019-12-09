@@ -47,7 +47,7 @@ public:
 	}
 };
 
-string getInput() {
+string getInput(int print) {//동그라미를 출력해야 하면 1, 아니면 0
 	string result = "";
 	char temp = '0';
 	int i = 0, j = 0;
@@ -55,20 +55,21 @@ string getInput() {
 
 	temp = getch();
 	for (i = 0; !((char)temp == '\n' || (char)temp == '\r'); i++) {
-		if (i < 0) i = 0;
-		if (temp == 8) { // backspace일 때
-			if (!result.empty())
-				result.pop_back();
-			if (i != 0)
-				gotoxy(3 + i * 2 - 2, 3); printf(" ");
-			i -= 2;
+		if(print) {
+			if (i < 0) i = 0;
+			if (temp == 8) { // backspace일 때
+				if (!result.empty())
+					result.pop_back();
+				if (i != 0)
+					gotoxy(3 + i * 2 - 2, 3); printf(" ");
+				i -= 2;
+			}
+			else {
+				result.push_back((char)temp);
+				gotoxy(3 + i * 2, 3); printf("●");
+				gotoxy(5, 10); printf("%c", temp);
+			}
 		}
-		else {
-			result.push_back((char)temp);
-			gotoxy(3 + i * 2, 3); printf("●");
-			gotoxy(5, 10); printf("%c", temp);
-		}
-
 		temp = getch();
 	}
 
@@ -189,7 +190,7 @@ void action_menuBuy(Everything E, pair<int, int> input) {
 void action_gifticon(Everything E) {
 	gotoxy(89, 13);
 	
-	string id = getInput();
+	string id = getInput(1);
 	//키보드 입력
 	for (int i = 0; i < E.GiftiData.size(); i++) {
 		if (id == E.GiftiData.at(i).getKey()) {//같은 경우
@@ -507,7 +508,7 @@ void action_option(Everything E, pair<int, int> input) {
 }
 void action_login(Everything E) {
 	gotoxy(20, 26);
-	string id = getInput();
+	string id = getInput(1);
 	for (int i = 0; i < E.MileageData.size(); i++) {
 		if (E.MileageData.at(i).getKey() == id) {//존재
 			E.setState(3, 0, 0, 0, 0);//상태설정
@@ -659,7 +660,7 @@ void action_discountControl(Everything E, pair <int, int> p1) {
 
 void action_coupon(Everything E) {
 	gotoxy(89, 13);
-	string temp = getInput();
+	string temp = getInput(1);
 	//한주 꺼 Gifticon 복붙
 	for (int i = 0; i < E.CouponData.size(); i++) { //Gifticon이랑 같다고 가정한 CouponData,UsedCoupon
 		if (temp == E.CouponData.at(i).getKey()) { //같은 경우
@@ -719,7 +720,7 @@ void action_payMethod(Everything E, pair <int, int> p1) {
 void action_gifiticard(Everything E) {
 	
 	gotoxy(89, 13);
-	string temp = getInput();
+	string temp = getInput(1);
 	//한주 꺼 Gifticon 복붙
 	for (int i = 0; i < E.gifiticardData.size(); i++) { //Gifticon이랑 같다고 가정한 gifiticardData,Usedgifiticard
 		if (temp == E.gifiticardData.at(i).getKey()) { //같은 경우
@@ -755,7 +756,7 @@ void action_gifitierr(Everything E) {
 void action_cardinput(Everything E) {
 
 	//cout << "카드를 입력하시겠습니까?(y/n 으로만 표시)" << endl;
-	string temp = getInput();
+	string temp = getInput(0);
 
 	if (temp == "y")//입력 성공 시)
 		E.setState(5, 5, 0, 0, 0);
