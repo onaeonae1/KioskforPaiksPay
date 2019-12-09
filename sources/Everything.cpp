@@ -1,132 +1,152 @@
+#pragma once
 #include <string>
-#include "Error.h"
-#include "Model.h"
-#include "header.h"
 #include "Everything.h"
-
-class cardInput : public box1 {
+extern Everything E;
+class box {
+private:
+	pair<int, int> pos;
+	int wideth;
+	int height;
+	string name;
 public:
+	void setPos(pair<int, int>pos) {
+		this->pos = pos;
+	}
+	void setWideth(int wideth) {
+		this->wideth = wideth;
+	}
+	void setHeight(int height) {
+		this->height = height;
+	}
+	void setName(string name) {
+		this->name = name;
+	}
 	void view() {
-		clear_box1();
-		int x = 13, i = 5;
-		gotoxy(x, i); printf("####                                          ##    "); i++;
-		gotoxy(x, i); printf(" ##                                           ##    "); i++;
-		gotoxy(x, i); printf(" ##     #####     #####    ####    ######    #####  "); i++;
-		gotoxy(x, i); printf(" ##     ##  ##   ##       ##  ##    ##  ##    ##    "); i++;
-		gotoxy(x, i); printf(" ##     ##  ##    #####   ######    ##        ##    "); i++;
-		gotoxy(x, i); printf(" ##     ##  ##        ##  ##        ##        ## ## "); i++;
-		gotoxy(x, i); printf("####    ##  ##   ######    #####   ####        ###  "); i++;
 
-		x = 20, i = 13;
-		gotoxy(x, i); printf("   ####                        ###  "); i++;
-		gotoxy(x, i); printf("  ##  ##                        ##  "); i++;
-		gotoxy(x, i); printf(" ##                ######       ##  "); i++;
-		gotoxy(x, i); printf(" ##        ####     ##  ##   #####  "); i++;
-		gotoxy(x, i); printf(" ##       #    #    ##      ##  ##  "); i++;
-		gotoxy(x, i); printf("  ##  ##  #   ##    ##      ##  ##  "); i++;
-		gotoxy(x, i); printf("   ####    ### #   ####      ###### "); i++;
+	}
+	void mouseEvent() {
+
+	}
+	void eraseView() {
+		//필드 기반으로 필요한 영역에 공백을 찍는다.
 	}
 };
-class cashInput : public box1 {
-public:
-	void view() {
-		clear_box1();
-		int x = 13, i = 5;
-		gotoxy(x, i); printf("####                                          ##    "); i++;
-		gotoxy(x, i); printf(" ##                                           ##    "); i++;
-		gotoxy(x, i); printf(" ##     #####     #####    ####    ######    #####  "); i++;
-		gotoxy(x, i); printf(" ##     ##  ##   ##       ##  ##    ##  ##    ##    "); i++;
-		gotoxy(x, i); printf(" ##     ##  ##    #####   ######    ##        ##    "); i++;
-		gotoxy(x, i); printf(" ##     ##  ##        ##  ##        ##        ## ## "); i++;
-		gotoxy(x, i); printf("####    ##  ##   ######    #####   ####        ###  "); i++;
+class box1 : public box { //메인
 
-		x = 20, i = 13;
-		gotoxy(x, i); printf("   ####                     ###     "); i++;
-		gotoxy(x, i); printf("  ##  ##                     ##     "); i++;
-		gotoxy(x, i); printf(" ##                 #####    ##     "); i++;
-		gotoxy(x, i); printf(" ##        ####    ##        #####  "); i++;
-		gotoxy(x, i); printf(" ##       #    #    #####    ##  ## "); i++;
-		gotoxy(x, i); printf("  ##  ##  #   ##        ##   ##  ## "); i++;
-		gotoxy(x, i); printf("   ####    ### #   ######   ###  ## "); i++;
-	}
 };
-class discountControl : public box1 {
-public:
-	void view() { // 총 가격 표시 요망
-		clear_box1();
-		int x = 4, i = 5;
-		gotoxy(x, i); printf("#####      ##                                                  ##    "); i++;
-		gotoxy(x, i); printf(" ## ##                                                         ##    "); i++;
-		gotoxy(x, i); printf(" ##  ##   ###     #####    ####     ####    ##  ##   #####    #####  "); i++;
-		gotoxy(x, i); printf(" ##  ##    ##    ##       ##  ##   ##  ##   ##  ##   ##  ##    ##    "); i++;
-		gotoxy(x, i); printf(" ##  ##    ##     #####   ##       ##  ##   ##  ##   ##  ##    ##    "); i++;
-		gotoxy(x, i); printf(" ## ##     ##         ##  ##  ##   ##  ##   ##  ##   ##  ##    ## ## "); i++;
-		gotoxy(x, i); printf("#####     ####   ######    ####     ####     ######  ##  ##     ###  "); i++;
+class box2 : public box { //팝업
 
-		x = 13, i = 22;
-		gotoxy(x, i); printf("┌───────┐            ┌───────┐"); i++;
-		gotoxy(x, i); printf("│              │            │              │"); i++;
-		gotoxy(x, i); printf("│              │            │              │"); i++;
-		gotoxy(x, i); printf("│     쿠폰     │            │    상품권    │"); i++;
-		gotoxy(x, i); printf("│              │            │              │"); i++;
-		gotoxy(x, i); printf("│              │            │              │"); i++;
-		gotoxy(x, i); printf("│              │            │              │"); i++;
-		gotoxy(x, i); printf("└───────┘            └───────┘"); i++;
-
-		x = 13, i = 32;
-		gotoxy(x, i); printf("┌───────┐            ┌───────┐"); i++;
-		gotoxy(x, i); printf("│              │            │              │"); i++;
-		gotoxy(x, i); printf("│  이전으로    │            │   결제수단   │"); i++;
-		gotoxy(x, i); printf("│              │            │              │"); i++;
-		gotoxy(x, i); printf("│              │            │              │"); i++;
-		gotoxy(x, i); printf("│  돌아가기    │            │     선택     │"); i++;
-		gotoxy(x, i); printf("│              │            │              │"); i++;
-		gotoxy(x, i); printf("└───────┘            └───────┘"); i++;
-	}
 };
-class mileageControl : public box1 {
-public:
-	void view() { // 총 가격 표시 요망
-		clear_box1();
-		int x = 9, i = 5;
-		gotoxy(x, i); printf("##   ##    ##     ###"); i++;
-		gotoxy(x, i); printf("### ###            ##"); i++;
-		gotoxy(x, i); printf("#######   ###      ##     ####              ### ##   ####"); i++;
-		gotoxy(x, i); printf("#######    ##      ##    ##  ##    ####    ##  ##   ##  ##"); i++;
-		gotoxy(x, i); printf("## # ##    ##      ##    ######   #    #   ##  ##   ######"); i++;
-		gotoxy(x, i); printf("##   ##    ##      ##    ##       #   ##    #####   ##    "); i++;
-		gotoxy(x, i); printf("##   ##   ####    ####    #####    ### #       ##    #####"); i++;
-		gotoxy(x + 44, i); printf("#####"); i++;
+class box3 : public box {  //장바구니
 
-		x = 13, i = 22;
-		gotoxy(x, i); printf("┌───────┐             ┌───────┐"); i++;
-		gotoxy(x, i); printf("│              │             │              │"); i++;
-		gotoxy(x, i); printf("│   마일리지   │             │   마일리지   │"); i++;
-		gotoxy(x, i); printf("│              │             │              │"); i++;
-		gotoxy(x, i); printf("│              │             │              │"); i++;
-		gotoxy(x, i); printf("│     사용     │             │     적립     │"); i++;
-		gotoxy(x, i); printf("│              │             │              │"); i++;
-		gotoxy(x, i); printf("└───────┘             └───────┘"); i++;
-	}
 };
+class box4 : public box { //에러
+
+};
+class box5 : public box { //버튼 모아놓은 것 ex) 결제
+
+};
+
+void clear_box1() {
+	int x = 2, i = 1;
+	for (i = 1; i < 43; i++) {
+		gotoxy(x, i); printf("                                                                        ");
+	}
+	return;
+}
+void clear_box2() {
+	int x = 76, i = 1;
+	for (i = 1; i < 21; i++) {
+		gotoxy(x, i); printf("                                                ");
+	}
+	return;
+}
+void clear_box3() {
+	int x = 76, i = 22;
+	for (i = 22; i < 32; i++) {
+		gotoxy(x, i); printf("                                                ");
+	}
+	return;
+}
+void clear_box4() {
+	int x = 76, i = 33;
+	for (i = 33; i < 35; i++) {
+		gotoxy(x, i); printf("                                                ");
+	}
+	return;
+}
+void clear_box5() {
+	int x = 76, i = 27;
+	for (i = 36; i < 43; i++) {
+		gotoxy(x, i); printf("                                                ");
+	}
+	return;
+}
+void menuview_1portion(pair<int, int> start, pair<int, int> end, string content) {
+	int y = start.second + 3; // 맨 위에서 4번째 칸
+	int temp = end.first - start.first;
+	int t = content.length();
+	gotoxy((temp - t) / 2, y);
+	printf("%s", content);
+
+	return;
+}
+
+void print_option(int y, int q) {
+	string a;
+	string b;
+	string c;
+	switch (q) {
+	case 0:
+		a = "Hot / Ice";
+		b = "Hot";
+		c = "Ice";
+		break;
+	case 1:
+		a = "사이즈";
+		b = "레귤러(R)";
+		c = "라지(L)";
+		break;
+	case 2:
+		a = "샷추가";
+		b = "연하게";
+		c = "1샷 추가";
+		break;
+	case 3:
+		a = "휘핑크림";
+		b = "휘핑크림O";
+		c = "휘핑크림X";
+	}
+
+	gotoxy(80, y); printf("%s", a);
+	gotoxy(92, y); printf("%s", b);
+	gotoxy(106, y); printf("%s", c);
+}
+
+void menuview_2portion(pair<int, int> start, pair<int, int> end, string content1, string content2) {
+	int y = start.second + 1;
+	int temp = end.first - start.first;
+	int t = content1.length();
+	gotoxy((temp - t) / 2, y);
+	printf("%s", content1);
+
+	y = start.second + 4;
+	t = content2.length();
+	gotoxy((temp - t) / 2, y);
+	printf("%s", content2);
+
+	return;
+}
+
+
+
+
 class menuBuy : public box1 {
 private:
-	int page; //몇 번째 카테고리를 보고 있는지를 저장
-	int current_menu;
+	int page;//몇 번째 카테고리를 보고 있는지를 저장
+	Menu current_menu;
 public:
-	void setpage(int p) {
-		this->page = p;
-	}
-	int getpage() {
-		return this->page;
-	}
-	void setcurrent_menu(int m) {
-		this->current_menu = m;
-	}
-	int getcurrent_menu() {
-		return this->current_menu;
-	}
-	void view(/*전체 클래스 DB*/) {
+	void view() {
 		clear_box1();
 		gotoxy(22, 3); printf("< P A I K S     C O F F E E>");
 
@@ -173,6 +193,7 @@ public:
 		gotoxy(x, i); printf("│               │                │                │               │"); i++;
 		gotoxy(x, i); printf("└──────────────────────────────────┘"); i++;
 
+
 		//메뉴리스트 찍는 과정
 		for (int j = 0; j < 5; j++) {
 			string a;
@@ -180,7 +201,7 @@ public:
 			int starts[5] = { 4, 18, 32, 46, 60 };
 			int qq = 0;
 			//읽어오는 과정
-			//a = (Shop).getMenulists[j].(getName()); (괄호)이런 친구들은 아직 만들어지지 않음
+			a = E.shop.getMenulists()[j].getType();
 			llength = a.length;
 
 			gotoxy((14 - llength) / 2 + starts[qq], 7);
@@ -202,9 +223,9 @@ public:
 			int y2[4] = { 15, 22, 29, 36 };
 
 			//메뉴 읽어오기
-			//input = (Shop).getMenulists[page].getMenus().at(j).getName();
+			input = E.shop.getMenulists()[page].getMenus()[j].getName();
 			//길이에 따라 split
-			ss = split("", '_');
+			ss = split(input, '_');
 			//split 여부에 따라
 			portion = ss.size();
 			//좌표 pair 만들기
@@ -228,6 +249,27 @@ public:
 			}
 		}
 
+
+
+
+
+
+
+
+
+
+	}
+	void setpage(int p) {
+		this->page = p;
+	}
+	int getpage() {
+		return this->page;
+	}
+	void setcurrent_menu(Menu m) {
+		this->current_menu = m;
+	}
+	Menu getcurrent_menu() {
+		return this->current_menu;
 	}
 };
 class login : public box1 {
@@ -259,6 +301,111 @@ public:
 		gotoxy(x, i); printf("└───────────────────┘");
 	}
 };
+class mileageControl : public box1 {
+public:
+	void view() { // 총 가격 표시 요망
+		clear_box1();
+		int x = 9, i = 5;
+		gotoxy(x, i); printf("##   ##    ##     ###"); i++;
+		gotoxy(x, i); printf("### ###            ##"); i++;
+		gotoxy(x, i); printf("#######   ###      ##     ####              ### ##   ####"); i++;
+		gotoxy(x, i); printf("#######    ##      ##    ##  ##    ####    ##  ##   ##  ##"); i++;
+		gotoxy(x, i); printf("## # ##    ##      ##    ######   #    #   ##  ##   ######"); i++;
+		gotoxy(x, i); printf("##   ##    ##      ##    ##       #   ##    #####   ##    "); i++;
+		gotoxy(x, i); printf("##   ##   ####    ####    #####    ### #       ##    #####"); i++;
+		gotoxy(x + 44, i); printf("#####"); i++;
+
+		x = 13, i = 22;
+		gotoxy(x, i); printf("┌───────┐             ┌───────┐"); i++;
+		gotoxy(x, i); printf("│              │             │              │"); i++;
+		gotoxy(x, i); printf("│   마일리지   │             │   마일리지   │"); i++;
+		gotoxy(x, i); printf("│              │             │              │"); i++;
+		gotoxy(x, i); printf("│              │             │              │"); i++;
+		gotoxy(x, i); printf("│     사용     │             │     적립     │"); i++;
+		gotoxy(x, i); printf("│              │             │              │"); i++;
+		gotoxy(x, i); printf("└───────┘             └───────┘"); i++;
+	}
+};
+class discountControl : public box1 {
+public:
+	void view() { // 총 가격 표시 요망
+		clear_box1();
+		int x = 4, i = 5;
+		gotoxy(x, i); printf("#####      ##                                                  ##    "); i++;
+		gotoxy(x, i); printf(" ## ##                                                         ##    "); i++;
+		gotoxy(x, i); printf(" ##  ##   ###     #####    ####     ####    ##  ##   #####    #####  "); i++;
+		gotoxy(x, i); printf(" ##  ##    ##    ##       ##  ##   ##  ##   ##  ##   ##  ##    ##    "); i++;
+		gotoxy(x, i); printf(" ##  ##    ##     #####   ##       ##  ##   ##  ##   ##  ##    ##    "); i++;
+		gotoxy(x, i); printf(" ## ##     ##         ##  ##  ##   ##  ##   ##  ##   ##  ##    ## ## "); i++;
+		gotoxy(x, i); printf("#####     ####   ######    ####     ####     ######  ##  ##     ###  "); i++;
+
+		x = 13, i = 22;
+		gotoxy(x, i); printf("┌───────┐            ┌───────┐"); i++;
+		gotoxy(x, i); printf("│              │            │              │"); i++;
+		gotoxy(x, i); printf("│              │            │              │"); i++;
+		gotoxy(x, i); printf("│     쿠폰     │            │    상품권    │"); i++;
+		gotoxy(x, i); printf("│              │            │              │"); i++;
+		gotoxy(x, i); printf("│              │            │              │"); i++;
+		gotoxy(x, i); printf("│              │            │              │"); i++;
+		gotoxy(x, i); printf("└───────┘            └───────┘"); i++;
+
+		x = 13, i = 32;
+		gotoxy(x, i); printf("┌──────────────────────┐"); i++;
+		gotoxy(x, i); printf("│                                            │"); i++;
+		gotoxy(x, i); printf("│                                            │"); i++;
+		gotoxy(x, i); printf("│             이전으로 돌아가기              │"); i++;
+		gotoxy(x, i); printf("│                                            │"); i++;
+		gotoxy(x, i); printf("│                                            │"); i++;
+		gotoxy(x, i); printf("│                                            │"); i++;
+		gotoxy(x, i); printf("└──────────────────────┘"); i++;
+	}
+};
+class cardInput : public box1 {
+public:
+	void view() {
+		clear_box1();
+		int x = 13, i = 5;
+		gotoxy(x, i); printf("####                                          ##    "); i++;
+		gotoxy(x, i); printf(" ##                                           ##    "); i++;
+		gotoxy(x, i); printf(" ##     #####     #####    ####    ######    #####  "); i++;
+		gotoxy(x, i); printf(" ##     ##  ##   ##       ##  ##    ##  ##    ##    "); i++;
+		gotoxy(x, i); printf(" ##     ##  ##    #####   ######    ##        ##    "); i++;
+		gotoxy(x, i); printf(" ##     ##  ##        ##  ##        ##        ## ## "); i++;
+		gotoxy(x, i); printf("####    ##  ##   ######    #####   ####        ###  "); i++;
+
+		x = 20, i = 13;
+		gotoxy(x, i); printf("   ####                        ###  "); i++;
+		gotoxy(x, i); printf("  ##  ##                        ##  "); i++;
+		gotoxy(x, i); printf(" ##                ######       ##  "); i++;
+		gotoxy(x, i); printf(" ##        ####     ##  ##   #####  "); i++;
+		gotoxy(x, i); printf(" ##       #    #    ##      ##  ##  "); i++;
+		gotoxy(x, i); printf("  ##  ##  #   ##    ##      ##  ##  "); i++;
+		gotoxy(x, i); printf("   ####    ### #   ####      ###### "); i++;
+	}
+};
+class cashInput : public box1 {
+public:
+	void view() {
+		clear_box1();
+		int x = 13, i = 5;
+		gotoxy(x, i); printf("####                                          ##    "); i++;
+		gotoxy(x, i); printf(" ##                                           ##    "); i++;
+		gotoxy(x, i); printf(" ##     #####     #####    ####    ######    #####  "); i++;
+		gotoxy(x, i); printf(" ##     ##  ##   ##       ##  ##    ##  ##    ##    "); i++;
+		gotoxy(x, i); printf(" ##     ##  ##    #####   ######    ##        ##    "); i++;
+		gotoxy(x, i); printf(" ##     ##  ##        ##  ##        ##        ## ## "); i++;
+		gotoxy(x, i); printf("####    ##  ##   ######    #####   ####        ###  "); i++;
+
+		x = 20, i = 13;
+		gotoxy(x, i); printf("   ####                     ###     "); i++;
+		gotoxy(x, i); printf("  ##  ##                     ##     "); i++;
+		gotoxy(x, i); printf(" ##                 #####    ##     "); i++;
+		gotoxy(x, i); printf(" ##        ####    ##        #####  "); i++;
+		gotoxy(x, i); printf(" ##       #    #    #####    ##  ## "); i++;
+		gotoxy(x, i); printf("  ##  ##  #   ##        ##   ##  ## "); i++;
+		gotoxy(x, i); printf("   ####    ### #   ######   ###  ## "); i++;
+	}
+};
 
 class gifticonInput : public box2 {
 public:
@@ -283,21 +430,28 @@ public:
 		gotoxy(x, i); printf("<  옵  션  >"); i += 3;
 
 		x = 90;
+		for (int q = 0; q < 4; q++) {
+			if (E.mb->current_menu.getoptionSet.at(q)) {
+				gotoxy(x, i); printf("┌─────┐      ┌─────┐"); i++;
+				gotoxy(x, i); printf("│          │      │          │"); i++;
+				gotoxy(x, i); printf("└─────┘      └─────┘"); i += 2;
+
+
+				print_option(i - 3, q);
+			}
+		}
+
+		/*
 		gotoxy(x, i); printf("┌───┐  ┌───┐  ┌───┐"); i++;
 		gotoxy(x, i); printf("│      │  │      │  │      │"); i++;
 		gotoxy(x, i); printf("└───┘  └───┘  └───┘"); i += 2;
-
 		gotoxy(x, i); printf("┌───┐  ┌───┐  ┌───┐"); i++;
 		gotoxy(x, i); printf("│      │  │      │  │      │"); i++;
 		gotoxy(x, i); printf("└───┘  └───┘  └───┘"); i += 2;
-
-		gotoxy(x, i); printf("┌───┐  ┌───┐  ┌───┐"); i++;
-		gotoxy(x, i); printf("│      │  │      │  │      │"); i++;
-		gotoxy(x, i); printf("└───┘  └───┘  └───┘"); i += 2;
-
 		gotoxy(x, i); printf("┌───┐  ┌───┐  ┌───┐"); i++;
 		gotoxy(x, i); printf("│      │  │      │  │      │"); i++;
 		gotoxy(x, i); printf("└───┘  └───┘  └───┘");
+		*/
 	}
 };
 class couponControl : public box2 { // 쿠폰을 입력하시오
@@ -387,43 +541,23 @@ public:
 		gotoxy(x, i); printf("└───┘  └───┘  └───┘");
 	}
 };
-
-class Everything {
-public:
-	Shop shop;
-	User user;
-
-	cardInput* ci;
-	cashInput* ci2;
-	discountControl* dc;
-	mileageControl* mc;
-	menuBuy* mb;
-	login* lg;
-
-	gifticonInput* gi;
-	optionControl* oc;
-	couponControl* cc;
-	giftcardControl* gcc;
-	payMethod* pm;
-	bill* bl;
-	mileageUse* mu;
-	int state[5];
-
-	vector<Gifticon> GiftiData;
-	vector<Mileage> MileageData;
-	vector<Coupon> CouponData;
-	vector<giftiCard> GifticardData;
-
-	vector<string> UsedGifti;
-	vector<string> UsedCoupon;
-	vector<string> UsedGifticard;
-
-	Error e;
-	void setState(int num1, int num2, int num3, int num4, int num5) {
-		state[0] = num1;
-		state[1] = num2;
-		state[2] = num3;
-		state[3] = num4;
-		state[4] = num5;
+void view() {
+	int i = 0;
+	gotoxy(0, i); printf("┌────────────────────────────────────┬────────────────────────┐"); i++;
+	for (i = 1; i < 21; i++) {
+		gotoxy(0, i); printf("│"); gotoxy(74, i); printf("│"); gotoxy(124, i); printf("│");
 	}
-};
+	gotoxy(0, i); printf("│"); gotoxy(74, i); printf("├────────────────────────┤");
+	for (i = 22; i < 32; i++) {
+		gotoxy(0, i); printf("│"); gotoxy(74, i); printf("│"); gotoxy(124, i); printf("│");
+	}
+	gotoxy(0, i); printf("│"); gotoxy(74, i); printf("├────────────────────────┤");
+	for (i = 33; i < 35; i++) {
+		gotoxy(0, i); printf("│"); gotoxy(74, i); printf("│"); gotoxy(124, i); printf("│");
+	}
+	gotoxy(0, i); printf("│"); gotoxy(74, i); printf("├────────────────────────┤");
+	for (i = 36; i < 43; i++) {
+		gotoxy(0, i); printf("│"); gotoxy(74, i); printf("│"); gotoxy(124, i); printf("│");
+	}
+	gotoxy(0, i); printf("└────────────────────────────────────┴────────────────────────┘");
+}
