@@ -2,7 +2,7 @@
 #include <string>
 #include "Error.h"
 #include "Model.h"
-#include "viewUtil.h"
+#include "utils.h"
 
 class box {
 private:
