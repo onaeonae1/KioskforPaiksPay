@@ -10,6 +10,7 @@
 #include"Everything.h"
 using namespace std;
 Everything E;
+
 void billSetting(Bucket& b) { //영수증을 파일에 출력한다.
    //bucket 정보를 바탕으로 출력한다.
 	ofstream ou("bill.txt");
