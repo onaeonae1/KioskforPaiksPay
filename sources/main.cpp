@@ -6,10 +6,27 @@
 #include<sstream>
 #include<vector>
 #include<conio.h>
-#include"utils.h"
+//#include"utils.h"
 #include"Everything.h"
 using namespace std;
 Everything E;
+void billSetting(Bucket& b) { //영수증을 파일에 출력한다.
+   //bucket 정보를 바탕으로 출력한다.
+	ofstream ou("bill.txt");
+	if (ou.is_open()) {
+		ou << "<<<영수증은 다음과 같습니다.>>>" << endl;
+		ou << "-------------------------------------" << endl;
+		vector<Cmenu> mlist = b.getMenulist();
+		ou << "번호 | 이름 | 개당 가격 | 갯수 | 총액" << endl;
+		ou << "-------------------------------------" << endl;
+		for (int i = 0; i < mlist.size(); i++) {
+			Menu m = mlist.at(i).getMenu();
+			int price = mlist.at(i).getTotal();
+			int count = mlist.at(i).getCnt();
+			ou << i + 1 << " : " << m.getName() << " " << price << " 원" << " 개" << price * count << " 원" << endl;
+		}
+	}
+}
 string getInput(int print) {//동그라미를 출력해야 하면 시작 x, 아니면 0
 	string result = "";
 	char temp = '0';
@@ -23,7 +40,7 @@ string getInput(int print) {//동그라미를 출력해야 하면 시작 x, 아�
 	}
 
 
-	temp = getch();
+	temp = _getch();
 	for (i = 0; !((char)temp == '\n' || (char)temp == '\r'); i++) {
 		if (print) {
 			if (i < 0) i = 0;
@@ -42,7 +59,7 @@ string getInput(int print) {//동그라미를 출력해야 하면 시작 x, 아�
 				if (print + i * 2 <= end - 1) printf("●");
 			}
 		}
-		temp = getch();
+		temp = _getch();
 	}
 
 	return result;
@@ -158,6 +175,41 @@ void action_menuBuy(Everything E, pair<int, int> input) {
 		}
 		E.setState(1, 2, 1, 0, 1);
 	}
+	else if (38 <= y && y <= 40) {
+		if (83 <= x && x <= 92) {
+			//회원결제
+			E.setState(2, 0, 0, 0, 0);
+		}
+		else if (95 <= x && x <= 104) {
+			//비회원결제
+			E.setState(4, 0, 0, 0, 0);
+		}
+		else if (107 <= x && x <= 116) {
+			//기프티콘
+			E.setState(1, 1, 1, 0, 1);
+		}
+	}
+	else if (106 <= x && x <= 107) {//증가버튼
+		int size = E.user.getBucket().getMenulist().size();
+		int indexY = y - 22; //몇번째 메뉴 버튼인지 만약 0이면 22를 누른것, 첫번쨰 메뉴를 누른것, at(0)하면됨
+
+		E.user.getBucket().add(E.user.getBucket().getMenulist().at(indexY)); //해당 메뉴 개수 +1
+
+	}
+	else if (112 <= x && x <= 113) {//감소버튼
+		int size = E.user.getBucket().getMenulist().size();
+		int indexY = y - 22; //몇번째 메뉴 버튼인지 만약 0이면 22를 누른것, 첫번쨰 메뉴를 누른것, at(0)하면됨
+
+		E.user.getBucket().minus(E.user.getBucket().getMenulist().at(indexY)); //해당 메뉴 개수 +1
+
+
+	}
+	else if (121 <= x && x <= 122) {//삭제 버튼
+		int size = E.user.getBucket().getMenulist().size();
+		int indexY = y - 22; //몇번째 메뉴 버튼인지 만약 0이면 22를 누른것, 첫번쨰 메뉴를 누른것, at(0)하면됨
+
+		E.user.getBucket().remove(E.user.getBucket().getMenulist().at(indexY)); //해당 메뉴 삭제
+	}
 }
 void action_gifticon(Everything E) {
 	gotoxy(89, 13);
@@ -224,7 +276,7 @@ void action_option(Everything E, pair<int, int> input) {
 						break;
 					}
 					case 1: {//size
-						wanted_Cmenu.optionChange(1,1);
+						wanted_Cmenu.optionChange(1, 1);
 						break;
 					}
 					case 2: {//shot
@@ -746,7 +798,7 @@ void action_bill(Everything E, pair<int, int> input) {
 	int y = input.second;
 
 	Bucket temp = E.user.getBucket();
-	
+
 	if (11 <= y && y <= 15) {
 		if (86 <= x && x <= 97) {
 			//영수증 출력
@@ -1207,7 +1259,7 @@ void initUsedGifti(vector<string>& usedGifti) { //소진된 기프티콘 key들�
 	}
 	in.close();
 }
-void initgiftiCard(vector<giftiCard>& gcData){  //사용가능한 상품권 데이터 불러오기
+void initgiftiCard(vector<giftiCard>& gcData) {  //사용가능한 상품권 데이터 불러오기
 	ifstream in("gifticard.txt");
 	if (in.is_open()) {
 		int num;
@@ -1302,23 +1354,7 @@ void init(Shop& shop, User& user, vector<Mileage>& mdata, vector<Gifticon>& gdat
 
 	//Box1, Box2, Box3, Box4, Box5 생성. 초기화면으로 초기화
 }
-void billSetting(Bucket& b) { //영수증을 파일에 출력한다.
-   //bucket 정보를 바탕으로 출력한다.
-	ofstream ou("bill.txt");
-	if (ou.is_open()) {
-		ou << "<<<영수증은 다음과 같습니다.>>>" << endl;
-		ou << "-------------------------------------" << endl;
-		vector<Cmenu> mlist = b.getMenulist();
-		ou << "번호 | 이름 | 개당 가격 | 갯수 | 총액" << endl;
-		ou << "-------------------------------------" << endl;
-		for (int i = 0; i < mlist.size(); i++) {
-			Menu m = mlist.at(i).getMenu();
-			int price = mlist.at(i).getTotal();
-			int count = mlist.at(i).getCnt();
-			ou << i + 1 << " : " << m.getName() << " " << price << " 원" << " 개" << price * count << " 원" << endl;
-		}
-	}
-}
+
 void linkMileage(User& user, vector<Mileage>& mdata) { //사용자의 Mileage를 MileageData에서 찾아서 연결해줌
 	string userkey = user.getKey();
 	//비교를 해야 하는데 -> 그냥 for문을 돌려버리기
