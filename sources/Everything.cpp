@@ -23,7 +23,7 @@ void box::mouseEvent() {
 
 }
 void box::eraseView() {
-	//ÇÊµå ±â¹İÀ¸·Î ÇÊ¿äÇÑ ¿µ¿ª¿¡ °ø¹éÀ» Âï´Â´Ù.
+	//í•„ë“œ ê¸°ë°˜ìœ¼ë¡œ í•„ìš”í•œ ì˜ì—­ì— ê³µë°±ì„ ì°ëŠ”ë‹¤.
 }
 void cardInput::view() {
 	clear_box1();
@@ -65,7 +65,7 @@ void cashInput::view() {
 	gotoxy(x, i); printf("  ##  ##  #   ##        ##   ##  ## "); i++;
 	gotoxy(x, i); printf("   ####    ### #   ######   ###  ## "); i++;
 }
-void discountControl::view() { // ÃÑ °¡°İ Ç¥½Ã ¿ä¸Á
+void discountControl::view() { // ì´ ê°€ê²© í‘œì‹œ ìš”ë§
 	clear_box1();
 	int x = 4, i = 5;
 	gotoxy(x, i); printf("#####      ##                                                  ##    "); i++;
@@ -77,26 +77,26 @@ void discountControl::view() { // ÃÑ °¡°İ Ç¥½Ã ¿ä¸Á
 	gotoxy(x, i); printf("#####     ####   ######    ####     ####     ######  ##  ##     ###  "); i++;
 
 	x = 13, i = 22;
-	gotoxy(x, i); printf("¦£¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¤            ¦£¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¤"); i++;
-	gotoxy(x, i); printf("¦¢              ¦¢            ¦¢              ¦¢"); i++;
-	gotoxy(x, i); printf("¦¢              ¦¢            ¦¢              ¦¢"); i++;
-	gotoxy(x, i); printf("¦¢     ÄíÆù     ¦¢            ¦¢    »óÇ°±Ç    ¦¢"); i++;
-	gotoxy(x, i); printf("¦¢              ¦¢            ¦¢              ¦¢"); i++;
-	gotoxy(x, i); printf("¦¢              ¦¢            ¦¢              ¦¢"); i++;
-	gotoxy(x, i); printf("¦¢              ¦¢            ¦¢              ¦¢"); i++;
-	gotoxy(x, i); printf("¦¦¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¥            ¦¦¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¥"); i++;
+	gotoxy(x, i); printf("â”Œâ”€â”€â”€â”€â”€â”€â”€â”            â”Œâ”€â”€â”€â”€â”€â”€â”€â”"); i++;
+	gotoxy(x, i); printf("â”‚              â”‚            â”‚              â”‚"); i++;
+	gotoxy(x, i); printf("â”‚              â”‚            â”‚              â”‚"); i++;
+	gotoxy(x, i); printf("â”‚     ì¿ í°     â”‚            â”‚    ìƒí’ˆê¶Œ    â”‚"); i++;
+	gotoxy(x, i); printf("â”‚              â”‚            â”‚              â”‚"); i++;
+	gotoxy(x, i); printf("â”‚              â”‚            â”‚              â”‚"); i++;
+	gotoxy(x, i); printf("â”‚              â”‚            â”‚              â”‚"); i++;
+	gotoxy(x, i); printf("â””â”€â”€â”€â”€â”€â”€â”€â”˜            â””â”€â”€â”€â”€â”€â”€â”€â”˜"); i++;
 
 	x = 13, i = 32;
-	gotoxy(x, i); printf("¦£¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¤            ¦£¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¤"); i++;
-	gotoxy(x, i); printf("¦¢              ¦¢            ¦¢              ¦¢"); i++;
-	gotoxy(x, i); printf("¦¢  ÀÌÀüÀ¸·Î    ¦¢            ¦¢   °áÁ¦¼ö´Ü   ¦¢"); i++;
-	gotoxy(x, i); printf("¦¢              ¦¢            ¦¢              ¦¢"); i++;
-	gotoxy(x, i); printf("¦¢              ¦¢            ¦¢              ¦¢"); i++;
-	gotoxy(x, i); printf("¦¢  µ¹¾Æ°¡±â    ¦¢            ¦¢     ¼±ÅÃ     ¦¢"); i++;
-	gotoxy(x, i); printf("¦¢              ¦¢            ¦¢              ¦¢"); i++;
-	gotoxy(x, i); printf("¦¦¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¥            ¦¦¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¥"); i++;
+	gotoxy(x, i); printf("â”Œâ”€â”€â”€â”€â”€â”€â”€â”            â”Œâ”€â”€â”€â”€â”€â”€â”€â”"); i++;
+	gotoxy(x, i); printf("â”‚              â”‚            â”‚              â”‚"); i++;
+	gotoxy(x, i); printf("â”‚  ì´ì „ìœ¼ë¡œ    â”‚            â”‚   ê²°ì œìˆ˜ë‹¨   â”‚"); i++;
+	gotoxy(x, i); printf("â”‚              â”‚            â”‚              â”‚"); i++;
+	gotoxy(x, i); printf("â”‚              â”‚            â”‚              â”‚"); i++;
+	gotoxy(x, i); printf("â”‚  ëŒì•„ê°€ê¸°    â”‚            â”‚     ì„ íƒ     â”‚"); i++;
+	gotoxy(x, i); printf("â”‚              â”‚            â”‚              â”‚"); i++;
+	gotoxy(x, i); printf("â””â”€â”€â”€â”€â”€â”€â”€â”˜            â””â”€â”€â”€â”€â”€â”€â”€â”˜"); i++;
 }
-void mileageControl::view() { // ÃÑ °¡°İ Ç¥½Ã ¿ä¸Á
+void mileageControl::view() { // ì´ ê°€ê²© í‘œì‹œ ìš”ë§
 	clear_box1();
 	int x = 9, i = 5;
 	gotoxy(x, i); printf("##   ##    ##     ###"); i++;
@@ -109,14 +109,14 @@ void mileageControl::view() { // ÃÑ °¡°İ Ç¥½Ã ¿ä¸Á
 	gotoxy(x + 44, i); printf("#####"); i++;
 
 	x = 13, i = 22;
-	gotoxy(x, i); printf("¦£¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¤             ¦£¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¤"); i++;
-	gotoxy(x, i); printf("¦¢              ¦¢             ¦¢              ¦¢"); i++;
-	gotoxy(x, i); printf("¦¢   ¸¶ÀÏ¸®Áö   ¦¢             ¦¢   ¸¶ÀÏ¸®Áö   ¦¢"); i++;
-	gotoxy(x, i); printf("¦¢              ¦¢             ¦¢              ¦¢"); i++;
-	gotoxy(x, i); printf("¦¢              ¦¢             ¦¢              ¦¢"); i++;
-	gotoxy(x, i); printf("¦¢     »ç¿ë     ¦¢             ¦¢     Àû¸³     ¦¢"); i++;
-	gotoxy(x, i); printf("¦¢              ¦¢             ¦¢              ¦¢"); i++;
-	gotoxy(x, i); printf("¦¦¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¥             ¦¦¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¥"); i++;
+	gotoxy(x, i); printf("â”Œâ”€â”€â”€â”€â”€â”€â”€â”             â”Œâ”€â”€â”€â”€â”€â”€â”€â”"); i++;
+	gotoxy(x, i); printf("â”‚              â”‚             â”‚              â”‚"); i++;
+	gotoxy(x, i); printf("â”‚   ë§ˆì¼ë¦¬ì§€   â”‚             â”‚   ë§ˆì¼ë¦¬ì§€   â”‚"); i++;
+	gotoxy(x, i); printf("â”‚              â”‚             â”‚              â”‚"); i++;
+	gotoxy(x, i); printf("â”‚              â”‚             â”‚              â”‚"); i++;
+	gotoxy(x, i); printf("â”‚     ì‚¬ìš©     â”‚             â”‚     ì ë¦½     â”‚"); i++;
+	gotoxy(x, i); printf("â”‚              â”‚             â”‚              â”‚"); i++;
+	gotoxy(x, i); printf("â””â”€â”€â”€â”€â”€â”€â”€â”˜             â””â”€â”€â”€â”€â”€â”€â”€â”˜"); i++;
 }
 void menuBuy::setpage(int p) {
 	this->page = p;
@@ -130,61 +130,61 @@ void menuBuy::setcurrent_menu(Menu m) {
 Menu menuBuy::getcurrent_menu() {
 	return *this->current_menu;
 }
-void menuBuy::view(/*ÀüÃ¼ Å¬·¡½º DB*/) {
+void menuBuy::view(/*ì „ì²´ í´ë˜ìŠ¤ DB*/) {
 	clear_box1();
 	gotoxy(22, 3); printf("< P A I K S     C O F F E E>");
 
 	int x = 2, i = 5;
-	gotoxy(x, i); printf("¦£¦¡¦¡¦¡¦¡¦¡¦¡¦¨¦¡¦¡¦¡¦¡¦¡¦¡¦¨¦¡¦¡¦¡¦¡¦¡¦¡¦¨¦¡¦¡¦¡¦¡¦¡¦¡¦¨¦¡¦¡¦¡¦¡¦¡¦¡¦¤"); i++;
-	gotoxy(x, i); printf("¦¢            ¦¢            ¦¢            ¦¢            ¦¢            ¦¢"); i++;
-	gotoxy(x, i); printf("¦¢            ¦¢            ¦¢            ¦¢            ¦¢            ¦¢"); i++;
-	gotoxy(x, i); printf("¦¢            ¦¢            ¦¢            ¦¢            ¦¢            ¦¢"); i++;
-	gotoxy(x, i); printf("¦§¦¡¦¡¦¡¦¡¦¡¦¡¦ª-¦¨¦¡¦¡¦¡¦¡-¦ª¦¡-¦¡¦¨¦¡¦¡-¦ª¦¡¦¡¦¡¦¡-¦¨-¦ª¦¡¦¡¦¡¦¡¦¡¦¡¦©"); i++;
+	gotoxy(x, i); printf("â”Œâ”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”"); i++;
+	gotoxy(x, i); printf("â”‚            â”‚            â”‚            â”‚            â”‚            â”‚"); i++;
+	gotoxy(x, i); printf("â”‚            â”‚            â”‚            â”‚            â”‚            â”‚"); i++;
+	gotoxy(x, i); printf("â”‚            â”‚            â”‚            â”‚            â”‚            â”‚"); i++;
+	gotoxy(x, i); printf("â”œâ”€â”€â”€â”€â”€â”€â”´-â”¬â”€â”€â”€â”€-â”´â”€-â”€â”¬â”€â”€-â”´â”€â”€â”€â”€-â”¬-â”´â”€â”€â”€â”€â”€â”€â”¤"); i++;
 
 	x = 2;
-	gotoxy(x, i); printf("¦¢               ¦¢                ¦¢                ¦¢               ¦¢"); i++;
-	gotoxy(x, i); printf("¦¢               ¦¢                ¦¢                ¦¢               ¦¢"); i++;
-	gotoxy(x, i); printf("¦¢               ¦¢                ¦¢                ¦¢               ¦¢"); i++;
-	gotoxy(x, i); printf("¦¢               ¦¢                ¦¢                ¦¢               ¦¢"); i++;
-	gotoxy(x, i); printf("¦¢               ¦¢                ¦¢                ¦¢               ¦¢"); i++;
-	gotoxy(x, i); printf("¦¢               ¦¢                ¦¢                ¦¢               ¦¢"); i++;
-	gotoxy(x, i); printf("¦§¦¡¦¡¦¡¦¡¦¡¦¡¦¡-¦«¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦«¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦«¦¡¦¡¦¡¦¡¦¡¦¡¦¡-¦©"); i++;
+	gotoxy(x, i); printf("â”‚               â”‚                â”‚                â”‚               â”‚"); i++;
+	gotoxy(x, i); printf("â”‚               â”‚                â”‚                â”‚               â”‚"); i++;
+	gotoxy(x, i); printf("â”‚               â”‚                â”‚                â”‚               â”‚"); i++;
+	gotoxy(x, i); printf("â”‚               â”‚                â”‚                â”‚               â”‚"); i++;
+	gotoxy(x, i); printf("â”‚               â”‚                â”‚                â”‚               â”‚"); i++;
+	gotoxy(x, i); printf("â”‚               â”‚                â”‚                â”‚               â”‚"); i++;
+	gotoxy(x, i); printf("â”œâ”€â”€â”€â”€â”€â”€â”€-â”¼â”€â”€â”€â”€â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”€â”€â”€-â”¤"); i++;
 
 	x = 2;
-	gotoxy(x, i); printf("¦¢               ¦¢                ¦¢                ¦¢               ¦¢"); i++;
-	gotoxy(x, i); printf("¦¢               ¦¢                ¦¢                ¦¢               ¦¢"); i++;
-	gotoxy(x, i); printf("¦¢               ¦¢                ¦¢                ¦¢               ¦¢"); i++;
-	gotoxy(x, i); printf("¦¢               ¦¢                ¦¢                ¦¢               ¦¢"); i++;
-	gotoxy(x, i); printf("¦¢               ¦¢                ¦¢                ¦¢               ¦¢"); i++;
-	gotoxy(x, i); printf("¦¢               ¦¢                ¦¢                ¦¢               ¦¢"); i++;
-	gotoxy(x, i); printf("¦§¦¡¦¡¦¡¦¡¦¡¦¡¦¡-¦«¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦«¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦«¦¡¦¡¦¡¦¡¦¡¦¡¦¡-¦©"); i++;
+	gotoxy(x, i); printf("â”‚               â”‚                â”‚                â”‚               â”‚"); i++;
+	gotoxy(x, i); printf("â”‚               â”‚                â”‚                â”‚               â”‚"); i++;
+	gotoxy(x, i); printf("â”‚               â”‚                â”‚                â”‚               â”‚"); i++;
+	gotoxy(x, i); printf("â”‚               â”‚                â”‚                â”‚               â”‚"); i++;
+	gotoxy(x, i); printf("â”‚               â”‚                â”‚                â”‚               â”‚"); i++;
+	gotoxy(x, i); printf("â”‚               â”‚                â”‚                â”‚               â”‚"); i++;
+	gotoxy(x, i); printf("â”œâ”€â”€â”€â”€â”€â”€â”€-â”¼â”€â”€â”€â”€â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”€â”€â”€-â”¤"); i++;
 
 	x = 2;
-	gotoxy(x, i); printf("¦¢               ¦¢                ¦¢                ¦¢               ¦¢"); i++;
-	gotoxy(x, i); printf("¦¢               ¦¢                ¦¢                ¦¢               ¦¢"); i++;
-	gotoxy(x, i); printf("¦¢               ¦¢                ¦¢                ¦¢               ¦¢"); i++;
-	gotoxy(x, i); printf("¦¢               ¦¢                ¦¢                ¦¢               ¦¢"); i++;
-	gotoxy(x, i); printf("¦¢               ¦¢                ¦¢                ¦¢               ¦¢"); i++;
-	gotoxy(x, i); printf("¦¢               ¦¢                ¦¢                ¦¢               ¦¢"); i++;
-	gotoxy(x, i); printf("¦§¦¡¦¡¦¡¦¡¦¡¦¡¦¡-¦«¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦«¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦«¦¡¦¡¦¡¦¡¦¡¦¡¦¡-¦©"); i++;
+	gotoxy(x, i); printf("â”‚               â”‚                â”‚                â”‚               â”‚"); i++;
+	gotoxy(x, i); printf("â”‚               â”‚                â”‚                â”‚               â”‚"); i++;
+	gotoxy(x, i); printf("â”‚               â”‚                â”‚                â”‚               â”‚"); i++;
+	gotoxy(x, i); printf("â”‚               â”‚                â”‚                â”‚               â”‚"); i++;
+	gotoxy(x, i); printf("â”‚               â”‚                â”‚                â”‚               â”‚"); i++;
+	gotoxy(x, i); printf("â”‚               â”‚                â”‚                â”‚               â”‚"); i++;
+	gotoxy(x, i); printf("â”œâ”€â”€â”€â”€â”€â”€â”€-â”¼â”€â”€â”€â”€â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”€â”€â”€-â”¤"); i++;
 
 	x = 2;
-	gotoxy(x, i); printf("¦¢               ¦¢                ¦¢                ¦¢               ¦¢"); i++;
-	gotoxy(x, i); printf("¦¢               ¦¢                ¦¢                ¦¢               ¦¢"); i++;
-	gotoxy(x, i); printf("¦¢               ¦¢                ¦¢                ¦¢               ¦¢"); i++;
-	gotoxy(x, i); printf("¦¢               ¦¢                ¦¢                ¦¢               ¦¢"); i++;
-	gotoxy(x, i); printf("¦¢               ¦¢                ¦¢                ¦¢               ¦¢"); i++;
-	gotoxy(x, i); printf("¦¢               ¦¢                ¦¢                ¦¢               ¦¢"); i++;
-	gotoxy(x, i); printf("¦¦¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¥"); i++;
+	gotoxy(x, i); printf("â”‚               â”‚                â”‚                â”‚               â”‚"); i++;
+	gotoxy(x, i); printf("â”‚               â”‚                â”‚                â”‚               â”‚"); i++;
+	gotoxy(x, i); printf("â”‚               â”‚                â”‚                â”‚               â”‚"); i++;
+	gotoxy(x, i); printf("â”‚               â”‚                â”‚                â”‚               â”‚"); i++;
+	gotoxy(x, i); printf("â”‚               â”‚                â”‚                â”‚               â”‚"); i++;
+	gotoxy(x, i); printf("â”‚               â”‚                â”‚                â”‚               â”‚"); i++;
+	gotoxy(x, i); printf("â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜"); i++;
 
-	//¸Ş´º¸®½ºÆ® Âï´Â °úÁ¤
+	//ë©”ë‰´ë¦¬ìŠ¤íŠ¸ ì°ëŠ” ê³¼ì •
 	for (int j = 0; j < 5; j++) {
 		string a;
 		int llength = 0;
 		int starts[5] = { 4, 18, 32, 46, 60 };
 		int qq = 0;
-		//ÀĞ¾î¿À´Â °úÁ¤
-		//a = (Shop).getMenulists[j].(getName()); (°ıÈ£)ÀÌ·± Ä£±¸µéÀº ¾ÆÁ÷ ¸¸µé¾îÁöÁö ¾ÊÀ½
+		//ì½ì–´ì˜¤ëŠ” ê³¼ì •
+		//a = (Shop).getMenulists[j].(getName()); (ê´„í˜¸)ì´ëŸ° ì¹œêµ¬ë“¤ì€ ì•„ì§ ë§Œë“¤ì–´ì§€ì§€ ì•ŠìŒ
 		llength = a.length();
 
 		gotoxy((14 - llength) / 2 + starts[qq], 7);
@@ -192,9 +192,9 @@ void menuBuy::view(/*ÀüÃ¼ Å¬·¡½º DB*/) {
 		qq++;
 	}
 
-	//¸Ş´º Âï´Â °úÁ¤
+	//ë©”ë‰´ ì°ëŠ” ê³¼ì •
 	for (int j = 0; j < 16; j++) {
-		int portion; //splitµÈ µ¢¾î¸®ÀÇ ¼ö
+		int portion; //splitëœ ë©ì–´ë¦¬ì˜ ìˆ˜
 		string input;
 		pair<int, int> start;
 		pair<int, int> end;
@@ -205,13 +205,13 @@ void menuBuy::view(/*ÀüÃ¼ Å¬·¡½º DB*/) {
 		int y1[4] = { 10, 17, 24, 31 };
 		int y2[4] = { 15, 22, 29, 36 };
 
-		//¸Ş´º ÀĞ¾î¿À±â
+		//ë©”ë‰´ ì½ì–´ì˜¤ê¸°
 		//input = (Shop).getMenulists[page].getMenus().at(j).getName();
-		//±æÀÌ¿¡ µû¶ó split
+		//ê¸¸ì´ì— ë”°ë¼ split
 		ss = split("", '_');
-		//split ¿©ºÎ¿¡ µû¶ó
+		//split ì—¬ë¶€ì— ë”°ë¼
 		portion = ss.size();
-		//ÁÂÇ¥ pair ¸¸µé±â
+		//ì¢Œí‘œ pair ë§Œë“¤ê¸°
 		start = make_pair(x1[k], y1[(int)(l / 4)]);
 		end = make_pair(x2[k], y2[(int)(l / 4)]);
 		k++; if (k == 4) k = 0;
@@ -255,114 +255,109 @@ void login::view() {
 	gotoxy(x, i); printf("####    #####   ");
 
 	x = 17; i += 5;
-	gotoxy(x, i); printf("¦£¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¤"); i++;
-	gotoxy(x, i); printf("¦¢                                      ¦¢"); i++;
-	gotoxy(x, i); printf("¦¦¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¥");
+	gotoxy(x, i); printf("â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”"); i++;
+	gotoxy(x, i); printf("â”‚                                      â”‚"); i++;
+	gotoxy(x, i); printf("â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜");
 }
-void gifticonInput::view() { // x½ÃÀÛ 76
+void gifticonInput::view() { // xì‹œì‘ 76
 	clear_box2();
 	int x = 93, i = 4;
-	gotoxy(x, i); printf("±â ÇÁ Æ¼ ÄÜ À»"); i += 2;
-	gotoxy(x, i); printf("ÀÔ ·Â ÇÏ ¼¼ ¿ä"); i++;
+	gotoxy(x, i); printf("ê¸° í”„ í‹° ì½˜ ì„"); i += 2;
+	gotoxy(x, i); printf("ì… ë ¥ í•˜ ì„¸ ìš”"); i++;
 
 	x = 86, i = 12;
-	gotoxy(x, i); printf("¦£¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¤"); i++;
-	gotoxy(x, i); printf("¦¢                        ¦¢"); i++;
-	gotoxy(x, i); printf("¦¦¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¥");
+	gotoxy(x, i); printf("â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”"); i++;
+	gotoxy(x, i); printf("â”‚                        â”‚"); i++;
+	gotoxy(x, i); printf("â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜");
 }
-void optionControl::view() { // x½ÃÀÛ 76
-	clear_box2();
-	int x = 95, i = 2;
-	gotoxy(x, i); printf("<  ¿É  ¼Ç  >"); i += 3;
-
-	x = 90;
-	gotoxy(x, i); printf("¦£¦¡¦¡¦¡¦¤  ¦£¦¡¦¡¦¡¦¤  ¦£¦¡¦¡¦¡¦¤"); i++;
-	gotoxy(x, i); printf("¦¢      ¦¢  ¦¢      ¦¢  ¦¢      ¦¢"); i++;
-	gotoxy(x, i); printf("¦¦¦¡¦¡¦¡¦¥  ¦¦¦¡¦¡¦¡¦¥  ¦¦¦¡¦¡¦¡¦¥"); i += 2;
-
-	gotoxy(x, i); printf("¦£¦¡¦¡¦¡¦¤  ¦£¦¡¦¡¦¡¦¤  ¦£¦¡¦¡¦¡¦¤"); i++;
-	gotoxy(x, i); printf("¦¢      ¦¢  ¦¢      ¦¢  ¦¢      ¦¢"); i++;
-	gotoxy(x, i); printf("¦¦¦¡¦¡¦¡¦¥  ¦¦¦¡¦¡¦¡¦¥  ¦¦¦¡¦¡¦¡¦¥"); i += 2;
-
-	gotoxy(x, i); printf("¦£¦¡¦¡¦¡¦¤  ¦£¦¡¦¡¦¡¦¤  ¦£¦¡¦¡¦¡¦¤"); i++;
-	gotoxy(x, i); printf("¦¢      ¦¢  ¦¢      ¦¢  ¦¢      ¦¢"); i++;
-	gotoxy(x, i); printf("¦¦¦¡¦¡¦¡¦¥  ¦¦¦¡¦¡¦¡¦¥  ¦¦¦¡¦¡¦¡¦¥"); i += 2;
-
-	gotoxy(x, i); printf("¦£¦¡¦¡¦¡¦¤  ¦£¦¡¦¡¦¡¦¤  ¦£¦¡¦¡¦¡¦¤"); i++;
-	gotoxy(x, i); printf("¦¢      ¦¢  ¦¢      ¦¢  ¦¢      ¦¢"); i++;
-	gotoxy(x, i); printf("¦¦¦¡¦¡¦¡¦¥  ¦¦¦¡¦¡¦¡¦¥  ¦¦¦¡¦¡¦¡¦¥");
-}
-void couponControl::view() { // x½ÃÀÛ 76
+class optionControl : public box2 {
+public:
+	void view() { // xì‹œì‘ 76
+		clear_box2();
+		int x = 95, i = 2;
+		gotoxy(x, i); printf("<  ì˜µ  ì…˜  >"); i += 3;
+		x = 90;
+		for (int q = 0; q < 4; q++) {
+			if (E.mb->current_menu.getoptionSet.at(q)) {
+				gotoxy(x, i); printf("â”Œâ”€â”€â”€â”€â”€â”      â”Œâ”€â”€â”€â”€â”€â”"); i++;
+				gotoxy(x, i); printf("â”‚          â”‚      â”‚          â”‚"); i++;
+				gotoxy(x, i); printf("â””â”€â”€â”€â”€â”€â”˜      â””â”€â”€â”€â”€â”€â”˜"); i += 2;
+				print_option(i - 3, q);
+			}
+		}
+	}
+};
+void couponControl::view() { // xì‹œì‘ 76
 	clear_box2();
 	int x = 86, i = 5;
-	gotoxy(x, i); printf("Äí Æù À»   ÀÔ ·Â ÇÏ ¼¼ ¿ä !!");
+	gotoxy(x, i); printf("ì¿  í° ì„   ì… ë ¥ í•˜ ì„¸ ìš” !!");
 
 	i = 12;
-	gotoxy(x, i); printf("¦£¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¤"); i++;
-	gotoxy(x, i); printf("¦¢                        ¦¢"); i++;
-	gotoxy(x, i); printf("¦¦¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¥");
+	gotoxy(x, i); printf("â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”"); i++;
+	gotoxy(x, i); printf("â”‚                        â”‚"); i++;
+	gotoxy(x, i); printf("â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜");
 }
-void giftcardControl::view() { // x½ÃÀÛ 76
+void giftcardControl::view() { // xì‹œì‘ 76
 	clear_box2();
 	int x = 85, i = 5;
-	gotoxy(x, i); printf("»ó Ç° ±Ç À»  ÀÔ ·Â ÇÏ ¼¼ ¿ä !!");
+	gotoxy(x, i); printf("ìƒ í’ˆ ê¶Œ ì„  ì… ë ¥ í•˜ ì„¸ ìš” !!");
 
 	x = 86; i = 12;
-	gotoxy(x, i); printf("¦£¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¤"); i++;
-	gotoxy(x, i); printf("¦¢                        ¦¢"); i++;
-	gotoxy(x, i); printf("¦¦¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¥");
+	gotoxy(x, i); printf("â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”"); i++;
+	gotoxy(x, i); printf("â”‚                        â”‚"); i++;
+	gotoxy(x, i); printf("â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜");
 }
-void payMethod::view() { // x½ÃÀÛ 76
+void payMethod::view() { // xì‹œì‘ 76
 	clear_box2();
 	int x = 93, i = 4;
-	gotoxy(x, i); printf("°á Á¦ ¼ö ´Ü À»"); i += 2;
+	gotoxy(x, i); printf("ê²° ì œ ìˆ˜ ë‹¨ ì„"); i += 2;
 	x = 90;
-	gotoxy(x, i); printf("¼± ÅÃ ÇØ ÁÖ ¼¼ ¿ä !!");
+	gotoxy(x, i); printf("ì„  íƒ í•´ ì£¼ ì„¸ ìš” !!");
 
 	x = 86, i = 11;
-	gotoxy(x, i); printf("¦£¦¡¦¡¦¡¦¡¦¤    ¦£¦¡¦¡¦¡¦¡¦¤"); i++;
-	gotoxy(x, i); printf("¦¢        ¦¢    ¦¢        ¦¢"); i++;
-	gotoxy(x, i); printf("¦¢  Ä«µå  ¦¢    ¦¢  Çö±İ  ¦¢"); i++;
-	gotoxy(x, i); printf("¦¢        ¦¢    ¦¢        ¦¢"); i++;
-	gotoxy(x, i); printf("¦¦¦¡¦¡¦¡¦¡¦¥    ¦¦¦¡¦¡¦¡¦¡¦¥");
+	gotoxy(x, i); printf("â”Œâ”€â”€â”€â”€â”    â”Œâ”€â”€â”€â”€â”"); i++;
+	gotoxy(x, i); printf("â”‚        â”‚    â”‚        â”‚"); i++;
+	gotoxy(x, i); printf("â”‚  ì¹´ë“œ  â”‚    â”‚  í˜„ê¸ˆ  â”‚"); i++;
+	gotoxy(x, i); printf("â”‚        â”‚    â”‚        â”‚"); i++;
+	gotoxy(x, i); printf("â””â”€â”€â”€â”€â”˜    â””â”€â”€â”€â”€â”˜");
 }
 void bill::view() {
 	clear_box2();
 	int x = 93, i = 4;
-	gotoxy(x, i); printf("¿µ  ¼ö  Áõ  À»"); i += 2;
+	gotoxy(x, i); printf("ì˜  ìˆ˜  ì¦  ì„"); i += 2;
 	x = 87;
-	gotoxy(x, i); printf("Ãâ ·Â ÇÏ ½Ã °Ú ½À ´Ï ±î ??");
+	gotoxy(x, i); printf("ì¶œ ë ¥ í•˜ ì‹œ ê²  ìŠµ ë‹ˆ ê¹Œ ??");
 
 	x = 86, i = 11;
-	gotoxy(x, i); printf("¦£¦¡¦¡¦¡¦¡¦¤    ¦£¦¡¦¡¦¡¦¡¦¤"); i++;
-	gotoxy(x, i); printf("¦¢        ¦¢    ¦¢        ¦¢"); i++;
-	gotoxy(x, i); printf("¦¢  Ãâ·Â  ¦¢    ¦¢ ¹ÌÃâ·Â ¦¢"); i++;
-	gotoxy(x, i); printf("¦¢        ¦¢    ¦¢        ¦¢"); i++;
-	gotoxy(x, i); printf("¦¦¦¡¦¡¦¡¦¡¦¥    ¦¦¦¡¦¡¦¡¦¡¦¥");
+	gotoxy(x, i); printf("â”Œâ”€â”€â”€â”€â”    â”Œâ”€â”€â”€â”€â”"); i++;
+	gotoxy(x, i); printf("â”‚        â”‚    â”‚        â”‚"); i++;
+	gotoxy(x, i); printf("â”‚  ì¶œë ¥  â”‚    â”‚ ë¯¸ì¶œë ¥ â”‚"); i++;
+	gotoxy(x, i); printf("â”‚        â”‚    â”‚        â”‚"); i++;
+	gotoxy(x, i); printf("â””â”€â”€â”€â”€â”˜    â””â”€â”€â”€â”€â”˜");
 }
-void mileageUse::view() { // ½ÃÀÛ ÁÂÇ¥ 76
+void mileageUse::view() { // ì‹œì‘ ì¢Œí‘œ 76
 	clear_box2();
 	int x = 86, i = 2;
-	gotoxy(x, i); printf("¸¶ ÀÏ ¸® Áö   »ç ¿ë ±İ ¾× À»"); i += 2; x = 91;
-	gotoxy(x, i); printf("ÀÔ ·Â ÇØ ÁÖ ¼¼ ¿ä"); i += 2;
+	gotoxy(x, i); printf("ë§ˆ ì¼ ë¦¬ ì§€   ì‚¬ ìš© ê¸ˆ ì•¡ ì„"); i += 2; x = 91;
+	gotoxy(x, i); printf("ì… ë ¥ í•´ ì£¼ ì„¸ ìš”"); i += 2;
 
 	x = 84;
-	gotoxy(x, i); printf("¦£¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¤"); i++;
-	gotoxy(x, i); printf("¦¢°áÁ¦ ±İ¾×                   ¦¢"); i++;
-	gotoxy(x, i); printf("¦¦¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¥"); i++;
+	gotoxy(x, i); printf("â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”"); i++;
+	gotoxy(x, i); printf("â”‚ê²°ì œ ê¸ˆì•¡                   â”‚"); i++;
+	gotoxy(x, i); printf("â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜"); i++;
 
-	gotoxy(x, i); printf("¦£¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¤"); i++;
-	gotoxy(x, i); printf("¦¢¸¶ÀÏ¸®Áö ±İ¾×               ¦¢"); i++;
-	gotoxy(x, i); printf("¦¦¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¥"); i += 2;
+	gotoxy(x, i); printf("â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”"); i++;
+	gotoxy(x, i); printf("â”‚ë§ˆì¼ë¦¬ì§€ ê¸ˆì•¡               â”‚"); i++;
+	gotoxy(x, i); printf("â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜"); i += 2;
 
 	x = 83;
-	gotoxy(x, i); printf("¦£¦¡¦¡¦¡¦¤  ¦£¦¡¦¡¦¡¦¤  ¦£¦¡¦¡¦¡¦¤"); i++;
-	gotoxy(x, i); printf("¦¢  1000¦¢  ¦¢  3000¦¢  ¦¢  5000¦¢  "); i++;
-	gotoxy(x, i); printf("¦¦¦¡¦¡¦¡¦¥  ¦¦¦¡¦¡¦¡¦¥  ¦¦¦¡¦¡¦¡¦¥"); i += 2;
+	gotoxy(x, i); printf("â”Œâ”€â”€â”€â”  â”Œâ”€â”€â”€â”  â”Œâ”€â”€â”€â”"); i++;
+	gotoxy(x, i); printf("â”‚  1000â”‚  â”‚  3000â”‚  â”‚  5000â”‚  "); i++;
+	gotoxy(x, i); printf("â””â”€â”€â”€â”˜  â””â”€â”€â”€â”˜  â””â”€â”€â”€â”˜"); i += 2;
 
-	gotoxy(x, i); printf("¦£¦¡¦¡¦¡¦¤  ¦£¦¡¦¡¦¡¦¤  ¦£¦¡¦¡¦¡¦¤"); i++;
-	gotoxy(x, i); printf("¦¢ 10000¦¢  ¦¢   ALL¦¢  ¦¢ Clear¦¢  "); i++;
-	gotoxy(x, i); printf("¦¦¦¡¦¡¦¡¦¥  ¦¦¦¡¦¡¦¡¦¥  ¦¦¦¡¦¡¦¡¦¥");
+	gotoxy(x, i); printf("â”Œâ”€â”€â”€â”  â”Œâ”€â”€â”€â”  â”Œâ”€â”€â”€â”"); i++;
+	gotoxy(x, i); printf("â”‚ 10000â”‚  â”‚   ALLâ”‚  â”‚ Clearâ”‚  "); i++;
+	gotoxy(x, i); printf("â””â”€â”€â”€â”˜  â””â”€â”€â”€â”˜  â””â”€â”€â”€â”˜");
 }
 void bucketControl::view() {//x : 76 ~ 123, y : 22 ~ 31
 	int i = 0, y = 22;
@@ -378,9 +373,9 @@ void bucketControl::view() {//x : 76 ~ 123, y : 22 ~ 31
 	}
 }
 void purchaseBox::view() {//x : 76 ~ 123, y : 36 ~ 42
-	gotoxy(81, 37); printf("¦£¦¡¦¡¦¡¦¡¦¡¦¨¦¡¦¡¦¡¦¡¦¡¦¨¦¡¦¡¦¡¦¡¦¡¦¤");
-	gotoxy(81, 38); printf("¦¢  È¸  ¿ø  ¦¢ ºñ È¸ ¿ø ¦¢  ±â  ÇÁ  ¦¢");
-	gotoxy(81, 39); printf("¦¢          ¦¢          ¦¢          ¦¢");
-	gotoxy(81, 40); printf("¦¢  °á  Á¦  ¦¢  °á  Á¦  ¦¢  Æ¼  ÄÜ  ¦¢");
-	gotoxy(81, 41); printf("¦¦¦¡¦¡¦¡¦¡¦¡¦ª¦¡¦¡¦¡¦¡¦¡¦ª¦¡¦¡¦¡¦¡¦¡¦¥");
+	gotoxy(81, 37); printf("â”Œâ”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”");
+	gotoxy(81, 38); printf("â”‚  íšŒ  ì›  â”‚ ë¹„ íšŒ ì› â”‚  ê¸°  í”„  â”‚");
+	gotoxy(81, 39); printf("â”‚          â”‚          â”‚          â”‚");
+	gotoxy(81, 40); printf("â”‚  ê²°  ì œ  â”‚  ê²°  ì œ  â”‚  í‹°  ì½˜  â”‚");
+	gotoxy(81, 41); printf("â””â”€â”€â”€â”€â”€â”´â”€â”€â”€â”€â”€â”´â”€â”€â”€â”€â”€â”˜");
 }
