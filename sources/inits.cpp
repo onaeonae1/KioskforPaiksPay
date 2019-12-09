@@ -139,7 +139,22 @@ void setUsedGiftiCard(Everything E) {
 	}
 	out.close();
 }
-
+void initCoupon(vector<Coupon>& cData) { //사용가능한 쿠폰 불러오기
+   ifstream in("coupon.txt");
+   if (in.is_open()) {
+      int num;
+      in >> num;
+      while (num--) {
+         string tempString;
+         in >> tempString; //한 줄 읽어오기
+         vector<string> S = split(tempString, '/'); //잘라오기
+         //쿠폰 생성
+         Coupon* coup = new Coupon(S.at(0), stoi(S.at(1))); //key, value
+         cData.push_back(*coup);
+         delete(coup);
+      }
+   }
+}
 void initUsedCoupon(vector<string>& usedCoupon) { //사용가능한 기프티콘 데이터 불러오기
 	ifstream in("UsedCoupon.txt");
 	if (in.is_open()) {
