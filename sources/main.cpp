@@ -224,7 +224,7 @@ void action_option(Everything E, pair<int, int> input) {
 						break;
 					}
 					case 1: {//size
-						wanted_Cmenu.optionChange(1.1);
+						wanted_Cmenu.optionChange(1,1);
 						break;
 					}
 					case 2: {//shot
