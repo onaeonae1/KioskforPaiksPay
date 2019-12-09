@@ -31,21 +31,21 @@ public:
 	void setName(string name);
 	void view();
 	void mouseEvent();
-	void eraseView(); //ÇÊµå ±â¹İÀ¸·Î ÇÊ¿äÇÑ ¿µ¿ª¿¡ °ø¹éÀ» Âï´Â´Ù.
+	void eraseView(); //í•„ë“œ ê¸°ë°˜ìœ¼ë¡œ í•„ìš”í•œ ì˜ì—­ì— ê³µë°±ì„ ì°ëŠ”ë‹¤.
 };
-class box1 : public box { //¸ŞÀÎ
+class box1 : public box { //ë©”ì¸
 
 };
-class box2 : public box { //ÆË¾÷
+class box2 : public box { //íŒì—…
 
 };
-class box3 : public box {  //Àå¹Ù±¸´Ï
+class box3 : public box {  //ì¥ë°”êµ¬ë‹ˆ
 
 };
-class box4 : public box { //¿¡·¯
+class box4 : public box { //ì—ëŸ¬
 
 };
-class box5 : public box { //¹öÆ° ¸ğ¾Æ³õÀº °Í ex) °áÁ¦
+class box5 : public box { //ë²„íŠ¼ ëª¨ì•„ë†“ì€ ê²ƒ ex) ê²°ì œ
 
 };
 
@@ -67,14 +67,14 @@ public:
 };
 class menuBuy {
 private:
-	int page; //¸î ¹øÂ° Ä«Å×°í¸®¸¦ º¸°í ÀÖ´ÂÁö¸¦ ÀúÀå
+	int page; //ëª‡ ë²ˆì§¸ ì¹´í…Œê³ ë¦¬ë¥¼ ë³´ê³  ìˆëŠ”ì§€ë¥¼ ì €ì¥
 	Menu* current_menu;
 public:
 	void setpage(int p);
 	int getpage();
 	void setcurrent_menu(Menu m);
 	Menu getcurrent_menu();
-	void view(/*ÀüÃ¼ Å¬·¡½º DB*/);
+	void view(/*ì „ì²´ í´ë˜ìŠ¤ DB*/);
 };
 class login {
 public:
@@ -139,6 +139,12 @@ public:
 	payMethod* pm;
 	bill* bl;
 	mileageUse* mu;
+	
+	//ì„ ì–¸ë§Œ í•¨
+	bucketControl* bc;
+	
+	purchaseBox* pb;
+	
 	int state[5];
 
 	vector<Gifticon> GiftiData;
