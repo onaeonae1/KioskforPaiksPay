@@ -745,10 +745,12 @@ void action_bill(Everything E, pair<int, int> input) {
 	int x = input.first;
 	int y = input.second;
 
+	Bucket temp = E.user.getBucket();
+	
 	if (11 <= y && y <= 15) {
 		if (86 <= x && x <= 97) {
 			//영수증 출력
-			//main.cpp에 billSetting 함수 사용
+			billSetting(temp);
 		}
 		else if (102 <= x && x <= 113) {
 			//영수증 미출력
@@ -766,10 +768,16 @@ void action_cashinput(Everything E) {
 
 	//현금 입력
 
-	if () //입력 성공 시
+	//cout << "현금을 입력하시겠습니까?(y/n 으로만 표시)" << endl;
+	string temp = getInput(0);
+
+	if (temp == "y")//입력 성공 시)
 		E.setState(6, 5, 0, 0, 0);
-	else //입력 실패 시
+	else if (temp == "n")//입력 실패 시)
 		E.setState(6, 0, 0, 3, 0);
+	else {
+		//아무것도 안함
+	}
 }
 
 void action_casherr(Everything E) {
