@@ -17,6 +17,7 @@
 #include "init.h"
 #include "mainMouse.h"
 #include "billSetting.h"
+#include "mainview.h"
 
 using namespace std;
 
