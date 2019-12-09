@@ -1,6 +1,6 @@
 /*
 
-이름을 view_class.cpp로 하는 게 어떨까!
+이름을 viewClass.cpp로 하는 게 어떨까!
 
 */
 
@@ -8,7 +8,7 @@
 #pragma once
 #include <string>
 #include "Everything.h"
-#include "view_util.h"
+#include "viewUtil.h"
 extern Everything E;
 class box {
 private:
