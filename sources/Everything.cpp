@@ -12,52 +12,28 @@
 #include "Everything.h"
 
 extern Everything E;
-class box {
-private:
-	pair<int, int> pos;
-	int wideth;
-	int height;
-	string name;
-public:
-	void setPos(pair<int, int>pos) {
+
+	void box::setPos(pair<int, int>pos) {
 		this->pos = pos;
 	}
-	void setWideth(int wideth) {
+	void box::setWideth(int wideth) {
 		this->wideth = wideth;
 	}
-	void setHeight(int height) {
+	void box::setHeight(int height) {
 		this->height = height;
 	}
-	void setName(string name) {
+	void box::setName(string name) {
 		this->name = name;
 	}
-	void view() {
+	void box::view() {
 
 	}
-	void mouseEvent() {
+	void box::mouseEvent() {
 
 	}
-	void eraseView() {
+	void box::eraseView() {
 		//필드 기반으로 필요한 영역에 공백을 찍는다.
 	}
-};
-class box1 : public box { //메인
-
-};
-class box2 : public box { //팝업
-
-};
-class box3 : public box {  //장바구니
-
-};
-class box4 : public box { //에러
-
-};
-class box5 : public box { //버튼 모아놓은 것 ex) 결제
-
-};
-
-
 	void cardInput::view() {
 		clear_box1();
 		int x = 13, i = 5;
@@ -398,42 +374,3 @@ class box5 : public box { //버튼 모아놓은 것 ex) 결제
 		gotoxy(x, i); printf("└───┘  └───┘  └───┘");
 	}
 
-class Everything {
-public:
-	Shop shop;
-	User user;
-
-	cardInput* ci;
-	cashInput* ci2;
-	discountControl* dc;
-	mileageControl* mc;
-	menuBuy* mb;
-	login* lg;
-
-	gifticonInput* gi;
-	optionControl* oc;
-	couponControl* cc;
-	giftcardControl* gcc;
-	payMethod* pm;
-	bill* bl;
-	mileageUse* mu;
-	int state[5];
-
-	vector<Gifticon> GiftiData;
-	vector<Mileage> MileageData;
-	vector<Coupon> CouponData;
-	vector<giftiCard> GifticardData;
-
-	vector<string> UsedGifti;
-	vector<string> UsedCoupon;
-	vector<string> UsedGifticard;
-
-	Error e;
-	void setState(int num1, int num2, int num3, int num4, int num5) {
-		state[0] = num1;
-		state[1] = num2;
-		state[2] = num3;
-		state[3] = num4;
-		state[4] = num5;
-	}
-};
