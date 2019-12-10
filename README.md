@@ -6,6 +6,7 @@
  <li>Name : Paik's Pay
  <li>Members : 김한주 박용준 백종원 송민석
 </ul>
+
 ## Sources
 <ul>
   <li> action.cpp </li>
@@ -34,6 +35,7 @@
   <li> Model.h </li>
   <li> Utils.h </li>
 </ul>
+
 ## Text Files
 <ul>
   <li> bill.txt </li>
