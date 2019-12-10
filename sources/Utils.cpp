@@ -2,13 +2,14 @@
 
 using namespace std;
 
-void startView() { //¸ÇÃ³À½ È­¸é
+void startView() { //ë§¨ì²˜ìŒ í™”ë©´
 	printf("\n");
 	printf("P R E S S   E N T E R   A N Y   K E Y   T O   S T A R T \n");
 	printf("\n");
 	while (true) {
 		char temp = NULL;
-		cin >> temp;
+		temp = _getch();
+		//cin >> temp;
 		if (temp != NULL) {
 			break;
 		}
@@ -17,6 +18,7 @@ void startView() { //¸ÇÃ³À½ È­¸é
 	printf("W e l c o m e   T o    P a i k ' s   P a y ");
 	printf("\n");
 	Sleep(1000);
+	system("cls");
 	return;
 }
 vector<string> split(string str, char delimiter) {
@@ -30,7 +32,7 @@ vector<string> split(string str, char delimiter) {
 
 	return internal;
 }
-pair<int, int> mouseEvent() { //¸¶¿ì½º¸¦ Á÷Á¢ ¹Ş°í, ÁÂÇ¥¸¦ Àü´ŞÇÏ´Â ÇÔ¼ö
+pair<int, int> mouseEvent() { //ë§ˆìš°ìŠ¤ë¥¼ ì§ì ‘ ë°›ê³ , ì¢Œí‘œë¥¼ ì „ë‹¬í•˜ëŠ” í•¨ìˆ˜
 	pair<int, int> ret = make_pair(0, 0);
 	HANDLE       hIn, hOut;
 	DWORD        dwNOER;
@@ -104,7 +106,7 @@ void clear_box5() {
 
 
 void menuview_1portion(pair<int, int> start, pair<int, int> end, string content) {
-	int y = start.second + 3; // ¸Ç À§¿¡¼­ 4¹øÂ° Ä­
+	int y = start.second + 3; // ë§¨ ìœ„ì—ì„œ 4ë²ˆì§¸ ì¹¸
 	int temp = end.first - start.first;
 	int t = content.length();
 	gotoxy((temp - t) / 2, y);
@@ -124,19 +126,19 @@ void print_option(int y, int q) {
 		c = "Ice";
 		break;
 	case 1:
-		a = "»çÀÌÁî";
-		b = "·¹±Ö·¯(R)";
-		c = "¶óÁö(L)";
+		a = "ì‚¬ì´ì¦ˆ";
+		b = "ë ˆê·¤ëŸ¬(R)";
+		c = "ë¼ì§€(L)";
 		break;
 	case 2:
-		a = "¼¦Ãß°¡";
-		b = "¿¬ÇÏ°Ô";
-		c = "1¼¦ Ãß°¡";
+		a = "ìƒ·ì¶”ê°€";
+		b = "ì—°í•˜ê²Œ";
+		c = "1ìƒ· ì¶”ê°€";
 		break;
 	case 3:
-		a = "ÈÖÇÎÅ©¸²";
-		b = "ÈÖÇÎÅ©¸²O";
-		c = "ÈÖÇÎÅ©¸²X";
+		a = "íœ˜í•‘í¬ë¦¼";
+		b = "íœ˜í•‘í¬ë¦¼O";
+		c = "íœ˜í•‘í¬ë¦¼X";
 	}
 
 	gotoxy(80, y); printf("%s", a);
@@ -161,21 +163,21 @@ void menuview_2portion(pair<int, int> start, pair<int, int> end, string content1
 
 void view() {
 	int i = 0;
-	gotoxy(0, i); printf("¦£¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¨¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¤"); i++;
+	gotoxy(0, i); printf("â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”"); i++;
 	for (i = 1; i < 21; i++) {
-		gotoxy(0, i); printf("¦¢"); gotoxy(74, i); printf("¦¢"); gotoxy(124, i); printf("¦¢");
+		gotoxy(0, i); printf("â”‚"); gotoxy(74, i); printf("â”‚"); gotoxy(124, i); printf("â”‚");
 	}
-	gotoxy(0, i); printf("¦¢"); gotoxy(74, i); printf("¦§¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦©");
+	gotoxy(0, i); printf("â”‚"); gotoxy(74, i); printf("â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤");
 	for (i = 22; i < 32; i++) {
-		gotoxy(0, i); printf("¦¢"); gotoxy(74, i); printf("¦¢"); gotoxy(124, i); printf("¦¢");
+		gotoxy(0, i); printf("â”‚"); gotoxy(74, i); printf("â”‚"); gotoxy(124, i); printf("â”‚");
 	}
-	gotoxy(0, i); printf("¦¢"); gotoxy(74, i); printf("¦§¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦©");
+	gotoxy(0, i); printf("â”‚"); gotoxy(74, i); printf("â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤");
 	for (i = 33; i < 35; i++) {
-		gotoxy(0, i); printf("¦¢"); gotoxy(74, i); printf("¦¢"); gotoxy(124, i); printf("¦¢");
+		gotoxy(0, i); printf("â”‚"); gotoxy(74, i); printf("â”‚"); gotoxy(124, i); printf("â”‚");
 	}
-	gotoxy(0, i); printf("¦¢"); gotoxy(74, i); printf("¦§¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦©");
+	gotoxy(0, i); printf("â”‚"); gotoxy(74, i); printf("â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤");
 	for (i = 36; i < 43; i++) {
-		gotoxy(0, i); printf("¦¢"); gotoxy(74, i); printf("¦¢"); gotoxy(124, i); printf("¦¢");
+		gotoxy(0, i); printf("â”‚"); gotoxy(74, i); printf("â”‚"); gotoxy(124, i); printf("â”‚");
 	}
-	gotoxy(0, i); printf("¦¦¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦ª¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¥");
+	gotoxy(0, i); printf("â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”´â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜");
 }
