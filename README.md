@@ -6,7 +6,7 @@
  <li>Name : Paik's Pay
  <li>Members : 김한주 박용준 백종원 송민석
 </ul>
-## sources
+## Sources
 <ul>
   <li> action.cpp </li>
   <li> billSetting.cpp </li>
