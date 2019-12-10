@@ -22,6 +22,9 @@ void initEverything() {
 	E.pm = new payMethod();
 	E.bl = new bill();
 	E.mu = new mileageUse();
+	
+	E.bc = new bucketControl();
+	E.pb = new purchaseBox();
 }
 int main() {
 
@@ -29,10 +32,10 @@ int main() {
 	initEverything();
 	bool flag = true;
 	init(E.shop, E.user,E.GiftiData, E.MileageData, E.CouponData, E.GifticardData,
-		E.UsedGifti, E.UsedCoupon, E.UsedGifticard); //�ʱ�ȭ
+		E.UsedGifti, E.UsedCoupon, E.UsedGifticard); //ÃÊ±âÈ­
 	/*
 	Bucket b = E.user->getBucket();
-	Menu* m = new Menu("�޴�1", "1", "1", "1", "1", "1");
+	Menu* m = new Menu("¸Þ´º1", "1", "1", "1", "1", "1");
 	Cmenu *mc = new Cmenu(*m);
 	b.add(*mc);
 	Bucket alpha = E.user->getBucket();
